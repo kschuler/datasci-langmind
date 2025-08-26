@@ -151,7 +151,7 @@
     "href": "slides/r-basics.html#secretly-r",
     "title": "R basics",
     "section": "Secretly, R!",
-    "text": "Secretly, R!\nGoogle Colab officially supports Python, but secretly supports R (and Julia, too!)\n\nUpdate 2024: Google Colab now officially supports R!\ncolab (r kernel)"
+    "text": "Secretly, R!\nGoogle Colab officially supports Python, but secretly supports R (and Julia, too!)\n\nUpdate 2024: Google Colab now officially supports R!\nUpdate 2025: Google Colab officially supports Julia!\ncolab (r kernel)"
   },
   {
     "objectID": "slides/r-basics.html#open-a-new-r-notebook",
@@ -189,25 +189,11 @@
     "text": "Frequently used keyboard shortcuts:\n\nCmd/Ctrl+S - save\nCmd/Ctrl+Enter - run focused cell\nCmd/Ctrl+Shift+A - select all cells\nCmd/Ctrl+/ - comment/uncomment selection\nCmd/Ctrl+] - increase indent\nCmd/Ctrl+[ - decrease indent"
   },
   {
-    "objectID": "slides/r-basics.html#expressions",
-    "href": "slides/r-basics.html#expressions",
-    "title": "R basics",
-    "section": "Expressions",
-    "text": "Expressions\n\nExpressions are combinations of values, variables, operators, and functions that can be evaluated to produce a result. Expressions can be as simple as a single value or more complex involving calculations, comparisons, and function calls. They are the fundamental building blocks of programming.\n\n10 - a simple value expression that evaluates to 10.\nx &lt;- 10 - an expression that assigns the value of 10 to x.\nx + 10 - an expression that adds the value of x to 10.\na &lt;- x + 10 - an expression that adds the value of x to 10 and assigns the result to the variable a"
-  },
-  {
-    "objectID": "slides/r-basics.html#announcements-1",
-    "href": "slides/r-basics.html#announcements-1",
-    "title": "R basics",
-    "section": "Announcements",
-    "text": "Announcements\n\nCourse is full\nThursday 3:30 moved to 5:15pm\nPlease join the waitlist\nPlease fill out Who’s in class"
-  },
-  {
     "objectID": "slides/r-basics.html#you-are-here",
     "href": "slides/r-basics.html#you-are-here",
     "title": "R basics",
     "section": "You are here",
-    "text": "You are here\n\n\nData science with R\n\nR basics\nData visualization\nData wrangling\n\n\nStats & Model buidling\n\nSampling distribution\nHypothesis testing\nModel specification\nModel fitting\nModel accuracy\nModel reliability\n\n\nMore advanced\n\nClassification\nInference for regression\nMixed-effect models"
+    "text": "You are here\n\n\nData science with R\n\nR basics\nData visualization\nData wrangling\n\n\nStats & Model buidling\n\nSampling distribution\nHypothesis testing\nModel specification\nModel fitting\nModel evaluation\n\n\nMore advanced\n\nFeature Engineering\nClassification\nMixed-effect models"
   },
   {
     "objectID": "slides/r-basics.html#basic-concepts",
@@ -215,6 +201,13 @@
     "title": "R basics",
     "section": "Basic concepts",
     "text": "Basic concepts\n\nExpressions: fundamental building blocks of programming\nObjects: allow us to store stuff, created with assignment operator\nNames: names w give objects must be letters, numbers, ., or _\nAttributes: allow us to attach arbitrary metadata to objects\nFunctions: take some input, perform some computation, and return some output\nEnvironment: collection of all objects we defined in current R session\nPackages: collections of functions, data, and documentation bundled together in R\nComments: notes you leave for yourself, not evaluated\nMessages: notes R leaves for you (FYI, warning, error)"
+  },
+  {
+    "objectID": "slides/r-basics.html#expressions",
+    "href": "slides/r-basics.html#expressions",
+    "title": "R basics",
+    "section": "Expressions",
+    "text": "Expressions\n\nExpressions are combinations of values, variables, operators, and functions that can be evaluated to produce a result. Expressions can be as simple as a single value or more complex involving calculations, comparisons, and function calls. They are the fundamental building blocks of programming.\n\n10 - a simple value expression that evaluates to 10.\nx &lt;- 10 - an expression that assigns the value of 10 to x.\nx + 10 - an expression that adds the value of x to 10.\na &lt;- x + 10 - an expression that adds the value of x to 10 and assigns the result to the variable a"
   },
   {
     "objectID": "slides/r-basics.html#important-functions",
