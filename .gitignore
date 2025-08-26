@@ -1,0 +1,17 @@
+# Quarto build cache
+.quarto/
+
+# R and Python temporary files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+__pycache__/
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
