@@ -15,7 +15,7 @@ format:
 
 # Syllabus
 
-Follow along on the [syllabus](https://kathrynschuler.com/datasci/)! 
+Follow along on the [syllabus](https://kschuler.github.io/datasci-langmind/index.html)! 
 
 ## Paperwork
 
@@ -320,6 +320,9 @@ We begin by defining some basic concepts:
 - `ls()` - list all variables in environment
 - `rm(x)` - remove x variable from environment
 - `rm(list = ls())` - remove all variables from environment
+
+# Thursday Aug 28 
+Thursday's class started here.
 
 ## Important function 
 #### Packages
