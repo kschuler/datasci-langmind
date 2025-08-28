@@ -77,37 +77,36 @@ There are 2 midterm exams, taken in class on the following dates. Exams cannot b
 
 Lab exercises are designed for practice and skill-building. They are not collected or graded. However, lab attendance is required and will count toward your course grade. You may miss up to 2 labs (for reasons such as illness or travel) without penalty.Notify your section TA if you must miss a lab. 
 
-- Lab 1 R Basics
-- Lab 2 Data Visualization
-- Lab 3 Data wrangling
-- Lab 4 Sampling
-- Lab 5 Hypothesis testing
-- Lab 6 Model specification
-- Lab 7 Model fitting
-- Lab 8 Model evaluation 
-- Lab 9 Feature engineering (topic may change)
-- Lab 10 (optional)
+- Lab 1 R Basics & Data Visualization
+- Lab 2 Data wrangling
+- Lab 3 Sampling
+- Lab 4 Hypothesis testing
+- Lab 5 Model specification
+- Lab 6 Model fitting
+- Lab 7 Model evaluation 
+- Lab 8 Feature engineering (topic may change)
+- Lab 9 (optional)
 
 ## Schedule
 Subject to change!
 
 | Week | Begins |  Topic | Lab (Thu/Fri) | Due on Monday  |
 | -  | -- |  ------- | --- | ---- |
-| 1 | Aug 26<br>Aug 28 | [R Basics](slides/r-basics.qmd) | Lab 1 |
-| 2 | Sep 2<br>Sep 4 | Data visualization |  Lab 2 |  |
-| 3 | Sep 9<br>Sep 11 | Data wrangling |  Lab 3 | Pset 1 |
-| 4 | Sep 16<br>Sep 18 | Sampling distribution |  Lab 4 | Pset 2 | 
-| 5 | Sep 23<br>Sep 25 | Hypothesis testing<br> | Lab 5| Pset 3 |
+| 1 | Aug 26<br>Aug 28 | [R Basics](slides/r-basics.qmd) | No lab! |
+| 2 | Sep 2<br>Sep 4 | Data visualization |  Lab 1 |  |
+| 3 | Sep 9<br>Sep 11 | Data wrangling |  Lab 2 | Pset 1 |
+| 4 | Sep 16<br>Sep 18 | Sampling distribution |  Lab 3 | Pset 2 | 
+| 5 | Sep 23<br>Sep 25 | Hypothesis testing<br> | Lab 4 | Pset 3 |
 | 6 | Sep 30<br>Oct 2 | Midterm 1 review<br>Midterm 1 |  | Pset 4 |
 | 7 | Oct 7<br>Oct 9 | Make-up date Midterm 1<br>**Fall break, no class/lab**|  | 
-| 8 | Oct 14<br>Oct 16 | Model specification  | Lab 6 | | 
-| 9 | Oct 21<br>Oct 22 | Model fitting | Lab 7 | Pset 5  | 
-| 10 | Oct 28<br>Oct 30 | Model evaluation | Lab 8 | Pset 6 |
+| 8 | Oct 14<br>Oct 16 | Model specification  | Lab 5 | | 
+| 9 | Oct 21<br>Oct 22 | Model fitting | Lab 6 | Pset 5  | 
+| 10 | Oct 28<br>Oct 30 | Model evaluation | Lab 7 | Pset 6 |
 | 11 | Nov 4<br>Nov 6 | **Election day & conference, no class/lab** |  | Pset 7  |
-| 12 | Nov 11<br>Nov 13 | Feature engineering (??) |  Lab 9 | | 
+| 12 | Nov 11<br>Nov 13 | Feature engineering (??) |  Lab 8 | | 
 | 13 | Nov 18<br>Nov 20 | Miterm 2 review<br>Midterm 2 |  | Pset 8  | 
 | 14 | Nov 25<br>Nov 27 |**Thanksgiving break, no class/lab**  |    |
-| 15 | Dec 2<br>Dec 4 | Careers in datasci lunch! |  Lab is mixed models! |  |
+| 15 | Dec 2<br>Dec 4 | Careers in datasci lunch! |  Lab 9 (mixed models)! |  |
 | 16 | Dec 8 | **Last day of classes, no class/lab** |   |  |
 | 17 | TBD | Final exam (optional) |
 
