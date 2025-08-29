@@ -88,11 +88,12 @@ Lab exercises are designed for practice and skill-building. They are not collect
 - Lab 9 (optional)
 
 ## Schedule
-Subject to change!
+
+All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). 
 
 | Week | Begins |  Topic | Lab (Thu/Fri) | Due on Monday  |
 | -  | -- |  ------- | --- | ---- |
-| 1 | Aug 26<br>Aug 28 | [R Basics](slides/r-basics.qmd) | No lab! |
+| 1 | Aug 26<br>Aug 28 | [R Basics](slides/r-basics.qmd) (demo) | No lab! |
 | 2 | Sep 2<br>Sep 4 | Data visualization |  Lab 1 |  |
 | 3 | Sep 9<br>Sep 11 | Data wrangling |  Lab 2 | Pset 1 |
 | 4 | Sep 16<br>Sep 18 | Sampling distribution |  Lab 3 | Pset 2 | 
