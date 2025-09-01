@@ -1,0 +1,1096 @@
+---
+title:  "Lab 1: Getting started with R"
+subtitle: "Not graded, just practice"
+date: 2024-08-29
+#format: live-html
+---
+
+To learn to program in R (or any language), you can read about how to do it, and watch someone else do it; but the only way to really learn is to do it yourself. Create some data structures, try some stuff, and see what happens! Here are some practice quiz questions to guide your learning. We will go over the solutions to these in lab.
+
+::: {.callout-tip title="Tip"}
+More than one answer may be correct!  
+:::
+
+
+
+```{r}
+#| echo: false
+
+library(webexercises)
+
+```
+
+# R Basics 
+## Google Colab
+
+ 1. True or false? We can start a new R notebook in Google Colab with `File > New notebook`
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c("True", answer ="True, but we need to change the Runtime environment too", "False")
+
+    cat(longmcq(choices))
+    ```
+
+1. For problem sets, how will you submit your colab notebook for grading? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer ="`File > Download > Download .ipynb`, then upload to Gradescope",
+        "`File > Download > Download .ipynb`, then upload to Canvas",
+        "`File > Download > Download .py`, then upload to Gradescope",
+        "`File > Download > Download .py`, then upload to Canvas"
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+3. What version of R is Google Colab running? Hint: use `sessionInfo()`.
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c("4.4.1"), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+4. What is the relationship between R and Google Colab?
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "R is a programming language. Google Colab is a smaller, specific version of R.",
+        answer="R is a programming language. Google Colab is a development environment where you can run R",
+        "R and Google Colab are both programming languages.",
+        "R is a paid (proprietary) programming language. Google Colab is a free service to run R."
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+1. What happens to files you upload to google colab when the Runtime environment is restarted? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "They are saved in your google drive.",
+        "They are saved in Google Colab's cloud for future use", 
+        answer="They are deleted",
+        "They are stored for 7 business days, then deleted."
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+## R Basics
+
+
+1. Which of the following are expressions? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer ="10",
+        answer = "5 + 10",
+        answer ="x <- 5 + 10",
+        answer = "x <- y + 10",
+        answer = "mean(x)"
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+2. Which of the following are valid variable names in R? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer ="childAge",
+        answer = "response_time",
+        "1stPlaceWinner",
+        "2fast2furious",
+        "pi"
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+
+3. Suppose we open a new colab notebook and run the following code block. What will be returned?
+
+    ```r
+    x <- 1 + 2
+    y <- 0 + 3
+    ls()
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "3",
+        "x=3 • y=3",
+        answer ="'x' • 'y' ",
+        "mean(c(1,3,5)) • median(c(1,3,5))"
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+1. Which of the following will load the `emo` package into the current environment? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "install.packages('emo')",
+        answer ="library(emo)",
+        "data(emo)",
+        "attributes(emo)"
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+1. Which of the following occur in the code block below? 
+
+    ```r
+    # compute the mean of x and y
+    mean(c(x,y))
+    ```
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "a message",
+        answer ="a function",
+        answer ="a comment",
+        answer = "an expression"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+## Vectors
+
+1. Which of the following returns the vector `20 22 24 26` 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "`20:26`",
+        answer ="`seq(from=20, to=26, by =2)`",
+        "`rep(c(20, 22, 24, 26), times = 4)`",
+        answer ="`c(20, 22, 24, 26)`"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+
+1. Suppose we construct a vector with `c(1, "two", 3, 4, 5, 6)` and assign it to `x`. What will the following code block return? 
+
+    ```r
+    typeof(x)
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c("character"), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+    What is the previous question an example of? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "attribute addition",
+        "explicit coercion",
+        answer = "implicit coercion",
+        "none of the above"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. What will the following code block return? 
+
+    ```r
+    x <- 1:4
+    y <- matrix(x, ncol=2, nrow=2)
+    typeof(y)
+
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c("integer"), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+
+1. What will the following code block return? 
+
+    ```r
+    x <- c()
+    length(x)
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c(0), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+
+
+1. Given the following output from `str(x)`, what will `as.logical(x)` return? 
+
+    ```{r}
+    #| echo: false
+
+    x <- c(1, 0, 1, 0)
+    str(x)
+    ```
+
+<!-- ```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "an error",
+    answer="TRUE • FALSE • TRUE • FALSE",
+    'FALSE',
+    "FALSE • TRUE • FALSE • TRUE"
+)
+
+cat(longmcq(choices))
+``` -->
+
+1. Given the following vector, what will `as.double(x)` return? 
+
+    ```r
+    x <- c("one", "two", "three")
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer="an error",
+        "1 • 2 • 3",
+        '2 • 4 • 6',
+        "'one' • 'two' • 'three'"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+
+
+1. What happens if you add a vector of numbers to a single number in the following expression?
+
+    ```r
+    c(1, 3, 5) + 1
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "2 • 3 • 5",
+        "Error: length mismatch",
+        "1 • 3 • 5 • 1",
+        answer = "2 • 4 • 6"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. What happens if you multiply a vector times another vector? 
+
+    ```r
+    c(1, 3, 5) * c(10, 100, 1000)
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer="10 • 300 • 5000",
+        "Error: length mismatch",
+        "10 • 30 • 50 • 100 • 300 • 500 • 1000 • 3000 • 5000",
+        "a 2 x 3 matrix",
+        "Error: cannot multiply vectors"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Suppose we run the following code.  What will `any(x)` return? 
+
+    ```r
+    x <- c(1, 5, 11) > 10
+
+    ```
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer ="TRUE",
+        "FALSE",
+        "Error: vector is double but requires logical"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+<!-- # Subsetting
+
+1. Which of the following code subsets the vector `x <- c("blue", "pink", "red")` to return just the first element?
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer="x[1]",
+        answer = "x[[1]]",
+        "x[0]",
+        answer = "x[-c(2, 3)]",
+        'x["blue"]'
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Suppose we run the following code. What will `x[[2]]` return?
+
+    ```r
+    x <- seq(from = 2, to =8, by=2)
+    ```
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c(4), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+
+1. Suppose we run the following code. What will `m[1, 2]` return?
+
+    ```r
+    m <- matrix(c(10,20,30,40), nrow=2, ncol=2)
+    ```
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c(30), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+1. Suppose we run the following code. What will `df$y[4]` return?
+
+    ```r
+    df <- data.frame(
+        x = c(2, 4, 6, 8), 
+        y = c("l", "m", "n", "o")
+    )
+
+    ```
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c("o"), ignore_ws = TRUE, width = "20"))
+
+    ```
+ -->
+
+## Missing Values 
+
+1. Suppose we run the following code. What will `is.na(y)` return?
+
+    ```r
+
+    y <- c(25, 25, NA, 36)
+
+    ```
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "3",
+        "Error: Non-atomic vector is invalid type",
+        "TRUE",
+        answer = "FALSE FALSE TRUE FALSE"
+    )
+
+    cat(longmcq(choices))
+
+    ```
+
+1. Suppose we run the following code. What will `is.null(y)` return?
+
+    ```r
+    y <- c()
+
+    ```
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c("TRUE"), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+1. Suppose we run the following code. What will `mean(y)` return?
+
+    ```r
+    y <- c()
+
+    ```
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    cat(fitb(c("NA"), ignore_ws = TRUE, width = "20"))
+
+    ```
+
+# Visualization 
+
+Practice your new ggplot skills with these practice exam questions! 
+
+
+## Setup
+
+We will continue working with the `ratings` dataset from the visualization lecture (part of the `languageR` package). 
+
+```{r}
+#| echo: true
+library(ggplot2)
+library(languageR)
+```
+
+It contains the following variables: 
+
+```{r}
+#| echo: true
+str(ratings)
+```
+
+# ggplot basics
+
+1. Fill in the blanks below with one of the following words: `data`, `aesthetics`, `geom`. 
+
+    > The basic ggplot involves: (1) using your `r fitb("data", width = 10)`, (2) defining how variables are mapped to visual properties (`r fitb("aesthetics", width = 10)`), and (3) determining the geometrical object that a plot uses to represent data (`r fitb("geom", width = 10)`)
+
+1. When ggplot2 maps a categorical variable to an aesthetic, it automatically assigns a unique value of the aesthetic to each level of the variable. What is this process called?
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "level assignment",
+        "variable aestheticization",
+        "autofill",
+        answer="scaling"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. The code below generated which of the following figures? 
+
+    ```r
+    ggplot(
+        data = ratings,
+        mapping = aes(x = Frequency, y = meanFamiliarity)
+    ) + 
+        geom_point(mapping = aes(color = Class)) +
+        geom_smooth(method = "lm") +
+        theme_classic(base_size=20)
+    ```
+
+    ![](/assests/images/global-v-local.png){fig-align="center" width=100%}
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "A",
+        answer="B",
+        "C"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Suppose we want to map the variable `Complex` to the color aesthetic in a scatterplot. Which of the following arguments could we pass to `geom_point()`? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "color = Complex",
+        answer="mapping=aes(color = Complex)",
+        "color = mapping(Complex)",
+        answer="aes(color=Complex)"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. To adjust the size of the font to 20pt in the complete theme `theme_minimal()`, what argument should we include?
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer ="`base_size=20`",
+        "`size=20`",
+        "`font_family_size=20`",
+        "None of the above"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Which geoms are depicted in the following figure? 
+
+    ![](/assests/images/guess-geom.png){fig-align="left" width=50%}
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "geom_histogram()",
+        answer="geom_density()",
+        "geom_bar()",
+        "geom_smooth()",
+        "geom_point()"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+
+
+1. Which geoms are depicted in the following figure? 
+
+    ![](/assests/images/guess-geom2.png){fig-align="left" width=50%}
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer="geom_histogram()",
+        "geom_density()",
+        "geom_bar()",
+        "geom_smooth()",
+        "geom_point()"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+
+
+# Data viz day 2
+
+## Plot 1 
+
+Given code blocks a, b, and c; and the plot below:
+
+```r
+# CODE BLOCK a ---------------------------#
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity)
+    ) +
+    geom_point(color = "blue")
+
+# CODE BLOCK b ---------------------------#
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity, color = "blue")
+    ) 
+
+# CODE BLOCK c ---------------------------#
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity)
+    ) +
+    geom_point()
+```
+
+```{r}
+#| echo: false
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity)
+    ) +
+    geom_point(color = "blue") 
+```
+
+1. Which of the code blocks above generate the plot ? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer="a", "b", "c"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. In the plot above, is the color aesthetic mapped, set, or both? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+    "mapped", answer="set", "both"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. In the plot above, which of the following aesthetics should we set to make the points more transparent?
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+    "color", "fill", answer="alpha", "shape"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. In plot A above, which of the following would change the x axis label to "FQ"?
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+    answer ='add a `labs()` layer with `x="FQ"` argument',
+    'add a `labs()` layer with `y="FQ"` argument',
+    'change the mapping argument from `x="Frequency"` to `x="FQ"`' 
+    )
+
+    cat(longmcq(choices))
+    ```
+
+## Plot 2 
+
+Given the following plot: 
+
+```{r}
+#| echo: false
+#| message: false
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity)
+    ) +
+    geom_point(color = "red") +
+    geom_smooth(method = "lm") 
+```
+
+1. In the plot above, which geom(s) are used to represent the data? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+    "geom_histogram()", "geom_density()", "geom_bar()", answer="geom_point()", answer="geom_smooth()"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. True or false, the blue line in the plot above is mapped to the Class aesthetic? 
+
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c("True", answer="False")
+
+    cat(longmcq(choices))
+    ```
+
+1. In the plot above, which of the following variables is mapped to the x aesthetic? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer="Frequency", 
+        "meanFamiliarity", 
+        "FreqSingular",
+        "FreqPlural"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. True or false, in the plot above, the default statistical transformation in the geom responsible for the red dots is "identity".
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(answer="True", "False")
+
+    cat(longmcq(choices))
+    ```
+
+## Code block 1
+
+Suppose we run the following code. 
+
+```r
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity, color = Class)
+    ) +
+    geom_point() +
+    geom_smooth(method = "lm", color = "red") 
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+#| layout-valign: bottom
+#| cap-location: bottom
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity, color = Class)
+    ) +
+    geom_point(color = "red") +
+    geom_smooth(method = "lm") +
+    labs(tag="A") 
+
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity, color = Class)
+    ) +
+    geom_point() +
+    geom_smooth(method = "lm", color = "red") +
+    labs(tag="B") 
+```
+
+1. Which of the following plots will be returned? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "A", answer="B"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Which aesthetic is mapped and which is set? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "Class is set to color and the smoothing line is mapped to red", 
+        answer  = "Class is mapped to color and the smoothing line is set to red",
+        "Both are mapped",
+        "Both are set"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Which aesthetic is global and which is local? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        answer = "Color is mapped to the class variable globally, and set to red locally", 
+        "Color is mapped to the class variable locally, and set to red globally",
+        "Both are global",
+        "Both are local"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+
+## Code block 2
+
+Suppose we run the following code block
+
+```r
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Class, fill = Complex)
+    ) +
+    geom_bar() 
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+#| layout-valign: bottom
+#| cap-location: bottom
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Class, fill = Complex)
+    ) +
+    geom_bar(position = "dodge") +
+    labs(tag="A") 
+
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Class, fill = Complex)
+    ) +
+    geom_bar() +
+    labs(tag="B") 
+
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Complex, fill = Class)
+    ) +
+    geom_bar(position = "dodge") +
+    labs(tag="C") 
+
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Complex, fill = Class)
+    ) +
+    geom_bar() +
+    labs(tag="D") 
+```
+
+1. Which plot will be returned? 
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "A", answer ="B", "C", "D"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. What would happen if we added the layer `scale_fill_manual(values = c("green", "orange"))` to the following plot?
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "error: no fill aesthetic specified",
+        answer ="complex would turn green and simplex would turn orange",
+        "simplex would turn green and complex would turn orange",
+        "No change"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. What argument could we add to `geom_bar()` to add a black border around the bars? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "fill = `black`",
+        "border_color = 'black'",
+        "linetype = 'black'",
+        answer = "color = 'black'"    )
+
+    cat(longmcq(choices))
+    ```
+
+## Plot 3 
+
+Consider the following plot
+
+```{r}
+#| echo: false
+#| message: false
+#| layout-valign: bottom
+#| cap-location: bottom
+ggplot(
+    data = ratings, 
+    mapping = aes(x = Frequency, y = meanFamiliarity)
+    ) +
+    geom_point() +
+    facet_grid(Class ~ Complex) +
+    theme_bw() 
+```
+
+1. To generate the facets in the plot above, which of the following lines of code must be included? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "`facet_grid(Complex ~ Class)`", 
+        answer="`facet_grid(Class ~ Complex)`", 
+        "`facet_grid(.~ Complex)`",
+        "`facet_wrap(Class~Complex, ncol = 2)`"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Which of the following geoms are added to the plot above? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "geom_histogram()",
+        "geom_density()",
+        "geom_bar()",
+        "geom_smooth()",
+        answer = "geom_point()"
+    )
+
+    cat(longmcq(choices))
+    ```
+
+1. Which built-in theme is applied to the following plot? 
+
+    ```{r}
+    #| echo: false
+    #| results: asis
+
+    # Define the answer choices
+    choices <- c(
+        "theme_grey()",
+        "theme_classic()", 
+        "theme_void()", 
+        answer = "theme_bw()"
+    )
+
+    cat(longmcq(choices))
+    ```

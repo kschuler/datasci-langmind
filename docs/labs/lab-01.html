@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-08-29">
+
+<title>Lab 1: Getting started with R – DataSci</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7b1b06e26e1e2798ccde3208f86b5bbd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../include/webex.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <div id="quarto-announcement" data-announcement-id="e16b16c0b142e4356a89666ce69e7133" class="alert alert-primary hidden"><div class="quarto-announcement-content">
+<p>Lab starts next week (Sep 4 &amp; 5)!</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1: Getting started with R</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html#assignments" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html#schedule" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-basics" id="toc-r-basics" class="nav-link active" data-scroll-target="#r-basics">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
+  <li><a href="#r-basics-1" id="toc-r-basics-1" class="nav-link" data-scroll-target="#r-basics-1">R Basics</a></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a></li>
+  </ul></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a>
+  <ul class="collapse">
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  </ul></li>
+  <li><a href="#ggplot-basics" id="toc-ggplot-basics" class="nav-link" data-scroll-target="#ggplot-basics">ggplot basics</a></li>
+  <li><a href="#data-viz-day-2" id="toc-data-viz-day-2" class="nav-link" data-scroll-target="#data-viz-day-2">Data viz day 2</a>
+  <ul class="collapse">
+  <li><a href="#plot-1" id="toc-plot-1" class="nav-link" data-scroll-target="#plot-1">Plot 1</a></li>
+  <li><a href="#plot-2" id="toc-plot-2" class="nav-link" data-scroll-target="#plot-2">Plot 2</a></li>
+  <li><a href="#code-block-1" id="toc-code-block-1" class="nav-link" data-scroll-target="#code-block-1">Code block 1</a></li>
+  <li><a href="#code-block-2" id="toc-code-block-2" class="nav-link" data-scroll-target="#code-block-2">Code block 2</a></li>
+  <li><a href="#plot-3" id="toc-plot-3" class="nav-link" data-scroll-target="#plot-3">Plot 3</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 1: Getting started with R</h1>
+<p class="subtitle lead">Not graded, just practice</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 29, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>To learn to program in R (or any language), you can read about how to do it, and watch someone else do it; but the only way to really learn is to do it yourself. Create some data structures, try some stuff, and see what happens! Here are some practice quiz questions to guide your learning. We will go over the solutions to these in lab.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>More than one answer may be correct!</p>
+</div>
+</div>
+<section id="r-basics" class="level1">
+<h1>R Basics</h1>
+<section id="google-colab" class="level2">
+<h2 class="anchored" data-anchor-id="google-colab">Google Colab</h2>
+<ol type="1">
+<li><p>True or false? We can start a new R notebook in Google Colab with <code>File &gt; New notebook</code></p>
+<div id="radio_BZEKDUCGGJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BZEKDUCGGJ" value=""> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_BZEKDUCGGJ" value="answer"> <span>True, but we need to change the Runtime environment too</span></label><label><input type="radio" autocomplete="off" name="radio_BZEKDUCGGJ" value=""> <span>False</span></label>
+</div></li>
+<li><p>For problem sets, how will you submit your colab notebook for grading?</p>
+<div id="radio_FJYBGPUTIW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value="answer"> <span><code>File &gt; Download &gt; Download .ipynb</code>, then upload to Gradescope</span></label><label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value=""> <span><code>File &gt; Download &gt; Download .ipynb</code>, then upload to Canvas</span></label><label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value=""> <span><code>File &gt; Download &gt; Download .py</code>, then upload to Gradescope</span></label><label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value=""> <span><code>File &gt; Download &gt; Download .py</code>, then upload to Canvas</span></label>
+</div></li>
+<li><p>What version of R is Google Colab running? Hint: use <code>sessionInfo()</code>.</p>
+<p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;4.4.1&quot;]"></p></li>
+<li><p>What is the relationship between R and Google Colab?</p>
+<div id="radio_USAKKIBREY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value=""> <span>R is a programming language. Google Colab is a smaller, specific version of R.</span></label><label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value="answer"> <span>R is a programming language. Google Colab is a development environment where you can run R</span></label><label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value=""> <span>R and Google Colab are both programming languages.</span></label><label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value=""> <span>R is a paid (proprietary) programming language. Google Colab is a free service to run R.</span></label>
+</div></li>
+<li><p>What happens to files you upload to google colab when the Runtime environment is restarted?</p>
+<div id="radio_CYGXEMJAOG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value=""> <span>They are saved in your google drive.</span></label><label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value=""> <span>They are saved in Google Colab's cloud for future use</span></label><label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value="answer"> <span>They are deleted</span></label><label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value=""> <span>They are stored for 7 business days, then deleted.</span></label>
+</div></li>
+</ol>
+</section>
+<section id="r-basics-1" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics-1">R Basics</h2>
+<ol type="1">
+<li><p>Which of the following are expressions?</p>
+<div id="radio_WMJKSOIVSR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>5 + 10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>x &lt;- 5 + 10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>x &lt;- y + 10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>mean(x)</span></label>
+</div></li>
+<li><p>Which of the following are valid variable names in R?</p>
+<div id="radio_DTOZEMGOCA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value="answer"> <span>childAge</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value="answer"> <span>response_time</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value=""> <span>1stPlaceWinner</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value=""> <span>2fast2furious</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value=""> <span>pi</span></label>
+</div></li>
+<li><p>Suppose we open a new colab notebook and run the following code block. What will be returned?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_QIMBCHNPBY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value=""> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value=""> <span>x=3 • y=3</span></label><label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value="answer"> <span>'x' • 'y' </span></label><label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value=""> <span>mean(c(1,3,5)) • median(c(1,3,5))</span></label>
+</div></li>
+<li><p>Which of the following will load the <code>emo</code> package into the current environment?</p>
+<div id="radio_NRIDTVRCXB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value=""> <span>install.packages('emo')</span></label><label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value="answer"> <span>library(emo)</span></label><label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value=""> <span>data(emo)</span></label><label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value=""> <span>attributes(emo)</span></label>
+</div></li>
+<li><p>Which of the following occur in the code block below?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the mean of x and y</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(x,y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_IPMEQGJTEA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value=""> <span>a message</span></label><label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value="answer"> <span>a function</span></label><label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value="answer"> <span>a comment</span></label><label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value="answer"> <span>an expression</span></label>
+</div></li>
+</ol>
+</section>
+<section id="vectors" class="level2">
+<h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
+<ol type="1">
+<li><p>Which of the following returns the vector <code>20 22 24 26</code></p>
+<div id="radio_KTYZZPCECK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value=""> <span><code>20:26</code></span></label><label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value="answer"> <span><code>seq(from=20, to=26, by =2)</code></span></label><label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value=""> <span><code>rep(c(20, 22, 24, 26), times = 4)</code></span></label><label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value="answer"> <span><code>c(20, 22, 24, 26)</code></span></label>
+</div></li>
+<li><p>Suppose we construct a vector with <code>c(1, "two", 3, 4, 5, 6)</code> and assign it to <code>x</code>. What will the following code block return?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;character&quot;]"></p>
+<p>What is the previous question an example of?</p>
+<div id="radio_RPBAFYRXQJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value=""> <span>attribute addition</span></label><label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value=""> <span>explicit coercion</span></label><label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value="answer"> <span>implicit coercion</span></label><label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value=""> <span>none of the above</span></label>
+</div></li>
+<li><p>What will the following code block return?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;integer&quot;]"></p></li>
+<li><p>What will the following code block return?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;0&quot;]"></p></li>
+<li><p>Given the following output from <code>str(x)</code>, what will <code>as.logical(x)</code> return?</p>
+<p>::: {.cell} ::: {.cell-output .cell-output-stdout}</p>
+<pre><code> num [1:4] 1 0 1 0</code></pre>
+<p>::: :::</p></li>
+</ol>
+<!-- ```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "an error",
+    answer="TRUE • FALSE • TRUE • FALSE",
+    'FALSE',
+    "FALSE • TRUE • FALSE • TRUE"
+)
+
+cat(longmcq(choices))
+``` -->
+<ol type="1">
+<li><p>Given the following vector, what will <code>as.double(x)</code> return?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_IZAQEKXYCE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value="answer"> <span>an error</span></label><label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value=""> <span>1 • 2 • 3</span></label><label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value=""> <span>2 • 4 • 6</span></label><label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value=""> <span>'one' • 'two' • 'three'</span></label>
+</div></li>
+<li><p>What happens if you add a vector of numbers to a single number in the following expression?</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_UVGZELJKET" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value=""> <span>2 • 3 • 5</span></label><label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value=""> <span>Error: length mismatch</span></label><label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value=""> <span>1 • 3 • 5 • 1</span></label><label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value="answer"> <span>2 • 4 • 6</span></label>
+</div></li>
+<li><p>What happens if you multiply a vector times another vector?</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_OORJLZERWM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value="answer"> <span>10 • 300 • 5000</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>Error: length mismatch</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>10 • 30 • 50 • 100 • 300 • 500 • 1000 • 3000 • 5000</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>a 2 x 3 matrix</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>Error: cannot multiply vectors</span></label>
+</div></li>
+<li><p>Suppose we run the following code. What will <code>any(x)</code> return?</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">11</span>) <span class="sc">&gt;</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_NNNZQSMUMV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NNNZQSMUMV" value="answer"> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_NNNZQSMUMV" value=""> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_NNNZQSMUMV" value=""> <span>Error: vector is double but requires logical</span></label>
+</div></li>
+</ol>
+<!-- # Subsetting
+
+1. Which of the following code subsets the vector `x <- c("blue", "pink", "red")` to return just the first element?
+
+    <div class='webex-radiogroup' id='radio_RELVPNOJNS'><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value="answer"></input> <span>x[1]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value="answer"></input> <span>x[[1]]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value=""></input> <span>x[0]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value="answer"></input> <span>x[-c(2, 3)]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value=""></input> <span>x["blue"]</span></label></div>
+
+1. Suppose we run the following code. What will `x[[2]]` return?
+
+    ```r
+    x <- seq(from = 2, to =8, by=2)
+    ```
+    <input class='webex-solveme nospaces' size='20' data-answer='["4"]'/>
+
+
+1. Suppose we run the following code. What will `m[1, 2]` return?
+
+    ```r
+    m <- matrix(c(10,20,30,40), nrow=2, ncol=2)
+    ```
+
+
+    <input class='webex-solveme nospaces' size='20' data-answer='["30"]'/>
+
+1. Suppose we run the following code. What will `df$y[4]` return?
+
+    ```r
+    df <- data.frame(
+        x = c(2, 4, 6, 8), 
+        y = c("l", "m", "n", "o")
+    )
+
+    ```
+
+
+    <input class='webex-solveme nospaces' size='20' data-answer='["o"]'/>
+ -->
+</section>
+<section id="missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values">Missing Values</h2>
+<ol type="1">
+<li><p>Suppose we run the following code. What will <code>is.na(y)</code> return?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">25</span>, <span class="cn">NA</span>, <span class="dv">36</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="radio_QBUWRCKKNB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value=""> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value=""> <span>Error: Non-atomic vector is invalid type</span></label><label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value="answer"> <span>FALSE FALSE TRUE FALSE</span></label>
+</div></li>
+<li><p>Suppose we run the following code. What will <code>is.null(y)</code> return?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;TRUE&quot;]"></p></li>
+<li><p>Suppose we run the following code. What will <code>mean(y)</code> return?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;NA&quot;]"></p></li>
+</ol>
+</section>
+</section>
+<section id="visualization" class="level1">
+<h1>Visualization</h1>
+<p>Practice your new ggplot skills with these practice exam questions!</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>We will continue working with the <code>ratings</code> dataset from the visualization lecture (part of the <code>languageR</code> package).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(languageR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It contains the following variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ratings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   81 obs. of  14 variables:
+ $ Word            : Factor w/ 81 levels "almond","ant",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Frequency       : num  4.2 5.35 6.3 3.83 3.66 ...
+ $ FamilySize      : num  0 1.39 1.1 0 0 ...
+ $ SynsetCount     : num  1.1 1.1 1.1 1.39 1.1 ...
+ $ Length          : int  6 3 5 7 9 7 6 6 3 6 ...
+ $ Class           : Factor w/ 2 levels "animal","plant": 2 1 2 2 2 2 1 2 1 1 ...
+ $ FreqSingular    : int  24 69 315 26 19 24 53 74 155 37 ...
+ $ FreqPlural      : int  42 140 231 19 19 6 78 77 103 14 ...
+ $ DerivEntropy    : num  0 0.562 0.496 0 0 ...
+ $ Complex         : Factor w/ 2 levels "complex","simplex": 2 2 2 2 2 2 2 2 2 2 ...
+ $ rInfl           : num  -0.542 -0.7 0.309 0.3 0 ...
+ $ meanWeightRating: num  1.49 3.35 2.19 1.32 1.44 ...
+ $ meanSizeRating  : num  1.89 3.63 2.47 1.76 1.87 ...
+ $ meanFamiliarity : num  3.72 3.6 5.84 4.4 3.68 4.12 2.12 5.68 3.2 2.2 ...</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ggplot-basics" class="level1">
+<h1>ggplot basics</h1>
+<ol type="1">
+<li><p>Fill in the blanks below with one of the following words: <code>data</code>, <code>aesthetics</code>, <code>geom</code>.</p>
+<blockquote class="blockquote">
+<p>The basic ggplot involves: (1) using your <input class="webex-solveme nospaces" size="10" data-answer="[&quot;data&quot;]">, (2) defining how variables are mapped to visual properties (<input class="webex-solveme nospaces" size="10" data-answer="[&quot;aesthetics&quot;]">), and (3) determining the geometrical object that a plot uses to represent data (<input class="webex-solveme nospaces" size="10" data-answer="[&quot;geom&quot;]">)</p>
+</blockquote></li>
+<li><p>When ggplot2 maps a categorical variable to an aesthetic, it automatically assigns a unique value of the aesthetic to each level of the variable. What is this process called?</p>
+<div id="radio_TOBEGHXVOW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value=""> <span>level assignment</span></label><label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value=""> <span>variable aestheticization</span></label><label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value=""> <span>autofill</span></label><label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value="answer"> <span>scaling</span></label>
+</div></li>
+<li><p>The code below generated which of the following figures?</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> meanFamiliarity)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class)) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assests/images/global-v-local.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div id="radio_ZXMEFFXTUS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZXMEFFXTUS" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_ZXMEFFXTUS" value="answer"> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_ZXMEFFXTUS" value=""> <span>C</span></label>
+</div></li>
+<li><p>Suppose we want to map the variable <code>Complex</code> to the color aesthetic in a scatterplot. Which of the following arguments could we pass to <code>geom_point()</code>?</p>
+<div id="radio_TXJWPSNTFH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value=""> <span>color = Complex</span></label><label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value="answer"> <span>mapping=aes(color = Complex)</span></label><label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value=""> <span>color = mapping(Complex)</span></label><label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value="answer"> <span>aes(color=Complex)</span></label>
+</div></li>
+<li><p>To adjust the size of the font to 20pt in the complete theme <code>theme_minimal()</code>, what argument should we include?</p>
+<div id="radio_UTAIBCAWJG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value="answer"> <span><code>base_size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value=""> <span><code>size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value=""> <span><code>font_family_size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value=""> <span>None of the above</span></label>
+</div></li>
+<li><p>Which geoms are depicted in the following figure?</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../assests/images/guess-geom.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div id="radio_JAAPJQWROB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value="answer"> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_point()</span></label>
+</div></li>
+<li><p>Which geoms are depicted in the following figure?</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="../assests/images/guess-geom2.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div id="radio_JWCHRZPRYW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value="answer"> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_point()</span></label>
+</div></li>
+</ol>
+</section>
+<section id="data-viz-day-2" class="level1">
+<h1>Data viz day 2</h1>
+<section id="plot-1" class="level2">
+<h2 class="anchored" data-anchor-id="plot-1">Plot 1</h2>
+<p>Given code blocks a, b, and c; and the plot below:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE BLOCK a ---------------------------#</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> meanFamiliarity)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE BLOCK b ---------------------------#</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> meanFamiliarity, <span class="at">color =</span> <span class="st">"blue"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE BLOCK c ---------------------------#</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> meanFamiliarity)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>Which of the code blocks above generate the plot ?</p>
+<div id="radio_EQQAQVTHBB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EQQAQVTHBB" value="answer"> <span>a</span></label><label><input type="radio" autocomplete="off" name="radio_EQQAQVTHBB" value=""> <span>b</span></label><label><input type="radio" autocomplete="off" name="radio_EQQAQVTHBB" value=""> <span>c</span></label>
+</div></li>
+<li><p>In the plot above, is the color aesthetic mapped, set, or both?</p>
+<div id="radio_TSIMTGBNTJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TSIMTGBNTJ" value=""> <span>mapped</span></label><label><input type="radio" autocomplete="off" name="radio_TSIMTGBNTJ" value="answer"> <span>set</span></label><label><input type="radio" autocomplete="off" name="radio_TSIMTGBNTJ" value=""> <span>both</span></label>
+</div></li>
+<li><p>In the plot above, which of the following aesthetics should we set to make the points more transparent?</p>
+<div id="radio_YYQQUYSMUY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value=""> <span>color</span></label><label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value=""> <span>fill</span></label><label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value="answer"> <span>alpha</span></label><label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value=""> <span>shape</span></label>
+</div></li>
+<li><p>In plot A above, which of the following would change the x axis label to “FQ”?</p>
+<div id="radio_BVAUFMZLOF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BVAUFMZLOF" value="answer"> <span>add a <code>labs()</code> layer with <code>x="FQ"</code> argument</span></label><label><input type="radio" autocomplete="off" name="radio_BVAUFMZLOF" value=""> <span>add a <code>labs()</code> layer with <code>y="FQ"</code> argument</span></label><label><input type="radio" autocomplete="off" name="radio_BVAUFMZLOF" value=""> <span>change the mapping argument from <code>x="Frequency"</code> to <code>x="FQ"</code></span></label>
+</div></li>
+</ol>
+</section>
+<section id="plot-2" class="level2">
+<h2 class="anchored" data-anchor-id="plot-2">Plot 2</h2>
+<p>Given the following plot:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>In the plot above, which geom(s) are used to represent the data?</p>
+<div id="radio_LZGJQFDHPE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value="answer"> <span>geom_point()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value="answer"> <span>geom_smooth()</span></label>
+</div></li>
+<li><p>True or false, the blue line in the plot above is mapped to the Class aesthetic?</p>
+<div id="radio_PMFCGHPTTI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PMFCGHPTTI" value=""> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_PMFCGHPTTI" value="answer"> <span>False</span></label>
+</div></li>
+<li><p>In the plot above, which of the following variables is mapped to the x aesthetic?</p>
+<div id="radio_BIZUFDLKAS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value="answer"> <span>Frequency</span></label><label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value=""> <span>meanFamiliarity</span></label><label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value=""> <span>FreqSingular</span></label><label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value=""> <span>FreqPlural</span></label>
+</div></li>
+<li><p>True or false, in the plot above, the default statistical transformation in the geom responsible for the red dots is “identity”.</p>
+<div id="radio_FXVGGXWIGT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FXVGGXWIGT" value="answer"> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_FXVGGXWIGT" value=""> <span>False</span></label>
+</div></li>
+</ol>
+</section>
+<section id="code-block-1" class="level2">
+<h2 class="anchored" data-anchor-id="code-block-1">Code block 1</h2>
+<p>Suppose we run the following code.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> meanFamiliarity, <span class="at">color =</span> Class)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"red"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-cap-location="bottom">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-47-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>Which of the following plots will be returned?</p>
+<div id="radio_YHEHKYYIQH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YHEHKYYIQH" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_YHEHKYYIQH" value="answer"> <span>B</span></label>
+</div></li>
+<li><p>Which aesthetic is mapped and which is set?</p>
+<div id="radio_QZTYQHZPMJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value=""> <span>Class is set to color and the smoothing line is mapped to red</span></label><label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value="answer"> <span>Class is mapped to color and the smoothing line is set to red</span></label><label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value=""> <span>Both are mapped</span></label><label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value=""> <span>Both are set</span></label>
+</div></li>
+<li><p>Which aesthetic is global and which is local?</p>
+<div id="radio_KBVYTSMZLR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value="answer"> <span>Color is mapped to the class variable globally, and set to red locally</span></label><label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value=""> <span>Color is mapped to the class variable locally, and set to red globally</span></label><label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value=""> <span>Both are global</span></label><label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value=""> <span>Both are local</span></label>
+</div></li>
+</ol>
+</section>
+<section id="code-block-2" class="level2">
+<h2 class="anchored" data-anchor-id="code-block-2">Code block 2</h2>
+<p>Suppose we run the following code block</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Class, <span class="at">fill =</span> Complex)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-cap-location="bottom">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-51-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-51-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-51-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>Which plot will be returned?</p>
+<div id="radio_NZZCZNEKOB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value="answer"> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value=""> <span>C</span></label><label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value=""> <span>D</span></label>
+</div></li>
+<li><p>What would happen if we added the layer <code>scale_fill_manual(values = c("green", "orange"))</code> to the following plot?</p>
+<div id="radio_IYDZFZPPPD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value=""> <span>error: no fill aesthetic specified</span></label><label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value="answer"> <span>complex would turn green and simplex would turn orange</span></label><label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value=""> <span>simplex would turn green and complex would turn orange</span></label><label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value=""> <span>No change</span></label>
+</div></li>
+<li><p>What argument could we add to <code>geom_bar()</code> to add a black border around the bars?</p>
+<div id="radio_LAKDBARIUI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value=""> <span>fill = <code>black</code></span></label><label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value=""> <span>border_color = 'black'</span></label><label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value=""> <span>linetype = 'black'</span></label><label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value="answer"> <span>color = 'black'</span></label>
+</div></li>
+</ol>
+</section>
+<section id="plot-3" class="level2">
+<h2 class="anchored" data-anchor-id="plot-3">Plot 3</h2>
+<p>Consider the following plot</p>
+<div class="cell" data-layout-valign="bottom" data-cap-location="bottom">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-01_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>To generate the facets in the plot above, which of the following lines of code must be included?</p>
+<div id="radio_IVVJZYOICI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value=""> <span><code>facet_grid(Complex ~ Class)</code></span></label><label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value="answer"> <span><code>facet_grid(Class ~ Complex)</code></span></label><label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value=""> <span><code>facet_grid(.~ Complex)</code></span></label><label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value=""> <span><code>facet_wrap(Class~Complex, ncol = 2)</code></span></label>
+</div></li>
+<li><p>Which of the following geoms are added to the plot above?</p>
+<div id="radio_XZGXLTEGNU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value="answer"> <span>geom_point()</span></label>
+</div></li>
+<li><p>Which built-in theme is applied to the following plot?</p>
+<div id="radio_ZOYSFUPGOY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value=""> <span>theme_grey()</span></label><label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value=""> <span>theme_classic()</span></label><label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value=""> <span>theme_void()</span></label><label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value="answer"> <span>theme_bw()</span></label>
+</div></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

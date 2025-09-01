@@ -2,52 +2,26 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "DataSci"
-  announcement: 
-    content: "Lab starts next week (Sep 4 & 5)!"
-  description: "LING 0700 | PSYC 2314"
+  title: DataSci
+  announcement:
+    content: Lab starts next week (Sep 4 & 5)!
+  description: LING 0700 | PSYC 2314
   sidebar:
-    style: "docked"
-    logo: "logo.png"
-    # background: "#f3f1ed"
+    style: docked
+    logo: logo.png
     search: true
-    # tools: 
-    #   - icon: rocket
-    #     href: https://colab.research.google.com
-    #     text: "Google Colab"
-    #   - icon: lifesaver
-    #     href: https://edstem.org/us/courses/XXXX/discussion/
-    #     text: "Ed Discussion"
     contents:
-    - text: "Syllabus"
+    - text: Syllabus
       href: index.qmd
-    - text: "Assignments"
+    - text: Assignments
       href: index.qmd#assignments
-    - text: "Schedule"
+    - text: Schedule
       href: index.qmd#schedule
-    # - text: "Syllabus"
-    #   href: syllabus.qmd
-    # - text: "Materials"
-    #   href: materials.qmd
-    # - text: "Textbook"
-    # - text: "Resources"
-    #   href: resources.qmd
-    # - text: "FAQs"
-    #   href: faqs.qmd
-    # - text: "AI Policy"
-    #   href: ai-policy.qmd
-  # navbar:
-  #   left:
-  #     # - href: index.qmd
-  #     #   text: Home
-  #     - syllabus.qmd
-  #     - schedule.qmd
-
 format:
   html:
     theme: cosmo
-    css: styles.css
+    css:
+    - styles.css
+    - include/webex.css
     toc: true
-
-
-
+    include-after-body: include/webex.js
