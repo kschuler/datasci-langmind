@@ -18,6 +18,7 @@ format:
 - **Snack & Share**: Join me weekdays at 1:30pm in the Linguistics Library (15 min free snack break)
 
 **TAs**:
+
 - [Brittany Zykoski](https://www.ling.upenn.edu/people/brittany-zykoski)
 - [Mingyang Bian](https://www.ling.upenn.edu/people/mingyang-bian)
 - [Izabela Baran](mailto:ibaran@sas.upenn.edu)
