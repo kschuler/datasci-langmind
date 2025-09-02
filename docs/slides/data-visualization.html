@@ -1,759 +1,2383 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>data-visualization – DataSci</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<html lang="en"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7b1b06e26e1e2798ccde3208f86b5bbd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
-
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="../include/webex.css">
+  <meta name="author" content="Katie Schuler">
+  <meta name="dcterms.date" content="2024-09-03">
+  <title>DataSci – Data Visualization Day 1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-091ebfb71d12db7fc524ec91495e1509.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 </head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
 
-<body class="nav-sidebar docked quarto-light">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Data Visualization Day 1</h1>
+  <p class="subtitle">Data Science for Studying Language and the Mind</p>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="e16b16c0b142e4356a89666ce69e7133" class="alert alert-primary hidden"><div class="quarto-announcement-content">
-<p>Lab starts next week (Sep 4 &amp; 5)!</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Katie Schuler 
+</div>
+</div>
+</div>
+
+  <p class="date">2024-09-03</p>
+</section>
+<section id="you-are-here" class="slide level2 smaller">
+<h2>You are <code>here</code></h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<h5 id="data-science-with-r">Data science with R</h5>
+<ul>
+<li>R basics</li>
+<li><code>Data visualization</code></li>
+<li>Data wrangling</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<h5 id="stats-model-buidling">Stats &amp; Model buidling</h5>
+<ul>
+<li>Sampling distribution</li>
+<li>Hypothesis testing</li>
+<li>Model specification</li>
+<li>Model fitting</li>
+<li>Model evaluation</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<h5 id="more-advanced">More advanced</h5>
+<ul>
+<li>Feature Engineering</li>
+<li>Classification</li>
+<li>Mixed-effect models</li>
+</ul>
+</div></div>
+</section>
+<section>
+<section id="acknowledgements" class="title-slide slide level1 center">
+<h1>Acknowledgements</h1>
+<p>Adapted from <a href="https://r4ds.hadley.nz/data-visualize">R for Data Science Ch 2</a> and some materials by Dr.&nbsp;Colin Rundel at Duke</p>
+</section>
+<section id="why-visualize" class="slide level2">
+<h2>Why visualize?</h2>
+<blockquote>
+<p>“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey</p>
+</blockquote>
+</section>
+<section id="why-visualize-1" class="slide level2">
+<h2>Why visualize?</h2>
+<blockquote>
+<p>“<code>Visualization</code> is a fundamentally human activity. A good visualization will show you things you did not expect or raise new questions about the data. A good visualization might also hint that you’re asking the wrong question or that you need to collect different data. Visualizations can surprise you, but they don’t scale particularly well because they require a human to interpret them.” – R4DS</p>
+</blockquote>
+</section>
+<section id="datasaurus-dozen" class="slide level2 smaller">
+<h2>Datasaurus dozen</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 6
+   dataset    mean_x mean_y std_dev_x std_dev_y corr_x_y
+   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1 away         54.3   47.8      16.8      26.9  -0.0641
+ 2 bullseye     54.3   47.8      16.8      26.9  -0.0686
+ 3 circle       54.3   47.8      16.8      26.9  -0.0683
+ 4 dino         54.3   47.8      16.8      26.9  -0.0645
+ 5 dots         54.3   47.8      16.8      26.9  -0.0603
+ 6 h_lines      54.3   47.8      16.8      26.9  -0.0617
+ 7 high_lines   54.3   47.8      16.8      26.9  -0.0685
+ 8 slant_down   54.3   47.8      16.8      26.9  -0.0690
+ 9 slant_up     54.3   47.8      16.8      26.9  -0.0686
+10 star         54.3   47.8      16.8      26.9  -0.0630
+11 v_lines      54.3   47.8      16.8      26.9  -0.0694
+12 wide_lines   54.3   47.8      16.8      26.9  -0.0666
+13 x_shape      54.3   47.8      16.8      26.9  -0.0656</code></pre>
+</div>
+</div>
+
+<aside><div>
+<p>Datasaurus was created by Alberto Cairo, <code>library(datasauRus)</code></p>
+</div></aside></section>
+<section id="datasaurus-dozen-1" class="slide level2 smaller">
+<h2>Datasaurus dozen</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-2-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Datasaurus was created by Alberto Cairo</p>
+</div></aside></section>
+<section id="ggplot2" class="slide level2">
+<h2>ggplot2</h2>
+
+<img data-src="../assests/images/ggplot-hexlogo.png" id="fig-ggplothexlogo" class="quarto-figure quarto-figure-center r-stretch" style="width:20.0%"><p class="caption">
+Figure&nbsp;1
+</p></section>
+<section id="using-ggplot2" class="slide level2">
+<h2>Using <code>ggplot2</code></h2>
+<p>Google Colab already has <code>ggplot2</code> installed by default. There is no need to run <code>install.packages()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="why-ggplot2" class="slide level2">
+<h2>Why ggplot2?</h2>
+<blockquote>
+<p>“R has several systems for making graphs, but ggplot2 is one of the most elegant and most versatile. ggplot2 implements the <code>grammar of graphics</code>, a coherent system for describing and building graphs. With ggplot2, you can do more and faster by learning one system and applying it in many places.” – R4DS</p>
+</blockquote>
+</section>
+<section id="ggplot2s-grammar-of-graphics" class="slide level2">
+<h2>ggplot2’s grammar of graphics</h2>
+
+<img data-src="../assests/images/gglayers.png" id="fig-gglayers" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p class="caption">
+Figure&nbsp;2
+</p></section>
+<section id="todays-data-ratings" class="slide level2 smaller">
+<h2>Today’s data: <code>ratings</code></h2>
+<blockquote>
+<p>Subjective frequency ratings, ratings of estimated weight, and ratings of estimated size, averaged over subjects, for 81 concrete English nouns. – languageR</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(languageR)</span>
+<span id="cb3-2"><a></a><span class="fu">str</span>(ratings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   81 obs. of  14 variables:
+ $ Word            : Factor w/ 81 levels "almond","ant",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Frequency       : num  4.2 5.35 6.3 3.83 3.66 ...
+ $ FamilySize      : num  0 1.39 1.1 0 0 ...
+ $ SynsetCount     : num  1.1 1.1 1.1 1.39 1.1 ...
+ $ Length          : int  6 3 5 7 9 7 6 6 3 6 ...
+ $ Class           : Factor w/ 2 levels "animal","plant": 2 1 2 2 2 2 1 2 1 1 ...
+ $ FreqSingular    : int  24 69 315 26 19 24 53 74 155 37 ...
+ $ FreqPlural      : int  42 140 231 19 19 6 78 77 103 14 ...
+ $ DerivEntropy    : num  0 0.562 0.496 0 0 ...
+ $ Complex         : Factor w/ 2 levels "complex","simplex": 2 2 2 2 2 2 2 2 2 2 ...
+ $ rInfl           : num  -0.542 -0.7 0.309 0.3 0 ...
+ $ meanWeightRating: num  1.49 3.35 2.19 1.32 1.44 ...
+ $ meanSizeRating  : num  1.89 3.63 2.47 1.76 1.87 ...
+ $ meanFamiliarity : num  3.72 3.6 5.84 4.4 3.68 4.12 2.12 5.68 3.2 2.2 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="todays-data-ratings-1" class="slide level2 smaller">
+<h2>Today’s data: <code>ratings</code></h2>
+<p>We will make use of the following variables:</p>
+<ol type="1">
+<li class="fragment"><code>Frequency</code> - actual word frequency</li>
+<li class="fragment"><code>meanFamiliarity</code> - subjective frequency rating</li>
+<li class="fragment"><code>Class</code> - whether word is a plant or animal</li>
+</ol>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   81 obs. of  4 variables:
+ $ Word           : Factor w/ 81 levels "almond","ant",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Frequency      : num  4.2 5.35 6.3 3.83 3.66 ...
+ $ meanFamiliarity: num  3.72 3.6 5.84 4.4 3.68 4.12 2.12 5.68 3.2 2.2 ...
+ $ Class          : Factor w/ 2 levels "animal","plant": 2 1 2 2 2 2 1 2 1 1 ...</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="todays-goal" class="slide level2 smaller">
+<h2>Today’s goal</h2>
+<p>Create this figure showing the relationship between actual frequency and subjective frequency rating of each word, considering the class the word belongs to</p>
+
+<img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="the-basic-ggplot" class="title-slide slide level1 center">
+<h1>The basic ggplot</h1>
+<ol type="1">
+<li class="fragment">Using your <code>data</code></li>
+<li class="fragment">define how variables in your dataset are mapped to visual properties (<code>aesthetics</code>)</li>
+<li class="fragment">determine the geometrical object that a plot uses to represent data (<code>geom</code>)</li>
+</ol>
+</section>
+<section id="data" class="slide level2 smaller">
+<h2>1 <code>data</code></h2>
+<blockquote>
+<p>Use <code>ratings</code> data</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb6-2"><a></a>    <span class="at">data =</span> ratings</span>
+<span id="cb6-3"><a></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="aesthetic-mapping" class="slide level2 smaller">
+<h2>2 <code>aesthetic mapping</code></h2>
+<blockquote>
+<p>Map <code>Frequency</code> to x-axis and <code>meanFamiliarity</code> to y-axis.</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb7-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb7-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb7-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb7-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb7-6"><a></a>    )</span>
+<span id="cb7-7"><a></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom" class="slide level2 smaller">
+<h2>3 <code>geom</code></h2>
+<blockquote>
+<p>Represent each value with a point.</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb8-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb8-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb8-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb8-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb8-6"><a></a>    )</span>
+<span id="cb8-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb8-8"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="adding-to-the-basics" class="title-slide slide level1 center">
+<h1>Adding to the basics</h1>
+
+</section>
+<section id="mapping-categorical-variables" class="slide level2 smaller">
+<h2>Mapping categorical variables</h2>
+<blockquote>
+<p>When a categorical variable is mapped to an aesthetic, ggplot2 will automatically assign a unique value of the aesthetic (here color) … a process known as <code>scaling</code>. – R4DS</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb9-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb9-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb9-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb9-5"><a></a>        <span class="at">y =</span> meanFamiliarity,</span>
+<span id="cb9-6"><a></a>        <span class="at">color =</span> Class</span>
+<span id="cb9-7"><a></a>    )</span>
+<span id="cb9-8"><a></a> ) <span class="sc">+</span></span>
+<span id="cb9-9"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="global-vs.-local-aesthetics" class="slide level2 smaller">
+<h2>Global vs.&nbsp;local <code>aesthetics</code></h2>
+<ul>
+<li class="fragment"><strong>globally</strong> in <code>ggplot()</code>, which are passed down to all geoms</li>
+<li class="fragment"><strong>locally</strong> in <code>geom_*()</code> which are used by that geom only</li>
+</ul>
+<div class="fragment">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb10-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb10-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb10-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb10-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb10-6"><a></a>    )</span>
+<span id="cb10-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb10-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb10-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class)</span>
+<span id="cb10-10"><a></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="mapping-vs.-setting-aesthetics" class="slide level2 smaller">
+<h2>Mapping vs.&nbsp;setting <code>aesthetics</code></h2>
+<ul>
+<li class="fragment">mapping allows us to determine a geom’s aesthetics based on a variable, and is passed as argument in <code>aes()</code></li>
+<li class="fragment">setting allows us to set a geom’s aestheics to a constant value (not based on any variable), and passed as argument in <code>geom_*()</code> directly</li>
+</ul>
+<div class="fragment">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb11-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb11-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb11-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb11-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb11-6"><a></a>    )</span>
+<span id="cb11-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb11-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb11-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb11-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb11-11"><a></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</section></section>
+<section>
+<section id="labels" class="title-slide slide level1 center">
+<h1>Labels</h1>
+
+</section>
+<section id="labels-title-and-subtitle" class="slide level2 smaller">
+<h2><code>labels</code>: title and subtitle</h2>
+<blockquote>
+<p>Add title “Subjective frequency ratings” with subtitle “for 81 english nouns”</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="12-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb12-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb12-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb12-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb12-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb12-6"><a></a>    )</span>
+<span id="cb12-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb12-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb12-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb12-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb12-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb12-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb12-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span></span>
+<span id="cb12-15"><a></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="labels-x-and-y-axis" class="slide level2 smaller">
+<h2><code>labels</code>: x and y axis</h2>
+<blockquote>
+<p>Label x-axis “Actual frequency” and y-axis “Frequency rating”</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="15-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb13-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb13-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb13-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb13-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb13-6"><a></a>    )</span>
+<span id="cb13-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb13-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb13-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb13-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb13-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb13-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb13-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb13-15"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb13-16"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span></span>
+<span id="cb13-17"><a></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p>Note these are mapped to the aesthetic (x and y)</p>
+</div></aside></section>
+<section id="labels-legend" class="slide level2 smaller">
+<h2><code>labels</code>: legend</h2>
+<blockquote>
+<p>Label the legend “word class”.</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb14-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb14-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb14-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb14-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb14-6"><a></a>    )</span>
+<span id="cb14-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb14-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb14-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb14-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb14-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb14-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb14-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb14-15"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb14-16"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb14-17"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb14-18"><a></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p>Note these are mapped to the aesthetic as well (color)</p>
+</div></aside></section></section>
+<section>
+<section id="theme-and-adjusting-scaling" class="title-slide slide level1 center">
+<h1>Theme and adjusting scaling</h1>
+
+</section>
+<section id="themes" class="slide level2 smaller">
+<h2><code>themes</code></h2>
+<blockquote>
+<p>Apply classic theme with base_size 20.</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb15-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb15-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb15-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb15-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb15-6"><a></a>    )</span>
+<span id="cb15-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb15-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb15-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb15-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb15-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb15-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb15-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb15-15"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb15-16"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb15-17"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb15-18"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb15-19"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="scales-changing-color" class="slide level2 smaller">
+<h2><code>scales</code>: changing color</h2>
+<blockquote>
+<p>Remember: When a categorical variable is mapped to an aesthetic, ggplot2 will automatically assign a unique value of the aesthetic (here color) … a process known as <code>scaling</code>. – R4DS</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb16-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb16-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb16-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb16-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb16-6"><a></a>    )</span>
+<span id="cb16-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb16-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb16-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb16-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb16-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb16-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb16-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb16-15"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb16-16"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb16-17"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb16-18"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb16-19"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb16-20"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Paired"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="aesthetics" class="title-slide slide level1 center">
+<h1>Aesthetics</h1>
+
+</section>
+<section id="color" class="slide level2">
+<h2>color</h2>
+<p>Map the color aesthetic to a variable</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb17-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb17-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb17-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb17-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb17-6"><a></a>    )</span>
+<span id="cb17-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb17-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb17-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class),</span>
+<span id="cb17-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb17-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb17-12"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="color-1" class="slide level2">
+<h2>color</h2>
+<p>Set a constant value for the color aesthetic</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb18-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb18-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb18-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb18-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb18-6"><a></a>    )</span>
+<span id="cb18-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb18-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb18-9"><a></a>    <span class="at">color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb18-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb18-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb18-12"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="size" class="slide level2">
+<h2>size</h2>
+<p>Setting a constant value for the size aesthetic</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb19-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb19-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb19-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb19-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb19-6"><a></a>    )</span>
+<span id="cb19-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb19-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb19-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class),</span>
+<span id="cb19-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb19-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb19-12"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="size-1" class="slide level2">
+<h2>size</h2>
+<p>Mapped the size aesthetic to a variable</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="9-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb20-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb20-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb20-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb20-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb20-6"><a></a>    )</span>
+<span id="cb20-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb20-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb20-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb20-10"><a></a>        <span class="at">color =</span> Class,</span>
+<span id="cb20-11"><a></a>        <span class="at">size =</span> Complex</span>
+<span id="cb20-12"><a></a>    ),</span>
+<span id="cb20-13"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb20-14"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="shape" class="slide level2">
+<h2>shape</h2>
+<p>Map the shape aesthetic to a different variable</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="9-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb21-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb21-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb21-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb21-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb21-6"><a></a>    )</span>
+<span id="cb21-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb21-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb21-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb21-10"><a></a>        <span class="at">color =</span> Class,</span>
+<span id="cb21-11"><a></a>        <span class="at">shape =</span> Complex),</span>
+<span id="cb21-12"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb21-13"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb21-14"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="shape-1" class="slide level2">
+<h2>shape</h2>
+<p>Map the shape aesthetic to the same variable</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="9-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb22-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb22-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb22-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb22-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb22-6"><a></a>    )</span>
+<span id="cb22-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb22-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb22-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb22-10"><a></a>        <span class="at">color =</span> Class,</span>
+<span id="cb22-11"><a></a>        <span class="at">shape =</span> Class),</span>
+<span id="cb22-12"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb22-13"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb22-14"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="alpha" class="slide level2">
+<h2>alpha</h2>
+<p>Set a constant value for the alpha aesthetic</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb23-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb23-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb23-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb23-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb23-6"><a></a>    )</span>
+<span id="cb23-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb23-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb23-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb23-10"><a></a>        <span class="at">color =</span> Class,</span>
+<span id="cb23-11"><a></a>        <span class="at">shape =</span> Class),</span>
+<span id="cb23-12"><a></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb23-13"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb23-14"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb23-15"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="alpha-1" class="slide level2">
+<h2>alpha</h2>
+<p>Mapped to a variable</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="9-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb24-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb24-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb24-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb24-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb24-6"><a></a>    )</span>
+<span id="cb24-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb24-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb24-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb24-10"><a></a>        <span class="at">color =</span> Class,</span>
+<span id="cb24-11"><a></a>        <span class="at">shape =</span> Class,</span>
+<span id="cb24-12"><a></a>        <span class="at">alpha =</span> Length),</span>
+<span id="cb24-13"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb24-14"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb24-15"><a></a> <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="geometric-objects" class="title-slide slide level1 center">
+<h1>Geometric objects</h1>
+
+</section>
+<section id="geom_-aka-geoms" class="slide level2 smaller">
+<h2><code>geom_*()</code> aka geoms</h2>
+<p>There are <a href="https://ggplot2.tidyverse.org/reference/#geoms">many</a>. We will start with these, and add a few additional geoms as we move through the course:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>geom_histogram()</code></td>
+<td>histogram, distribution of a continuous variable</td>
+</tr>
+<tr class="even">
+<td><code>geom_density()</code></td>
+<td>distribution of a continuous variable</td>
+</tr>
+<tr class="odd">
+<td><code>geom_bar()</code></td>
+<td>distribution of a categorical data</td>
+</tr>
+<tr class="even">
+<td><code>geom_point()</code></td>
+<td>scatterplot</td>
+</tr>
+<tr class="odd">
+<td><code>geom_smooth()</code></td>
+<td>smoothed line of best fit</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="geom_histogram" class="slide level2">
+<h2><code>geom_histogram()</code></h2>
+<blockquote>
+<p>A histogram divides the x-axis into equally spaced bins and then uses the height of a bar to display the number of observations that fall in each bin. – R4DS</p>
+</blockquote>
+<div class="fragment">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb25-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb25-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb25-4"><a></a>        <span class="at">x =</span> meanFamiliarity</span>
+<span id="cb25-5"><a></a>    )</span>
+<span id="cb25-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb25-7"><a></a>    <span class="fu">geom_histogram</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="geom_histogram-1" class="slide level2">
+<h2><code>geom_histogram()</code></h2>
+<p>bins - How many bins should we have?</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb26-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb26-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb26-4"><a></a>        <span class="at">x =</span> meanFamiliarity</span>
+<span id="cb26-5"><a></a>    )</span>
+<span id="cb26-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb26-7"><a></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb26-8"><a></a>        <span class="at">bins =</span> <span class="dv">10</span></span>
+<span id="cb26-9"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_histogram-2" class="slide level2">
+<h2><code>geom_histogram()</code></h2>
+<p>binwidth - How wide should the bins be?</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb27-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb27-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb27-4"><a></a>        <span class="at">x =</span> meanFamiliarity</span>
+<span id="cb27-5"><a></a>    )</span>
+<span id="cb27-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb27-7"><a></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb27-8"><a></a>        <span class="at">binwidth =</span> <span class="fl">0.25</span></span>
+<span id="cb27-9"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_histogram-3" class="slide level2">
+<h2><code>geom_histogram()</code></h2>
+<p>color - What should the outline color be?</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb28" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb28-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb28-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb28-4"><a></a>        <span class="at">x =</span> meanFamiliarity</span>
+<span id="cb28-5"><a></a>    )</span>
+<span id="cb28-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb28-7"><a></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb28-8"><a></a>        <span class="at">binwidth =</span> <span class="fl">0.25</span>,</span>
+<span id="cb28-9"><a></a>        <span class="at">color =</span> <span class="st">"red"</span></span>
+<span id="cb28-10"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_histogram-4" class="slide level2">
+<h2><code>geom_histogram()</code></h2>
+<p>fill - What should the fill color be?</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb29" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb29-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb29-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb29-4"><a></a>        <span class="at">x =</span> meanFamiliarity</span>
+<span id="cb29-5"><a></a>    )</span>
+<span id="cb29-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb29-7"><a></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb29-8"><a></a>        <span class="at">binwidth =</span> <span class="fl">0.25</span>,</span>
+<span id="cb29-9"><a></a>        <span class="at">color =</span> <span class="st">"red"</span>,</span>
+<span id="cb29-10"><a></a>        <span class="at">fill =</span> <span class="st">"lightblue"</span></span>
+<span id="cb29-11"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_density" class="slide level2 smaller">
+<h2><code>geom_density()</code></h2>
+<blockquote>
+<p>Imagine a histogram made out of wooden blocks. Then, imagine that you drop a cooked spaghetti string over it. The shape the spaghetti will take draped over blocks can be thought of as the shape of the density curve. – R4DS</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb30" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb30-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb30-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb30-4"><a></a>        <span class="at">x =</span> meanFamiliarity</span>
+<span id="cb30-5"><a></a>    )</span>
+<span id="cb30-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb30-7"><a></a>    <span class="fu">geom_density</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_density-1" class="slide level2">
+<h2><code>geom_density()</code></h2>
+<p>Map Class to color aesthetic</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb31" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb31-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb31-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb31-4"><a></a>        <span class="at">x =</span> meanFamiliarity,</span>
+<span id="cb31-5"><a></a>        <span class="at">color =</span> Class</span>
+<span id="cb31-6"><a></a>    )</span>
+<span id="cb31-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb31-8"><a></a>    <span class="fu">geom_density</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_density-2" class="slide level2">
+<h2><code>geom_density()</code></h2>
+<p>Set linewidth</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb32" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb32-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb32-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb32-4"><a></a>        <span class="at">x =</span> meanFamiliarity,</span>
+<span id="cb32-5"><a></a>        <span class="at">color =</span> Class</span>
+<span id="cb32-6"><a></a>    )</span>
+<span id="cb32-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb32-8"><a></a>    <span class="fu">geom_density</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_density-3" class="slide level2">
+<h2><code>geom_density()</code></h2>
+<p>Map Class to fill and set alpha</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb33" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb33-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb33-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb33-4"><a></a>        <span class="at">x =</span> meanFamiliarity,</span>
+<span id="cb33-5"><a></a>        <span class="at">fill =</span> Class</span>
+<span id="cb33-6"><a></a>    )</span>
+<span id="cb33-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb33-8"><a></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_bar" class="slide level2 smaller">
+<h2><code>geom_bar()</code></h2>
+<blockquote>
+<p>To examine the distribution of a categorical variable, you can use a bar chart. The height of the bars displays how many observations occurred with each x value. – R4DS</p>
+</blockquote>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb34" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb34-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb34-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb34-4"><a></a>        <span class="at">x =</span> Class</span>
+<span id="cb34-5"><a></a>    )</span>
+<span id="cb34-6"><a></a>) <span class="sc">+</span> </span>
+<span id="cb34-7"><a></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_bar---stacked" class="slide level2 smaller">
+<h2><code>geom_bar()</code> - stacked</h2>
+<p>We can use stacked bar plots to visualize the relationship between two categorical variables</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb35" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb35-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb35-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb35-4"><a></a>        <span class="at">x =</span> Class,</span>
+<span id="cb35-5"><a></a>        <span class="at">fill =</span> Complex</span>
+<span id="cb35-6"><a></a>    )</span>
+<span id="cb35-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb35-8"><a></a>    <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_bar---relative-frequency" class="slide level2 smaller">
+<h2><code>geom_bar()</code> - relative frequency</h2>
+<p>We can use relative frequency to visualize the relationship between two categorical variables (as a percentage)</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb36" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb36-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb36-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb36-4"><a></a>        <span class="at">x =</span> Class,</span>
+<span id="cb36-5"><a></a>        <span class="at">fill =</span> Complex</span>
+<span id="cb36-6"><a></a>    )</span>
+<span id="cb36-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb36-8"><a></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_bar---dodged" class="slide level2 smaller">
+<h2><code>geom_bar()</code> - dodged</h2>
+<p>We can use a dodged bar plot to visualize the relationship between two categorical variables side-by-side, not stacked</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb37" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb37-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb37-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb37-4"><a></a>        <span class="at">x =</span> Class,</span>
+<span id="cb37-5"><a></a>        <span class="at">fill =</span> Complex</span>
+<span id="cb37-6"><a></a>    )</span>
+<span id="cb37-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb37-8"><a></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_point" class="slide level2 smaller">
+<h2><code>geom_point()</code></h2>
+<blockquote>
+<p>Scatterplots are useful for displaying the relationship between two numerical variables – R4DS</p>
+</blockquote>
+<div class="fragment">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb38" data-code-line-numbers="8-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb38-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb38-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb38-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb38-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb38-6"><a></a>    )</span>
+<span id="cb38-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb38-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb38-9"><a></a>    <span class="at">color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb38-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb38-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb38-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb38-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb38-15"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb38-16"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb38-17"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb38-18"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb38-19"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="geom_point-with-geom_smooth" class="slide level2 smaller">
+<h2><code>geom_point()</code> with <code>geom_smooth()</code></h2>
+<p>draws a best fitting curve</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb39" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb39-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb39-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb39-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb39-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb39-6"><a></a>    )</span>
+<span id="cb39-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb39-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb39-9"><a></a>    <span class="at">color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb39-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb39-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb39-12"><a></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb39-13"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb39-14"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb39-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb39-16"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb39-17"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb39-18"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb39-19"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb39-20"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_point-with-geom_smoothmethodlm" class="slide level2 smaller">
+<h2><code>geom_point()</code> with <code>geom_smooth(method="lm")</code></h2>
+<p>draws the best fitting linear model</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb40-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb40-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb40-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb40-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb40-6"><a></a>    )</span>
+<span id="cb40-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb40-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb40-9"><a></a>    <span class="at">color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb40-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb40-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb40-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb40-13"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb40-14"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb40-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb40-16"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb40-17"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb40-18"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb40-19"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb40-20"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_point-with-geom_smoothmethodlm-1" class="slide level2 smaller">
+<h2><code>geom_point()</code> with <code>geom_smooth(method="lm")</code></h2>
+<p>We can also map to color, by specifying globally</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb41" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb41-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb41-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb41-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb41-5"><a></a>        <span class="at">y =</span> meanFamiliarity,</span>
+<span id="cb41-6"><a></a>        <span class="at">color =</span> Class</span>
+<span id="cb41-7"><a></a>    )</span>
+<span id="cb41-8"><a></a> ) <span class="sc">+</span></span>
+<span id="cb41-9"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb41-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb41-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb41-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb41-13"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb41-14"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb41-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb41-16"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb41-17"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb41-18"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb41-19"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb41-20"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geom_point-with-geom_smoothmethodlm-2" class="slide level2 smaller">
+<h2><code>geom_point()</code> with <code>geom_smooth(method="lm")</code></h2>
+<p>Or include only a single smooth, by specifying color in the point geom only</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb42" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb42-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb42-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb42-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb42-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb42-6"><a></a>    )</span>
+<span id="cb42-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb42-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb42-9"><a></a>    <span class="fu">aes</span>(<span class="at">color =</span> Class),</span>
+<span id="cb42-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb42-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb42-12"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb42-13"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-14"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb42-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb42-16"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb42-17"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb42-18"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb42-19"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb42-20"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-43-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="facets" class="title-slide slide level1 center">
+<h1>Facets</h1>
+<p>smaller plots that display different subsets of data</p>
+</section>
+<section id="facet_grid" class="slide level2">
+<h2><code>facet_grid()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb43" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb43-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb43-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb43-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb43-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb43-6"><a></a>    )</span>
+<span id="cb43-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb43-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb43-9"><a></a>  <span class="fu">facet_grid</span>(Class <span class="sc">~</span> Complex) <span class="sc">+</span></span>
+<span id="cb43-10"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-44-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="facet_grid-1" class="slide level2 smaller">
+<h2><code>facet_grid()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb44" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb44-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb44-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb44-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb44-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb44-6"><a></a>    )</span>
+<span id="cb44-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb44-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb44-9"><a></a>  <span class="fu">facet_grid</span>(Class <span class="sc">~</span> Complex) <span class="sc">+</span></span>
+<span id="cb44-10"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-45-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb45" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb45-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb45-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb45-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb45-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb45-6"><a></a>    )</span>
+<span id="cb45-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb45-8"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb45-9"><a></a>    <span class="fu">aes</span>(<span class="at">color =</span> Class, <span class="at">shape =</span> Complex)</span>
+<span id="cb45-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb45-11"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-46-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="facet_grid---just-columns" class="slide level2 smaller">
+<h2><code>facet_grid()</code> - just columns</h2>
+<p>and note we can still map other aesthetics!</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb46" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb46-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb46-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb46-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb46-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb46-6"><a></a>    )</span>
+<span id="cb46-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb46-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb46-9"><a></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> Complex) <span class="sc">+</span></span>
+<span id="cb46-10"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="facet_grid---just-columns-1" class="slide level2 smaller">
+<h2><code>facet_grid()</code> - just columns</h2>
+<p>and note we can still map other aesthetics!</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb47" data-code-line-numbers="8-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb47-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb47-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb47-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb47-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb47-6"><a></a>    )</span>
+<span id="cb47-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb47-8"><a></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb47-9"><a></a>    <span class="fu">aes</span>(<span class="at">color =</span> Class),</span>
+<span id="cb47-10"><a></a>    <span class="at">shape =</span> <span class="st">"triangle"</span></span>
+<span id="cb47-11"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb47-12"><a></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> Complex) <span class="sc">+</span></span>
+<span id="cb47-13"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-48-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="facet_grid---just-rows" class="slide level2 smaller">
+<h2><code>facet_grid()</code> - just rows</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb48" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb48-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb48-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb48-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb48-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb48-6"><a></a>    )</span>
+<span id="cb48-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb48-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb48-9"><a></a>  <span class="fu">facet_grid</span>(Class <span class="sc">~</span> .) <span class="sc">+</span></span>
+<span id="cb48-10"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-49-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="facet_wrap" class="slide level2 smaller">
+<h2><code>facet_wrap()</code></h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb49" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb49-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb49-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb49-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb49-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb49-6"><a></a>    )</span>
+<span id="cb49-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb49-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb49-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Class) <span class="sc">+</span></span>
+<span id="cb49-10"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-50-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="facet_wrap---number-of-columns" class="slide level2 smaller">
+<h2><code>facet_wrap()</code> - number of columns</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb50" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb50-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb50-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb50-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb50-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb50-6"><a></a>    )</span>
+<span id="cb50-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb50-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb50-9"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Class, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb50-10"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-51-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="helper-functions" class="title-slide slide level1 center">
+<h1>Helper functions</h1>
+
+</section>
+<section id="remember-our-goal-plot" class="slide level2 smaller">
+<h2>remember our goal plot?</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb51-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb51-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb51-4"><a></a>        <span class="at">x =</span> Frequency, </span>
+<span id="cb51-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb51-6"><a></a>    )</span>
+<span id="cb51-7"><a></a> ) <span class="sc">+</span></span>
+<span id="cb51-8"><a></a>  <span class="fu">geom_point</span>( </span>
+<span id="cb51-9"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> Class), </span>
+<span id="cb51-10"><a></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb51-11"><a></a>    ) <span class="sc">+</span></span>
+<span id="cb51-12"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb51-13"><a></a>    <span class="at">title =</span> <span class="st">"Subjective frequency ratings"</span>, </span>
+<span id="cb51-14"><a></a>    <span class="at">subtitle =</span> <span class="st">"for 81 english nouns"</span>,</span>
+<span id="cb51-15"><a></a>    <span class="at">x =</span> <span class="st">"Actual frequency"</span>,</span>
+<span id="cb51-16"><a></a>    <span class="at">y =</span> <span class="st">"Frequency rating"</span>,</span>
+<span id="cb51-17"><a></a>    <span class="at">color =</span> <span class="st">"word class"</span></span>
+<span id="cb51-18"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb51-19"><a></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb51-20"><a></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Paired"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-52-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="last_plot" class="slide level2 smaller">
+<h2><code>last_plot()</code></h2>
+<p>returns the last plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">last_plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch"></section>
+<section id="ggsave" class="slide level2">
+<h2><code>ggsave()</code></h2>
+<p>saves last plot</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="fu">ggsave</span>(<span class="st">"plot.png"</span>, <span class="at">width=</span><span class="dv">5</span>, <span class="at">height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="themes-1" class="title-slide slide level1 center">
+<h1>Themes</h1>
+<p>ggplot comes with many <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">Complete themes</a></p>
+</section>
+<section id="default-theme" class="slide level2 smaller">
+<h2>Default theme</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_gray</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-54-1.png" width="960" class="r-stretch"></section>
+<section id="sample-themes" class="slide level2 smaller">
+<h2>Sample themes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-55-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_classic</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-56-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-57-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">last_plot</span>() <span class="sc">+</span> <span class="fu">theme_void</span>(<span class="at">base_size=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-58-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="shortcuts" class="title-slide slide level1 center">
+<h1>Shortcuts</h1>
+
+</section>
+<section id="ggplot2-calls" class="slide level2 smaller">
+<h2>ggplot2 calls</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Explicit argument names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb59-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb59-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb59-4"><a></a>        <span class="at">x =</span> Frequency,</span>
+<span id="cb59-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb59-6"><a></a>    )</span>
+<span id="cb59-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb59-8"><a></a>   <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-59-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Implied argument names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb60-2"><a></a>    ratings,</span>
+<span id="cb60-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb60-4"><a></a>        <span class="at">x =</span> Frequency,</span>
+<span id="cb60-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb60-6"><a></a>    )</span>
+<span id="cb60-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb60-8"><a></a>   <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-60-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="the-pipe" class="slide level2 smaller">
+<h2>the pipe <code>%&gt;%</code></h2>
+<blockquote>
+<p>the pipe takes the thing on its left and passes it along to the function on its right</p>
+</blockquote>
+<div class="fragment">
+<p><code>x %&gt;% f(y)</code> is equivalent to <code>f(x, y)</code></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">2.245</span>, <span class="dv">3</span>, <span class="fl">4.22222</span>)</span>
+<span id="cb61-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.00000 2.24500 3.00000 4.22222</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="co"># pass x as an argument to function usual way</span></span>
+<span id="cb63-2"><a></a><span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.00 2.24 3.00 4.22</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="co"># pass x as an argument to function with pipe</span></span>
+<span id="cb65-2"><a></a>x <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.00 2.24 3.00 4.22</code></pre>
+</div>
+</div>
+
+</div>
+<aside><div>
+<p>There are two ways to write the pipe: <code>%&gt;%</code> or <code>|&gt;</code></p>
+</div></aside></section>
+<section id="the-pipe-and-ggplot" class="slide level2 smaller">
+<h2>the pipe <code>%&gt;%</code> and ggplot</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Implied argument names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb67-2"><a></a>    <span class="at">data =</span> ratings,</span>
+<span id="cb67-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb67-4"><a></a>        <span class="at">x =</span> Frequency,</span>
+<span id="cb67-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb67-6"><a></a>    )</span>
+<span id="cb67-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb67-8"><a></a>   <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-63-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Implied argument names + pipe:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>ratings <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb68-3"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb68-4"><a></a>        <span class="at">x =</span> Frequency,</span>
+<span id="cb68-5"><a></a>        <span class="at">y =</span> meanFamiliarity</span>
+<span id="cb68-6"><a></a>    )</span>
+<span id="cb68-7"><a></a>) <span class="sc">+</span> </span>
+<span id="cb68-8"><a></a>   <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-64-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p>Note that we pipe <code>%&gt;%</code> in arguments to functions but we ADD <code>+</code> layers to ggplot. Common mistake!</p>
+</div></aside></section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise 1</h2>
+<blockquote>
+<p>The basic ggplot</p>
+</blockquote>
+
+<img data-src="../assests/images/class-target-basicpenguins.png" class="r-stretch quarto-figure-center" id="fig-basicpenguintarget"><p class="caption">
+Figure&nbsp;3: Data from <code>penguins</code> dataframe in <code>palmerpenguins</code> package
+</p></section>
+<section id="exercise-2" class="slide level2 smaller">
+<h2>Exercise 2</h2>
+<blockquote>
+<p>Practice adding aesthetics and layers by creating this!</p>
+</blockquote>
+
+<img data-src="../assests/images/class-target-penguins.png" class="r-stretch quarto-figure-center" id="fig-penguintarget"><p class="caption">
+Figure&nbsp;4: Data from <code>penguins</code> dataframe in <code>palmerpenguins</code> package
+</p></section>
+<section id="exercise-3" class="slide level2 smaller">
+<h2>Exercise 3</h2>
+<blockquote>
+<p>Need a challenge? Use the <code>datasaurus_dozen</code> data from the <code>datasauRus</code> R package to create this!</p>
+</blockquote>
+
+
+
+<img data-src="data-visualization_files/figure-revealjs/unnamed-chunk-66-1.png" width="768" class="r-stretch"></section></section>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Syllabus</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html#assignments" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignments</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html#schedule" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Schedule</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="../index.html">Home</a></p>
+</div>
+</div></div>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
 
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
+  <script>
 
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
 
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
 
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
 
-</main> <!-- /main -->
-<script>
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
 
-/* update total correct if #webex-total_correct exists */
-update_total_correct = function() {
-  console.log("webex: update total_correct");
+        // Display a presentation progress bar
+        progress: true,
 
-  var t = document.getElementsByClassName("webex-total_correct");
-  for (var i = 0; i < t.length; i++) {
-    p = t[i].parentElement;
-    var correct = p.getElementsByClassName("webex-correct").length;
-    var solvemes = p.getElementsByClassName("webex-solveme").length;
-    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
-    var selects = p.getElementsByClassName("webex-select").length;
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
 
-    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
-  }
-}
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
 
-/* webex-solution button toggling function */
-b_func = function() {
-  console.log("webex: toggle hide");
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
 
-  var cl = this.parentElement.classList;
-  if (cl.contains('open')) {
-    cl.remove("open");
-  } else {
-    cl.add("open");
-  }
-}
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
 
-/* check answers */
-check_func = function() {
-  console.log("webex: check answers");
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
 
-  var cl = this.parentElement.classList;
-  if (cl.contains('unchecked')) {
-    cl.remove("unchecked");
-    this.innerHTML = "Hide Answers";
-  } else {
-    cl.add("unchecked");
-    this.innerHTML = "Show Answers";
-  }
-}
+        // Push each slide change to the browser history
+        history: true,
 
-/* function for checking solveme answers */
-solveme_func = function(e) {
-  console.log("webex: check solveme");
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
 
-  var real_answers = JSON.parse(this.dataset.answer);
-  var my_answer = this.value;
-  var cl = this.classList;
-  if (cl.contains("ignorecase")) {
-    my_answer = my_answer.toLowerCase();
-  }
-  if (cl.contains("nospaces")) {
-    my_answer = my_answer.replace(/ /g, "")
-  }
+        // Enable the slide overview mode
+        overview: true,
 
-  if (my_answer == "") {
-    cl.remove("webex-correct");
-    cl.remove("webex-incorrect");
-  } else if (real_answers.includes(my_answer)) {
-    cl.add("webex-correct");
-    cl.remove("webex-incorrect");
-  } else {
-    cl.add("webex-incorrect");
-    cl.remove("webex-correct");
-  }
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
 
-  // match numeric answers within a specified tolerance
-  if(this.dataset.tol > 0){
-    var tol = JSON.parse(this.dataset.tol);
-    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
-    if (matches.reduce((a, b) => a + b, 0) > 0) {
-      cl.add("webex-correct");
-    } else {
-      cl.remove("webex-correct");
-    }
-  }
+        // Vertical centering of slides
+        center: false,
 
-  // added regex bit
-  if (cl.contains("regex")){
-    answer_regex = RegExp(real_answers.join("|"))
-    if (answer_regex.test(my_answer)) {
-      cl.add("webex-correct");
-    }
-  }
+        // Enables touch navigation on devices with touch input
+        touch: true,
 
-  update_total_correct();
-}
+        // Loop the presentation
+        loop: false,
 
-/* function for checking select answers */
-select_func = function(e) {
-  console.log("webex: check select");
+        // Change the presentation direction to be RTL
+        rtl: false,
 
-  var cl = this.classList
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
 
-  /* add style */
-  cl.remove("webex-incorrect");
-  cl.remove("webex-correct");
-  if (this.value == "answer") {
-    cl.add("webex-correct");
-  } else if (this.value != "blank") {
-    cl.add("webex-incorrect");
-  }
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
 
-  update_total_correct();
-}
+        // Turns fragments on and off globally
+        fragments: true,
 
-/* function for checking radiogroups answers */
-radiogroups_func = function(e) {
-  console.log("webex: check radiogroups");
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
 
-  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
-  var cl = checked_button.parentElement.classList;
-  var labels = checked_button.parentElement.parentElement.children;
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
 
-  /* get rid of styles */
-  for (i = 0; i < labels.length; i++) {
-    labels[i].classList.remove("webex-incorrect");
-    labels[i].classList.remove("webex-correct");
-  }
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
 
-  /* add style */
-  if (checked_button.value == "answer") {
-    cl.add("webex-correct");
-  } else {
-    cl.add("webex-incorrect");
-  }
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
 
-  update_total_correct();
-}
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
 
-window.onload = function() {
-  console.log("webex onload");
-  /* set up solution buttons */
-  var buttons = document.getElementsByTagName("button");
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
 
-  for (var i = 0; i < buttons.length; i++) {
-    if (buttons[i].parentElement.classList.contains('webex-solution')) {
-      buttons[i].onclick = b_func;
-    }
-  }
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
 
-  var check_sections = document.getElementsByClassName("webex-check");
-  console.log("check:", check_sections.length);
-  for (var i = 0; i < check_sections.length; i++) {
-    check_sections[i].classList.add("unchecked");
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
 
-    let btn = document.createElement("button");
-    btn.innerHTML = "Show Answers";
-    btn.classList.add("webex-check-button");
-    btn.onclick = check_func;
-    check_sections[i].appendChild(btn);
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
 
-    let spn = document.createElement("span");
-    spn.classList.add("webex-total_correct");
-    check_sections[i].appendChild(spn);
-  }
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
 
-  /* set up webex-solveme inputs */
-  var solveme = document.getElementsByClassName("webex-solveme");
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
 
-  for (var i = 0; i < solveme.length; i++) {
-    /* make sure input boxes don't auto-anything */
-    solveme[i].setAttribute("autocomplete","off");
-    solveme[i].setAttribute("autocorrect", "off");
-    solveme[i].setAttribute("autocapitalize", "off");
-    solveme[i].setAttribute("spellcheck", "false");
-    solveme[i].value = "";
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
 
-    /* adjust answer for ignorecase or nospaces */
-    var cl = solveme[i].classList;
-    var real_answer = solveme[i].dataset.answer;
-    if (cl.contains("ignorecase")) {
-      real_answer = real_answer.toLowerCase();
-    }
-    if (cl.contains("nospaces")) {
-      real_answer = real_answer.replace(/ /g, "");
-    }
-    solveme[i].dataset.answer = real_answer;
+        // The display mode that will be used to show slides
+        display: 'block',
 
-    /* attach checking function */
-    solveme[i].onkeyup = solveme_func;
-    solveme[i].onchange = solveme_func;
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
 
-    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
-  }
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
 
-  /* set up radiogroups */
-  var radiogroups = document.getElementsByClassName("webex-radiogroup");
-  for (var i = 0; i < radiogroups.length; i++) {
-    radiogroups[i].onchange = radiogroups_func;
-  }
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
 
-  /* set up selects */
-  var selects = document.getElementsByClassName("webex-select");
-  for (var i = 0; i < selects.length; i++) {
-    selects[i].onchange = select_func;
-    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
-  }
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
 
-  update_total_correct();
-}
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
 
-</script>
-<script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
         },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
       });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
         }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
             }
           }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          return note.innerHTML;
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      }
-    }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
         }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
             }
           } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
             });
           }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
         }
-      }, function(instance) {
       });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
-    }
-  });
-  </script>
-</div> <!-- /content -->
-
-
-
+      </script>
+    
 
 </body></html>
