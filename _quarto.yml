@@ -4,7 +4,7 @@ project:
 website:
   title: DataSci
   announcement:
-    content: Lab starts next week (Sep 4 & 5)!
+    content: First lab on Thurs/Fri!
   description: LING 0700 | PSYC 2314
   sidebar:
     style: docked
@@ -13,10 +13,12 @@ website:
     contents:
     - text: Syllabus
       href: index.qmd
-    - text: Assignments
-      href: index.qmd#assignments
-    - text: Schedule
-      href: index.qmd#schedule
+    - text: Canvas
+      icon: bi-box-arrow-up-right
+      href: https://canvas.upenn.edu/courses/1879865
+    - text: Ed Discussion
+      icon: bi-box-arrow-up-right
+      href: https://edstem.org/us/courses/85059
 format:
   html:
     theme: cosmo
