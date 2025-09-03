@@ -1255,13 +1255,13 @@
     "href": "psets/pset-01.html#problem-5",
     "title": "Problem set 1",
     "section": "Problem 5",
-    "text": "Problem 5\nUsing the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the fill, the theme, and some axis lables."
+    "text": "Problem 5\nUsing the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the fill, the theme, the base size of the font, and some axis labels."
   },
   {
     "objectID": "psets/pset-01.html#problem-6",
     "href": "psets/pset-01.html#problem-6",
     "title": "Problem set 1",
     "section": "Problem 6",
-    "text": "Problem 6\nUsing the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the color and size aesthetics. You’ll need to add more than one geom. You’ll also need to edit the theme, the base size of the font and many lables."
+    "text": "Problem 6\nUsing the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the color and size aesthetics. You’ll need to add more than one geom. You’ll also need to edit the theme, the base size of the font and many labels."
   }
 ]

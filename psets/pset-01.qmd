@@ -76,7 +76,7 @@ ggplot() + geom_emoji("taco", color='#011F5B') + theme_void()
 
 ## Problem 5
 
-Using the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the `fill`, the `theme`, and some axis `lables`.  
+Using the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the `fill`, the `theme`, the `base size` of the font, and some axis `labels`.  
 
 ```{r}
 #| echo: false
@@ -89,7 +89,7 @@ ggplot(syntax, aes(x = grammatical, y = confidence)) +
 
 ## Problem 6 
 
-Using the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the `color` and `size` aesthetics. You'll need to add more than one `geom`. You'll also need to edit the `theme`, the `base size` of the font and many `lables`.  
+Using the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the `color` and `size` aesthetics. You'll need to add more than one `geom`. You'll also need to edit the `theme`, the `base size` of the font and many `labels`.  
 
 ```{r}
 #| echo: false
