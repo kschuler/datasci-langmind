@@ -144,6 +144,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="pset-01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -194,121 +196,55 @@ Upload your <code>.ipynb</code> notebook to gradescope by 11:59am on the due dat
 </section>
 <section id="problem-3" class="level2">
 <h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>Use <code>data.frame()</code> to create the dataframe shown below. Then use one of R’s built in functions to return the structure of the data frame.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                       sentence grammatical rt_ms confidence
+1     The cat chased the mouse.        TRUE  1200          5
+2     The mouse the cat chased.       FALSE  1800          2
+3     Chased the cat the mouse.       FALSE  2000          1
+4 The cat, it chased the mouse.        TRUE  1500          4</code></pre>
+</div>
+</div>
 </section>
 <section id="problem-4" class="level2">
 <h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>Install and load the <code>babynames</code> package, which contains U.S. baby name data from the Social Security Administration. Once the package is installed, read the documentation for the dataset <code>babynames</code> (you can do this by typing <code>?babynames</code>). Use the dataset to find out how many babies were named Emma in 2010, and determine which year had the highest number of babies with that name. Finally, create a plot that shows the popularity of the name Emma across time, using ggplot with a minimal theme.</p>
-<!-- 
-## Problem 3
-
-Create a data frame that looks like the one below. Return the structure of the dataframe with `str()`. Use subsetting such that you select the age column and return a *vector* (not a dataframe). Use a comparison operation on the vector to determine whether each individual is over 80 years old. 
-
-
-
-::: {.cell}
-::: {.cell-output .cell-output-stdout}
-
-```
-  age height  major score firstgen
-1  30     65 cogsci   100     TRUE
-2  45     66   ling    75    FALSE
-3  81     72  psych    88     TRUE
-4  27     59   ling    97    FALSE
-```
-
-
-:::
-:::
-
-
-## Problem 4
-
-Read the documentation for the [`emojifont`](https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html) package.  Install and load the package. Use the package's `search_emoji()` function to find all of the emojis with hearts. Then use the `emoji()` function to return all of these emjois as a vector, as shown below. Finally, select your favorite emoji and visulize it with ggplot, using `theme_void()`. 
-
-::: {.callout-tip title="Hint"}
-emojifont has it's own ggplot geom called `geom_emoji()`! Read the [`emojifont` docs](https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html) to learn more.
-:::
-
-An example of a vector of heart emojis (approximately the same is fine!):
-
-
-::: {.cell}
-::: {.cell-output .cell-output-stdout}
-
-```
- [1] "😍"    "😘"    "😻"    "💑"    "💑"    "👩‍❤️‍👩" "👨‍❤️‍👨" "❤️"     "💛"   
-[10] "💚"    "💙"    "💜"    "🖤"    "💔"    "❣️"     "💕"    "💞"    "💓"   
-[19] "💗"    "💖"    "💝"    "💟"    "♥️"    
-```
-
-
-:::
-:::
-
-
-An example of a favorite emoji visualized with ggplot and theme_void:
-
-
-::: {.cell}
-::: {.cell-output-display}
-![](pset-01_files/figure-html/unnamed-chunk-4-1.png){width=672}
-:::
-:::
-
-
-## Problem 5
-
-Problems 5-7 make use of the `english` dataset in the [`languageR`](https://cran.r-project.org/web/packages/languageR/languageR.pdf) package. From the documentation:
-
-> This data set gives mean visual lexical decision latencies and word naming latencies to 2284
-monomorphemic English nouns and verbs, averaged for old and young subjects, with various predictor variables.
-
-Install and load the `languageR` library. Use `str()` to return the structure of the `english` dataset. Use subsetting via the `$` operator and the `typeof()` function to return the type of the `NounFrequency` column. 
-
-
-::: {.cell}
-
-:::
-
-
-
-## Problem 6 
-
-Use the `WrittenFrequency`, `Familiarity`, and `WordCategory` columns in the `english` dataset to recreate (as faithfully as possible) the figure below. 
-
-
-::: {.cell}
-::: {.cell-output-display}
-![](pset-01_files/figure-html/unnamed-chunk-6-1.png){width=672}
-:::
-:::
-
-
-## Problem 7
-
-Compute the mean of `Familiarity` and store it in a variable called `mean_familiarity`. Add a dashed horizontal line on top of the dots in your figure to indicate this value, as shown below. Also include an annotation layer above the dashed line to indicate the line is the mean familiarity with text. 
-
-::: {.callout-tip title="Hint"}
-`geom_hline()` adds a horizontal line and `annotate()` adds a text layer! Investigate these geoms and layers to figure out this problem!
-:::
-
-#| echo: false
-
-mean_familiarity <- mean(english$Familiarity)
-
-library(ggplot2)
-ggplot(english, aes(
-  x = WrittenFrequency, y = Familiarity, color = WordCategory)
-) + 
-geom_point() + 
-labs(title = "Familiarity Rating by Written Frequency", 
-subtitle = "From the english dataset in languageR", 
-x = "Written frequency", y = "Familiarity rating", color = "Word category") +
-geom_hline(yintercept = mean_familiarity, linetype = 'dashed') +
-annotate("text", x = 1, y = 4, label= "Mean familiarity") + 
-theme_minimal( base_size = 15) +
-theme(legend.position = "top")
-``` -->
+<p>Use <code>ggplot</code> and the <code>emojifont</code> package to create the following figure! A good place to start is reading the <code>emojifont</code> <a href="https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html">package docs</a>. Also note that the color aesthetic is set to Penn Blue! Find the hex code for that precise color <a href="https://branding.web-resources.upenn.edu/logos-and-branding/elements-penn-logo">here</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pset-01_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Using the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the <code>fill</code>, the <code>theme</code>, and some axis <code>lables</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pset-01_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p>Using the data frame you generated in question 3, recreate the following figure as faithfully as possible. You will need to adjust at least the <code>color</code> and <code>size</code> aesthetics. You’ll need to add more than one <code>geom</code>. You’ll also need to edit the <code>theme</code>, the <code>base size</code> of the font and many <code>lables</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pset-01_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
