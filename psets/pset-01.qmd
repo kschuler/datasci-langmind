@@ -42,7 +42,7 @@ matrix(x, nrow = 3, ncol = 3)
 
 ## Problem 3
 
-Use `data.frame()` to create the dataframe shown below. Then use one of R's built in functions to return the structure of the data frame. 
+Use `data.frame()` to create the dataframe shown below. Store the dataframe as `sytax`. Return the dataframe. Then use one of R's built in functions to return the structure of the data frame. 
 
 ```{r}
 #| echo: false 
