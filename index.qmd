@@ -93,25 +93,25 @@ Lab exercises are designed for practice and skill-building. They are not collect
 
 ## Schedule
 
-All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). 
+All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). Homeworks are now shown the week they are *released* (due the following Monday). 
 
 | Week | Begins |  Topic | Materials | Lab (Thu/Fri) | Homework  |
 | -  | -- |  --- | ---- | --- | --- |
-| 1 | Aug 25 | R Basics  | [slides](slides/r-basics.qmd), [demo](https://colab.research.google.com/drive/1Tv0Obx3hGCX9Zi956jI7_5SuRO5T95h8?usp=drive_link) | No lab! | |
-| 2 | Sep 3 | Data visualization | [slides](slides/data-visualization.qmd), [demo](https://colab.research.google.com/drive/1eCKrIvYBn9-EoKAsh1_FWcRCVl5nLO7G?usp=sharing) | [Lab 1](labs/lab-01.qmd) |  |
-| 3 | Sep 8 | Data wrangling | |  Lab 2 | [Pset 1](psets/pset-01.qmd) |
-| 4 | Sep 15 | Sampling distribution | |  Lab 3 | Pset 2 | 
-| 5 | Sep 22 | Hypothesis testing<br> | | Lab 4 | Pset 3 |
-| 6 | Sep 29 | Midterm 1 review<br>Midterm 1 |  | | Pset 4 |
-| 7 | Oct 6 | Make-up date Midterm 1<br>**Fall break, no class/lab**| | | 
-| 8 | Oct 13 | Model specification | | Lab 5 | | 
-| 9 | Oct 20 | Model fitting | | Lab 6 | Pset 5  | 
-| 10 | Oct 27 | Model evaluation | | Lab 7 | Pset 6 |
-| 11 | Nov 3 | **Katie conference, no class/lab** | |  | Pset 7  |
-| 12 | Nov 10 | Feature engineering (??) | |  Lab 8 | | 
-| 13 | Nov 17 | Miterm 2 review<br>Midterm 2 | | | Pset 8  | 
-| 14 | Nov 24 |**Thanksgiving break, no class/lab**  |    |
-| 15 | Dec 1 | Careers in datasci lunch! | |  Lab 9 |  |
-| 16 | Dec 8 | **Last day of classes, no class/lab** |  |  |  |
+| 1 | Aug 26 | R Basics  | [slides](slides/r-basics.qmd), [demo](https://colab.research.google.com/drive/1Tv0Obx3hGCX9Zi956jI7_5SuRO5T95h8?usp=drive_link) | No lab! | |
+| 2 | Sep 4 | Data visualization | [slides](slides/data-visualization.qmd), [demo](https://colab.research.google.com/drive/1eCKrIvYBn9-EoKAsh1_FWcRCVl5nLO7G?usp=sharing) | [Lab 1](labs/lab-01.qmd) | [Pset 1](psets/pset-01.qmd) |
+| 3 | Sep 9 | Data wrangling | |  Lab 2 | Pset 2 |
+| 4 | Sep 16 | Sampling distribution | |  Lab 3 | Pset 3 | 
+| 5 | Sep 23 | Hypothesis testing<br> | | Lab 4 | Pset 4 |
+| 6 | Sep 30 | Midterm 1 review<br>Midterm 1 |  | |  |
+| 7 | Oct 7 | Make-up date Midterm 1<br>**Fall break, no class/lab**| | | 
+| 8 | Oct 14 | Model specification | | Lab 5 | Pset 5 | 
+| 9 | Oct 21 | Model fitting | | Lab 6 | Pset 6  | 
+| 10 | Oct 28 | Model evaluation | | Lab 7 | Pset 7 |
+| 11 | Nov 4 | **Katie conference, no class/lab** | | |  |
+| 12 | Nov 11 | Feature engineering (??) | |  Lab 8 | Pset 8 | 
+| 13 | Nov 18 | Miterm 2 review<br>Midterm 2 | | |   | 
+| 14 | Nov 25 |**Thanksgiving break, no class/lab**  |    |
+| 15 | Dec 2 | Careers in datasci lunch! | |  Lab 9 |  |
+| 16 | Dec 9 | **Last week of class, no class/lab** |  |  |  |
 | 17 | TBD | Final exam (optional) |
 
