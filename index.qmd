@@ -102,14 +102,14 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 3 | Sep 9 | Data wrangling | |  Lab 2 | Pset 2 |
 | 4 | Sep 16 | Sampling distribution | |  Lab 3 | Pset 3 | 
 | 5 | Sep 23 | Hypothesis testing<br> | | Lab 4 | Pset 4 |
-| 6 | Sep 30 | Midterm 1 review<br>Midterm 1 |  | |  |
+| 6 | Sep 30 | Midterm 1 review (Tue)<br>Midterm 1 (Thu) |  | |  |
 | 7 | Oct 7 | Make-up date Midterm 1<br>**Fall break, no class/lab**| | | 
 | 8 | Oct 14 | Model specification | | Lab 5 | Pset 5 | 
 | 9 | Oct 21 | Model fitting | | Lab 6 | Pset 6  | 
 | 10 | Oct 28 | Model evaluation | | Lab 7 | Pset 7 |
 | 11 | Nov 4 | **Katie conference, no class/lab** | | |  |
 | 12 | Nov 11 | Feature engineering (??) | |  Lab 8 | Pset 8 | 
-| 13 | Nov 18 | Miterm 2 review<br>Midterm 2 | | |   | 
+| 13 | Nov 18 | Miterm 2 review (Tue)<br>Midterm 2 (Thu) | | |   | 
 | 14 | Nov 25 |**Thanksgiving break, no class/lab**  |    |
 | 15 | Dec 2 | Careers in datasci lunch! | |  Lab 9 |  |
 | 16 | Dec 9 | **Last week of class, no class/lab** |  |  |  |
