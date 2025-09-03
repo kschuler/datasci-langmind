@@ -102,7 +102,7 @@ ggplot(syntax, aes(x = confidence, y = rt_ms)) +
        y = "Reaction Time (ms)",
        color = "Grammatical?",
        title = "Confidence vs. Reaction Time by Grammaticality") +
-  theme_dark(base_size =20)
+  theme_dark(base_size = 15)
 
 ```
 
