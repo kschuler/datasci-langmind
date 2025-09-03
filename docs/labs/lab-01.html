@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-08-29">
+<meta name="dcterms.date" content="2025-09-02">
 
-<title>Lab 1: Getting started with R – DataSci</title>
+<title>Lab 1 – DataSci</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,15 +113,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="e16b16c0b142e4356a89666ce69e7133" class="alert alert-primary hidden"><div class="quarto-announcement-content">
-<p>Lab starts next week (Sep 4 &amp; 5)!</p>
+    <div id="quarto-announcement" data-announcement-id="459962ef9dd4d03b6cf9dbe6d519fe83" class="alert alert-primary hidden"><div class="quarto-announcement-content">
+<p>First lab on Thurs/Fri!</p>
 </div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1: Getting started with R</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lab 1</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -154,14 +154,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html#assignments" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignments</span></a>
+  <a href="https://canvas.upenn.edu/courses/1879865" class="sidebar-item-text sidebar-link"><i class="bi bi-box-arrow-up-right" role="img">
+</i> 
+ <span class="menu-text">Canvas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html#schedule" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Schedule</span></a>
+  <a href="https://edstem.org/us/courses/85059" class="sidebar-item-text sidebar-link"><i class="bi bi-chat-square-dots" role="img">
+</i> 
+ <span class="menu-text">Ed Discussion</span></a>
   </div>
 </li>
     </ul>
@@ -184,15 +186,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a>
   <ul class="collapse">
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  </ul></li>
-  <li><a href="#ggplot-basics" id="toc-ggplot-basics" class="nav-link" data-scroll-target="#ggplot-basics">ggplot basics</a></li>
-  <li><a href="#data-viz-day-2" id="toc-data-viz-day-2" class="nav-link" data-scroll-target="#data-viz-day-2">Data viz day 2</a>
+  <li><a href="#basic-ggplot" id="toc-basic-ggplot" class="nav-link" data-scroll-target="#basic-ggplot">Basic ggplot</a></li>
+  <li><a href="#plot-to-code-matching" id="toc-plot-to-code-matching" class="nav-link" data-scroll-target="#plot-to-code-matching">Plot-to-Code Matching</a>
   <ul class="collapse">
-  <li><a href="#plot-1" id="toc-plot-1" class="nav-link" data-scroll-target="#plot-1">Plot 1</a></li>
-  <li><a href="#plot-2" id="toc-plot-2" class="nav-link" data-scroll-target="#plot-2">Plot 2</a></li>
-  <li><a href="#code-block-1" id="toc-code-block-1" class="nav-link" data-scroll-target="#code-block-1">Code block 1</a></li>
-  <li><a href="#code-block-2" id="toc-code-block-2" class="nav-link" data-scroll-target="#code-block-2">Code block 2</a></li>
-  <li><a href="#plot-3" id="toc-plot-3" class="nav-link" data-scroll-target="#plot-3">Plot 3</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,8 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 1: Getting started with R</h1>
-<p class="subtitle lead">Not graded, just practice</p>
+<h1 class="title">Lab 1</h1>
+<p class="subtitle lead">R Basics &amp; Data Visualization</p>
 </div>
 
 
@@ -214,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2024</p>
+      <p class="date">September 2, 2025</p>
     </div>
   </div>
   
@@ -246,22 +248,22 @@ Tip
 <h2 class="anchored" data-anchor-id="google-colab">Google Colab</h2>
 <ol type="1">
 <li><p>True or false? We can start a new R notebook in Google Colab with <code>File &gt; New notebook</code></p>
-<div id="radio_BZEKDUCGGJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BZEKDUCGGJ" value=""> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_BZEKDUCGGJ" value="answer"> <span>True, but we need to change the Runtime environment too</span></label><label><input type="radio" autocomplete="off" name="radio_BZEKDUCGGJ" value=""> <span>False</span></label>
+<div id="radio_ZRABAVYGDU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZRABAVYGDU" value=""> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_ZRABAVYGDU" value="answer"> <span>True, but we need to change the Runtime environment too</span></label><label><input type="radio" autocomplete="off" name="radio_ZRABAVYGDU" value=""> <span>False</span></label>
 </div></li>
 <li><p>For problem sets, how will you submit your colab notebook for grading?</p>
-<div id="radio_FJYBGPUTIW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value="answer"> <span><code>File &gt; Download &gt; Download .ipynb</code>, then upload to Gradescope</span></label><label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value=""> <span><code>File &gt; Download &gt; Download .ipynb</code>, then upload to Canvas</span></label><label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value=""> <span><code>File &gt; Download &gt; Download .py</code>, then upload to Gradescope</span></label><label><input type="radio" autocomplete="off" name="radio_FJYBGPUTIW" value=""> <span><code>File &gt; Download &gt; Download .py</code>, then upload to Canvas</span></label>
+<div id="radio_ZMNCZUSXYX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZMNCZUSXYX" value="answer"> <span><code>File &gt; Download &gt; Download .ipynb</code>, then upload to Gradescope</span></label><label><input type="radio" autocomplete="off" name="radio_ZMNCZUSXYX" value=""> <span><code>File &gt; Download &gt; Download .ipynb</code>, then upload to Canvas</span></label><label><input type="radio" autocomplete="off" name="radio_ZMNCZUSXYX" value=""> <span><code>File &gt; Download &gt; Download .py</code>, then upload to Gradescope</span></label><label><input type="radio" autocomplete="off" name="radio_ZMNCZUSXYX" value=""> <span><code>File &gt; Download &gt; Download .py</code>, then upload to Canvas</span></label>
 </div></li>
 <li><p>What version of R is Google Colab running? Hint: use <code>sessionInfo()</code>.</p>
 <p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;4.4.1&quot;]"></p></li>
 <li><p>What is the relationship between R and Google Colab?</p>
-<div id="radio_USAKKIBREY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value=""> <span>R is a programming language. Google Colab is a smaller, specific version of R.</span></label><label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value="answer"> <span>R is a programming language. Google Colab is a development environment where you can run R</span></label><label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value=""> <span>R and Google Colab are both programming languages.</span></label><label><input type="radio" autocomplete="off" name="radio_USAKKIBREY" value=""> <span>R is a paid (proprietary) programming language. Google Colab is a free service to run R.</span></label>
+<div id="radio_CFUPPVNEJN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CFUPPVNEJN" value=""> <span>R is a programming language. Google Colab is a smaller, specific version of R.</span></label><label><input type="radio" autocomplete="off" name="radio_CFUPPVNEJN" value="answer"> <span>R is a programming language. Google Colab is a development environment where you can run R</span></label><label><input type="radio" autocomplete="off" name="radio_CFUPPVNEJN" value=""> <span>R and Google Colab are both programming languages.</span></label><label><input type="radio" autocomplete="off" name="radio_CFUPPVNEJN" value=""> <span>R is a paid (proprietary) programming language. Google Colab is a free service to run R.</span></label>
 </div></li>
 <li><p>What happens to files you upload to google colab when the Runtime environment is restarted?</p>
-<div id="radio_CYGXEMJAOG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value=""> <span>They are saved in your google drive.</span></label><label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value=""> <span>They are saved in Google Colab's cloud for future use</span></label><label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value="answer"> <span>They are deleted</span></label><label><input type="radio" autocomplete="off" name="radio_CYGXEMJAOG" value=""> <span>They are stored for 7 business days, then deleted.</span></label>
+<div id="radio_CYCZCOMIWZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CYCZCOMIWZ" value=""> <span>They are saved in your google drive.</span></label><label><input type="radio" autocomplete="off" name="radio_CYCZCOMIWZ" value=""> <span>They are saved in Google Colab's cloud for future use</span></label><label><input type="radio" autocomplete="off" name="radio_CYCZCOMIWZ" value="answer"> <span>They are deleted</span></label><label><input type="radio" autocomplete="off" name="radio_CYCZCOMIWZ" value=""> <span>They are stored for 7 business days, then deleted.</span></label>
 </div></li>
 </ol>
 </section>
@@ -269,29 +271,29 @@ Tip
 <h2 class="anchored" data-anchor-id="r-basics-1">R Basics</h2>
 <ol type="1">
 <li><p>Which of the following are expressions?</p>
-<div id="radio_WMJKSOIVSR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>5 + 10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>x &lt;- 5 + 10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>x &lt;- y + 10</span></label><label><input type="radio" autocomplete="off" name="radio_WMJKSOIVSR" value="answer"> <span>mean(x)</span></label>
+<div id="radio_FFBNSFHYFA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FFBNSFHYFA" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_FFBNSFHYFA" value="answer"> <span>5 + 10</span></label><label><input type="radio" autocomplete="off" name="radio_FFBNSFHYFA" value="answer"> <span>x &lt;- 5 + 10</span></label><label><input type="radio" autocomplete="off" name="radio_FFBNSFHYFA" value="answer"> <span>x &lt;- y + 10</span></label><label><input type="radio" autocomplete="off" name="radio_FFBNSFHYFA" value="answer"> <span>mean(x)</span></label>
 </div></li>
 <li><p>Which of the following are valid variable names in R?</p>
-<div id="radio_DTOZEMGOCA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value="answer"> <span>childAge</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value="answer"> <span>response_time</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value=""> <span>1stPlaceWinner</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value=""> <span>2fast2furious</span></label><label><input type="radio" autocomplete="off" name="radio_DTOZEMGOCA" value=""> <span>pi</span></label>
+<div id="radio_LHFQCVPVHL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LHFQCVPVHL" value="answer"> <span>childAge</span></label><label><input type="radio" autocomplete="off" name="radio_LHFQCVPVHL" value="answer"> <span>response_time</span></label><label><input type="radio" autocomplete="off" name="radio_LHFQCVPVHL" value=""> <span>1stPlaceWinner</span></label><label><input type="radio" autocomplete="off" name="radio_LHFQCVPVHL" value=""> <span>2fast2furious</span></label><label><input type="radio" autocomplete="off" name="radio_LHFQCVPVHL" value=""> <span>pi</span></label>
 </div></li>
 <li><p>Suppose we open a new colab notebook and run the following code block. What will be returned?</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">3</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_QIMBCHNPBY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value=""> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value=""> <span>x=3 • y=3</span></label><label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value="answer"> <span>'x' • 'y' </span></label><label><input type="radio" autocomplete="off" name="radio_QIMBCHNPBY" value=""> <span>mean(c(1,3,5)) • median(c(1,3,5))</span></label>
+<div id="radio_EQZXLAEZXY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EQZXLAEZXY" value=""> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_EQZXLAEZXY" value=""> <span>x=3 • y=3</span></label><label><input type="radio" autocomplete="off" name="radio_EQZXLAEZXY" value="answer"> <span>'x' • 'y' </span></label><label><input type="radio" autocomplete="off" name="radio_EQZXLAEZXY" value=""> <span>mean(c(1,3,5)) • median(c(1,3,5))</span></label>
 </div></li>
 <li><p>Which of the following will load the <code>emo</code> package into the current environment?</p>
-<div id="radio_NRIDTVRCXB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value=""> <span>install.packages('emo')</span></label><label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value="answer"> <span>library(emo)</span></label><label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value=""> <span>data(emo)</span></label><label><input type="radio" autocomplete="off" name="radio_NRIDTVRCXB" value=""> <span>attributes(emo)</span></label>
+<div id="radio_SMWNKDKNQH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SMWNKDKNQH" value=""> <span>install.packages('emo')</span></label><label><input type="radio" autocomplete="off" name="radio_SMWNKDKNQH" value="answer"> <span>library(emo)</span></label><label><input type="radio" autocomplete="off" name="radio_SMWNKDKNQH" value=""> <span>data(emo)</span></label><label><input type="radio" autocomplete="off" name="radio_SMWNKDKNQH" value=""> <span>attributes(emo)</span></label>
 </div></li>
 <li><p>Which of the following occur in the code block below?</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the mean of x and y</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(x,y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_IPMEQGJTEA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value=""> <span>a message</span></label><label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value="answer"> <span>a function</span></label><label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value="answer"> <span>a comment</span></label><label><input type="radio" autocomplete="off" name="radio_IPMEQGJTEA" value="answer"> <span>an expression</span></label>
+<div id="radio_MFUZDSZREI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MFUZDSZREI" value=""> <span>a message</span></label><label><input type="radio" autocomplete="off" name="radio_MFUZDSZREI" value="answer"> <span>a function</span></label><label><input type="radio" autocomplete="off" name="radio_MFUZDSZREI" value="answer"> <span>a comment</span></label><label><input type="radio" autocomplete="off" name="radio_MFUZDSZREI" value="answer"> <span>an expression</span></label>
 </div></li>
 </ol>
 </section>
@@ -299,15 +301,15 @@ Tip
 <h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
 <ol type="1">
 <li><p>Which of the following returns the vector <code>20 22 24 26</code></p>
-<div id="radio_KTYZZPCECK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value=""> <span><code>20:26</code></span></label><label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value="answer"> <span><code>seq(from=20, to=26, by =2)</code></span></label><label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value=""> <span><code>rep(c(20, 22, 24, 26), times = 4)</code></span></label><label><input type="radio" autocomplete="off" name="radio_KTYZZPCECK" value="answer"> <span><code>c(20, 22, 24, 26)</code></span></label>
+<div id="radio_RRLLEHXNIM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RRLLEHXNIM" value=""> <span><code>20:26</code></span></label><label><input type="radio" autocomplete="off" name="radio_RRLLEHXNIM" value="answer"> <span><code>seq(from=20, to=26, by =2)</code></span></label><label><input type="radio" autocomplete="off" name="radio_RRLLEHXNIM" value=""> <span><code>rep(c(20, 22, 24, 26), times = 4)</code></span></label><label><input type="radio" autocomplete="off" name="radio_RRLLEHXNIM" value="answer"> <span><code>c(20, 22, 24, 26)</code></span></label>
 </div></li>
 <li><p>Suppose we construct a vector with <code>c(1, "two", 3, 4, 5, 6)</code> and assign it to <code>x</code>. What will the following code block return?</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;character&quot;]"></p>
 <p>What is the previous question an example of?</p>
-<div id="radio_RPBAFYRXQJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value=""> <span>attribute addition</span></label><label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value=""> <span>explicit coercion</span></label><label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value="answer"> <span>implicit coercion</span></label><label><input type="radio" autocomplete="off" name="radio_RPBAFYRXQJ" value=""> <span>none of the above</span></label>
+<div id="radio_FEHBJXKWJT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FEHBJXKWJT" value=""> <span>attribute addition</span></label><label><input type="radio" autocomplete="off" name="radio_FEHBJXKWJT" value=""> <span>explicit coercion</span></label><label><input type="radio" autocomplete="off" name="radio_FEHBJXKWJT" value="answer"> <span>implicit coercion</span></label><label><input type="radio" autocomplete="off" name="radio_FEHBJXKWJT" value=""> <span>none of the above</span></label>
 </div></li>
 <li><p>What will the following code block return?</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
@@ -318,52 +320,39 @@ Tip
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><input class="webex-solveme nospaces" size="20" data-answer="[&quot;0&quot;]"></p></li>
-<li><p>Given the following output from <code>str(x)</code>, what will <code>as.logical(x)</code> return?</p>
-<p>::: {.cell} ::: {.cell-output .cell-output-stdout}</p>
-<pre><code> num [1:4] 1 0 1 0</code></pre>
-<p>::: :::</p></li>
+<li><p>Given the following vector, what will <code>as.logical(x)</code> return?</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
-<!-- ```{r}
-#| echo: false
-#| results: asis
-
-# Define the answer choices
-choices <- c(
-    "an error",
-    answer="TRUE • FALSE • TRUE • FALSE",
-    'FALSE',
-    "FALSE • TRUE • FALSE • TRUE"
-)
-
-cat(longmcq(choices))
-``` -->
+<div id="radio_VOGHTSZWIU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VOGHTSZWIU" value=""> <span>an error</span></label><label><input type="radio" autocomplete="off" name="radio_VOGHTSZWIU" value="answer"> <span>TRUE • FALSE • TRUE • FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_VOGHTSZWIU" value=""> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_VOGHTSZWIU" value=""> <span>FALSE • TRUE • FALSE • TRUE</span></label>
+</div>
 <ol type="1">
 <li><p>Given the following vector, what will <code>as.double(x)</code> return?</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"one"</span>, <span class="st">"two"</span>, <span class="st">"three"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_IZAQEKXYCE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value="answer"> <span>an error</span></label><label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value=""> <span>1 • 2 • 3</span></label><label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value=""> <span>2 • 4 • 6</span></label><label><input type="radio" autocomplete="off" name="radio_IZAQEKXYCE" value=""> <span>'one' • 'two' • 'three'</span></label>
+<div id="radio_RFITCCGJPT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RFITCCGJPT" value="answer"> <span>an error</span></label><label><input type="radio" autocomplete="off" name="radio_RFITCCGJPT" value=""> <span>1 • 2 • 3</span></label><label><input type="radio" autocomplete="off" name="radio_RFITCCGJPT" value=""> <span>2 • 4 • 6</span></label><label><input type="radio" autocomplete="off" name="radio_RFITCCGJPT" value=""> <span>'one' • 'two' • 'three'</span></label>
 </div></li>
 <li><p>What happens if you add a vector of numbers to a single number in the following expression?</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_UVGZELJKET" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value=""> <span>2 • 3 • 5</span></label><label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value=""> <span>Error: length mismatch</span></label><label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value=""> <span>1 • 3 • 5 • 1</span></label><label><input type="radio" autocomplete="off" name="radio_UVGZELJKET" value="answer"> <span>2 • 4 • 6</span></label>
+<div id="radio_KACZILGEST" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KACZILGEST" value=""> <span>2 • 3 • 5</span></label><label><input type="radio" autocomplete="off" name="radio_KACZILGEST" value=""> <span>Error: length mismatch</span></label><label><input type="radio" autocomplete="off" name="radio_KACZILGEST" value=""> <span>1 • 3 • 5 • 1</span></label><label><input type="radio" autocomplete="off" name="radio_KACZILGEST" value="answer"> <span>2 • 4 • 6</span></label>
 </div></li>
 <li><p>What happens if you multiply a vector times another vector?</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_OORJLZERWM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value="answer"> <span>10 • 300 • 5000</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>Error: length mismatch</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>10 • 30 • 50 • 100 • 300 • 500 • 1000 • 3000 • 5000</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>a 2 x 3 matrix</span></label><label><input type="radio" autocomplete="off" name="radio_OORJLZERWM" value=""> <span>Error: cannot multiply vectors</span></label>
+<div id="radio_KPUKZAXUTG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KPUKZAXUTG" value="answer"> <span>10 • 300 • 5000</span></label><label><input type="radio" autocomplete="off" name="radio_KPUKZAXUTG" value=""> <span>Error: length mismatch</span></label><label><input type="radio" autocomplete="off" name="radio_KPUKZAXUTG" value=""> <span>10 • 30 • 50 • 100 • 300 • 500 • 1000 • 3000 • 5000</span></label><label><input type="radio" autocomplete="off" name="radio_KPUKZAXUTG" value=""> <span>a 2 x 3 matrix</span></label><label><input type="radio" autocomplete="off" name="radio_KPUKZAXUTG" value=""> <span>Error: cannot multiply vectors</span></label>
 </div></li>
 <li><p>Suppose we run the following code. What will <code>any(x)</code> return?</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">11</span>) <span class="sc">&gt;</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_NNNZQSMUMV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NNNZQSMUMV" value="answer"> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_NNNZQSMUMV" value=""> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_NNNZQSMUMV" value=""> <span>Error: vector is double but requires logical</span></label>
+<div id="radio_KHPHHPKOVA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KHPHHPKOVA" value="answer"> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_KHPHHPKOVA" value=""> <span>FALSE</span></label><label><input type="radio" autocomplete="off" name="radio_KHPHHPKOVA" value=""> <span>Error: vector is double but requires logical</span></label>
 </div></li>
 </ol>
 <!-- # Subsetting
 
 1. Which of the following code subsets the vector `x <- c("blue", "pink", "red")` to return just the first element?
 
-    <div class='webex-radiogroup' id='radio_RELVPNOJNS'><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value="answer"></input> <span>x[1]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value="answer"></input> <span>x[[1]]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value=""></input> <span>x[0]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value="answer"></input> <span>x[-c(2, 3)]</span></label><label><input type="radio" autocomplete="off" name="radio_RELVPNOJNS" value=""></input> <span>x["blue"]</span></label></div>
+    <div class='webex-radiogroup' id='radio_BFWGPKVKBA'><label><input type="radio" autocomplete="off" name="radio_BFWGPKVKBA" value="answer"></input> <span>x[1]</span></label><label><input type="radio" autocomplete="off" name="radio_BFWGPKVKBA" value="answer"></input> <span>x[[1]]</span></label><label><input type="radio" autocomplete="off" name="radio_BFWGPKVKBA" value=""></input> <span>x[0]</span></label><label><input type="radio" autocomplete="off" name="radio_BFWGPKVKBA" value="answer"></input> <span>x[-c(2, 3)]</span></label><label><input type="radio" autocomplete="off" name="radio_BFWGPKVKBA" value=""></input> <span>x["blue"]</span></label></div>
 
 1. Suppose we run the following code. What will `x[[2]]` return?
 
@@ -398,12 +387,25 @@ cat(longmcq(choices))
 </section>
 <section id="missing-values" class="level2">
 <h2 class="anchored" data-anchor-id="missing-values">Missing Values</h2>
+<div class="callout callout-style-default callout-warning callout-titled" title="Warning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We didn’t cover missing values in class, but they are an important thing for the data scientists to understand! Play around and see what you can find out about them here.</p>
+</div>
+</div>
 <ol type="1">
 <li><p>Suppose we run the following code. What will <code>is.na(y)</code> return?</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">25</span>, <span class="cn">NA</span>, <span class="dv">36</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="radio_QBUWRCKKNB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value=""> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value=""> <span>Error: Non-atomic vector is invalid type</span></label><label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_QBUWRCKKNB" value="answer"> <span>FALSE FALSE TRUE FALSE</span></label>
+<div id="radio_TZWLWDXJKY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TZWLWDXJKY" value=""> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_TZWLWDXJKY" value=""> <span>Error: Non-atomic vector is invalid type</span></label><label><input type="radio" autocomplete="off" name="radio_TZWLWDXJKY" value=""> <span>TRUE</span></label><label><input type="radio" autocomplete="off" name="radio_TZWLWDXJKY" value="answer"> <span>FALSE FALSE TRUE FALSE</span></label>
 </div></li>
 <li><p>Suppose we run the following code. What will <code>is.null(y)</code> return?</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -420,11 +422,12 @@ cat(longmcq(choices))
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>We will continue working with the <code>ratings</code> dataset from the visualization lecture (part of the <code>languageR</code> package).</p>
+<p>Load the libraries:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(languageR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It contains the following variables:</p>
+<p>And inspect the structure of the <code>ratings</code> dataset:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ratings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -446,17 +449,16 @@ cat(longmcq(choices))
 </div>
 </div>
 </section>
-</section>
-<section id="ggplot-basics" class="level1">
-<h1>ggplot basics</h1>
+<section id="basic-ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="basic-ggplot">Basic ggplot</h2>
 <ol type="1">
 <li><p>Fill in the blanks below with one of the following words: <code>data</code>, <code>aesthetics</code>, <code>geom</code>.</p>
 <blockquote class="blockquote">
 <p>The basic ggplot involves: (1) using your <input class="webex-solveme nospaces" size="10" data-answer="[&quot;data&quot;]">, (2) defining how variables are mapped to visual properties (<input class="webex-solveme nospaces" size="10" data-answer="[&quot;aesthetics&quot;]">), and (3) determining the geometrical object that a plot uses to represent data (<input class="webex-solveme nospaces" size="10" data-answer="[&quot;geom&quot;]">)</p>
 </blockquote></li>
 <li><p>When ggplot2 maps a categorical variable to an aesthetic, it automatically assigns a unique value of the aesthetic to each level of the variable. What is this process called?</p>
-<div id="radio_TOBEGHXVOW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value=""> <span>level assignment</span></label><label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value=""> <span>variable aestheticization</span></label><label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value=""> <span>autofill</span></label><label><input type="radio" autocomplete="off" name="radio_TOBEGHXVOW" value="answer"> <span>scaling</span></label>
+<div id="radio_WHIXGHFHED" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WHIXGHFHED" value=""> <span>level assignment</span></label><label><input type="radio" autocomplete="off" name="radio_WHIXGHFHED" value=""> <span>variable aestheticization</span></label><label><input type="radio" autocomplete="off" name="radio_WHIXGHFHED" value=""> <span>autofill</span></label><label><input type="radio" autocomplete="off" name="radio_WHIXGHFHED" value="answer"> <span>scaling</span></label>
 </div></li>
 <li><p>The code below generated which of the following figures?</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
@@ -471,16 +473,16 @@ cat(longmcq(choices))
 <p><img src="../assests/images/global-v-local.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
-<div id="radio_ZXMEFFXTUS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZXMEFFXTUS" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_ZXMEFFXTUS" value="answer"> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_ZXMEFFXTUS" value=""> <span>C</span></label>
+<div id="radio_EZQVNUMRKQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EZQVNUMRKQ" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_EZQVNUMRKQ" value="answer"> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_EZQVNUMRKQ" value=""> <span>C</span></label>
 </div></li>
 <li><p>Suppose we want to map the variable <code>Complex</code> to the color aesthetic in a scatterplot. Which of the following arguments could we pass to <code>geom_point()</code>?</p>
-<div id="radio_TXJWPSNTFH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value=""> <span>color = Complex</span></label><label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value="answer"> <span>mapping=aes(color = Complex)</span></label><label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value=""> <span>color = mapping(Complex)</span></label><label><input type="radio" autocomplete="off" name="radio_TXJWPSNTFH" value="answer"> <span>aes(color=Complex)</span></label>
+<div id="radio_VDEYSNPQGV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VDEYSNPQGV" value=""> <span>color = Complex</span></label><label><input type="radio" autocomplete="off" name="radio_VDEYSNPQGV" value="answer"> <span>mapping=aes(color = Complex)</span></label><label><input type="radio" autocomplete="off" name="radio_VDEYSNPQGV" value=""> <span>color = mapping(Complex)</span></label><label><input type="radio" autocomplete="off" name="radio_VDEYSNPQGV" value="answer"> <span>aes(color=Complex)</span></label>
 </div></li>
 <li><p>To adjust the size of the font to 20pt in the complete theme <code>theme_minimal()</code>, what argument should we include?</p>
-<div id="radio_UTAIBCAWJG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value="answer"> <span><code>base_size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value=""> <span><code>size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value=""> <span><code>font_family_size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_UTAIBCAWJG" value=""> <span>None of the above</span></label>
+<div id="radio_ECIZCRJMOR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ECIZCRJMOR" value="answer"> <span><code>base_size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_ECIZCRJMOR" value=""> <span><code>size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_ECIZCRJMOR" value=""> <span><code>font_family_size=20</code></span></label><label><input type="radio" autocomplete="off" name="radio_ECIZCRJMOR" value=""> <span>None of the above</span></label>
 </div></li>
 <li><p>Which geoms are depicted in the following figure?</p>
 <div class="quarto-figure quarto-figure-left">
@@ -488,8 +490,8 @@ cat(longmcq(choices))
 <p><img src="../assests/images/guess-geom.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:50.0%"></p>
 </figure>
 </div>
-<div id="radio_JAAPJQWROB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value="answer"> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_JAAPJQWROB" value=""> <span>geom_point()</span></label>
+<div id="radio_DJEZBJBKZS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DJEZBJBKZS" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_DJEZBJBKZS" value="answer"> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_DJEZBJBKZS" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_DJEZBJBKZS" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_DJEZBJBKZS" value=""> <span>geom_point()</span></label>
 </div></li>
 <li><p>Which geoms are depicted in the following figure?</p>
 <div class="quarto-figure quarto-figure-left">
@@ -497,15 +499,15 @@ cat(longmcq(choices))
 <p><img src="../assests/images/guess-geom2.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:50.0%"></p>
 </figure>
 </div>
-<div id="radio_JWCHRZPRYW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value="answer"> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_JWCHRZPRYW" value=""> <span>geom_point()</span></label>
+<div id="radio_QUDNXGECSX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QUDNXGECSX" value="answer"> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_QUDNXGECSX" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_QUDNXGECSX" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_QUDNXGECSX" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_QUDNXGECSX" value=""> <span>geom_point()</span></label>
 </div></li>
 </ol>
 </section>
-<section id="data-viz-day-2" class="level1">
-<h1>Data viz day 2</h1>
-<section id="plot-1" class="level2">
-<h2 class="anchored" data-anchor-id="plot-1">Plot 1</h2>
+<section id="plot-to-code-matching" class="level2">
+<h2 class="anchored" data-anchor-id="plot-to-code-matching">Plot-to-Code Matching</h2>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
 <p>Given code blocks a, b, and c; and the plot below:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE BLOCK a ---------------------------#</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
@@ -537,25 +539,25 @@ cat(longmcq(choices))
 </div>
 <ol type="1">
 <li><p>Which of the code blocks above generate the plot ?</p>
-<div id="radio_EQQAQVTHBB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EQQAQVTHBB" value="answer"> <span>a</span></label><label><input type="radio" autocomplete="off" name="radio_EQQAQVTHBB" value=""> <span>b</span></label><label><input type="radio" autocomplete="off" name="radio_EQQAQVTHBB" value=""> <span>c</span></label>
+<div id="radio_JHBBIPTEMR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JHBBIPTEMR" value="answer"> <span>a</span></label><label><input type="radio" autocomplete="off" name="radio_JHBBIPTEMR" value=""> <span>b</span></label><label><input type="radio" autocomplete="off" name="radio_JHBBIPTEMR" value=""> <span>c</span></label>
 </div></li>
 <li><p>In the plot above, is the color aesthetic mapped, set, or both?</p>
-<div id="radio_TSIMTGBNTJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TSIMTGBNTJ" value=""> <span>mapped</span></label><label><input type="radio" autocomplete="off" name="radio_TSIMTGBNTJ" value="answer"> <span>set</span></label><label><input type="radio" autocomplete="off" name="radio_TSIMTGBNTJ" value=""> <span>both</span></label>
+<div id="radio_VBAYGMNDKP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VBAYGMNDKP" value=""> <span>mapped</span></label><label><input type="radio" autocomplete="off" name="radio_VBAYGMNDKP" value="answer"> <span>set</span></label><label><input type="radio" autocomplete="off" name="radio_VBAYGMNDKP" value=""> <span>both</span></label>
 </div></li>
 <li><p>In the plot above, which of the following aesthetics should we set to make the points more transparent?</p>
-<div id="radio_YYQQUYSMUY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value=""> <span>color</span></label><label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value=""> <span>fill</span></label><label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value="answer"> <span>alpha</span></label><label><input type="radio" autocomplete="off" name="radio_YYQQUYSMUY" value=""> <span>shape</span></label>
+<div id="radio_UKNWCDGMYL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UKNWCDGMYL" value=""> <span>color</span></label><label><input type="radio" autocomplete="off" name="radio_UKNWCDGMYL" value=""> <span>fill</span></label><label><input type="radio" autocomplete="off" name="radio_UKNWCDGMYL" value="answer"> <span>alpha</span></label><label><input type="radio" autocomplete="off" name="radio_UKNWCDGMYL" value=""> <span>shape</span></label>
 </div></li>
 <li><p>In plot A above, which of the following would change the x axis label to “FQ”?</p>
-<div id="radio_BVAUFMZLOF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BVAUFMZLOF" value="answer"> <span>add a <code>labs()</code> layer with <code>x="FQ"</code> argument</span></label><label><input type="radio" autocomplete="off" name="radio_BVAUFMZLOF" value=""> <span>add a <code>labs()</code> layer with <code>y="FQ"</code> argument</span></label><label><input type="radio" autocomplete="off" name="radio_BVAUFMZLOF" value=""> <span>change the mapping argument from <code>x="Frequency"</code> to <code>x="FQ"</code></span></label>
+<div id="radio_GQIQJKEZRT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GQIQJKEZRT" value="answer"> <span>add a <code>labs()</code> layer with <code>x="FQ"</code> argument</span></label><label><input type="radio" autocomplete="off" name="radio_GQIQJKEZRT" value=""> <span>add a <code>labs()</code> layer with <code>y="FQ"</code> argument</span></label><label><input type="radio" autocomplete="off" name="radio_GQIQJKEZRT" value=""> <span>change the mapping argument from <code>x="Frequency"</code> to <code>x="FQ"</code></span></label>
 </div></li>
 </ol>
 </section>
-<section id="plot-2" class="level2">
-<h2 class="anchored" data-anchor-id="plot-2">Plot 2</h2>
+<section id="exercise-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <p>Given the following plot:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -568,25 +570,25 @@ cat(longmcq(choices))
 </div>
 <ol type="1">
 <li><p>In the plot above, which geom(s) are used to represent the data?</p>
-<div id="radio_LZGJQFDHPE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value="answer"> <span>geom_point()</span></label><label><input type="radio" autocomplete="off" name="radio_LZGJQFDHPE" value="answer"> <span>geom_smooth()</span></label>
+<div id="radio_JIHVDZMOWU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JIHVDZMOWU" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_JIHVDZMOWU" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_JIHVDZMOWU" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_JIHVDZMOWU" value="answer"> <span>geom_point()</span></label><label><input type="radio" autocomplete="off" name="radio_JIHVDZMOWU" value="answer"> <span>geom_smooth()</span></label>
 </div></li>
 <li><p>True or false, the blue line in the plot above is mapped to the Class aesthetic?</p>
-<div id="radio_PMFCGHPTTI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PMFCGHPTTI" value=""> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_PMFCGHPTTI" value="answer"> <span>False</span></label>
+<div id="radio_HHXYMCHVZG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HHXYMCHVZG" value=""> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_HHXYMCHVZG" value="answer"> <span>False</span></label>
 </div></li>
 <li><p>In the plot above, which of the following variables is mapped to the x aesthetic?</p>
-<div id="radio_BIZUFDLKAS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value="answer"> <span>Frequency</span></label><label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value=""> <span>meanFamiliarity</span></label><label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value=""> <span>FreqSingular</span></label><label><input type="radio" autocomplete="off" name="radio_BIZUFDLKAS" value=""> <span>FreqPlural</span></label>
+<div id="radio_MREIRMXPZD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MREIRMXPZD" value="answer"> <span>Frequency</span></label><label><input type="radio" autocomplete="off" name="radio_MREIRMXPZD" value=""> <span>meanFamiliarity</span></label><label><input type="radio" autocomplete="off" name="radio_MREIRMXPZD" value=""> <span>FreqSingular</span></label><label><input type="radio" autocomplete="off" name="radio_MREIRMXPZD" value=""> <span>FreqPlural</span></label>
 </div></li>
 <li><p>True or false, in the plot above, the default statistical transformation in the geom responsible for the red dots is “identity”.</p>
-<div id="radio_FXVGGXWIGT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FXVGGXWIGT" value="answer"> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_FXVGGXWIGT" value=""> <span>False</span></label>
+<div id="radio_RGUDOCPRVV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RGUDOCPRVV" value="answer"> <span>True</span></label><label><input type="radio" autocomplete="off" name="radio_RGUDOCPRVV" value=""> <span>False</span></label>
 </div></li>
 </ol>
 </section>
-<section id="code-block-1" class="level2">
-<h2 class="anchored" data-anchor-id="code-block-1">Code block 1</h2>
+<section id="exercise-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
 <p>Suppose we run the following code.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
@@ -606,21 +608,21 @@ cat(longmcq(choices))
 </div>
 <ol type="1">
 <li><p>Which of the following plots will be returned?</p>
-<div id="radio_YHEHKYYIQH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YHEHKYYIQH" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_YHEHKYYIQH" value="answer"> <span>B</span></label>
+<div id="radio_HTKWLODIKF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HTKWLODIKF" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_HTKWLODIKF" value="answer"> <span>B</span></label>
 </div></li>
 <li><p>Which aesthetic is mapped and which is set?</p>
-<div id="radio_QZTYQHZPMJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value=""> <span>Class is set to color and the smoothing line is mapped to red</span></label><label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value="answer"> <span>Class is mapped to color and the smoothing line is set to red</span></label><label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value=""> <span>Both are mapped</span></label><label><input type="radio" autocomplete="off" name="radio_QZTYQHZPMJ" value=""> <span>Both are set</span></label>
+<div id="radio_BNAFNHNFDS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BNAFNHNFDS" value=""> <span>Class is set to color and the smoothing line is mapped to red</span></label><label><input type="radio" autocomplete="off" name="radio_BNAFNHNFDS" value="answer"> <span>Class is mapped to color and the smoothing line is set to red</span></label><label><input type="radio" autocomplete="off" name="radio_BNAFNHNFDS" value=""> <span>Both are mapped</span></label><label><input type="radio" autocomplete="off" name="radio_BNAFNHNFDS" value=""> <span>Both are set</span></label>
 </div></li>
 <li><p>Which aesthetic is global and which is local?</p>
-<div id="radio_KBVYTSMZLR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value="answer"> <span>Color is mapped to the class variable globally, and set to red locally</span></label><label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value=""> <span>Color is mapped to the class variable locally, and set to red globally</span></label><label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value=""> <span>Both are global</span></label><label><input type="radio" autocomplete="off" name="radio_KBVYTSMZLR" value=""> <span>Both are local</span></label>
+<div id="radio_ZPVOWSYOGO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZPVOWSYOGO" value="answer"> <span>Color is mapped to the class variable globally, and set to red locally</span></label><label><input type="radio" autocomplete="off" name="radio_ZPVOWSYOGO" value=""> <span>Color is mapped to the class variable locally, and set to red globally</span></label><label><input type="radio" autocomplete="off" name="radio_ZPVOWSYOGO" value=""> <span>Both are global</span></label><label><input type="radio" autocomplete="off" name="radio_ZPVOWSYOGO" value=""> <span>Both are local</span></label>
 </div></li>
 </ol>
 </section>
-<section id="code-block-2" class="level2">
-<h2 class="anchored" data-anchor-id="code-block-2">Code block 2</h2>
+<section id="exercise-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4">Exercise 4</h3>
 <p>Suppose we run the following code block</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratings, </span>
@@ -647,21 +649,21 @@ cat(longmcq(choices))
 </div>
 <ol type="1">
 <li><p>Which plot will be returned?</p>
-<div id="radio_NZZCZNEKOB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value="answer"> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value=""> <span>C</span></label><label><input type="radio" autocomplete="off" name="radio_NZZCZNEKOB" value=""> <span>D</span></label>
+<div id="radio_PIUWCMJIPM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PIUWCMJIPM" value=""> <span>A</span></label><label><input type="radio" autocomplete="off" name="radio_PIUWCMJIPM" value="answer"> <span>B</span></label><label><input type="radio" autocomplete="off" name="radio_PIUWCMJIPM" value=""> <span>C</span></label><label><input type="radio" autocomplete="off" name="radio_PIUWCMJIPM" value=""> <span>D</span></label>
 </div></li>
 <li><p>What would happen if we added the layer <code>scale_fill_manual(values = c("green", "orange"))</code> to the following plot?</p>
-<div id="radio_IYDZFZPPPD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value=""> <span>error: no fill aesthetic specified</span></label><label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value="answer"> <span>complex would turn green and simplex would turn orange</span></label><label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value=""> <span>simplex would turn green and complex would turn orange</span></label><label><input type="radio" autocomplete="off" name="radio_IYDZFZPPPD" value=""> <span>No change</span></label>
+<div id="radio_VRZCPROKCZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VRZCPROKCZ" value=""> <span>error: no fill aesthetic specified</span></label><label><input type="radio" autocomplete="off" name="radio_VRZCPROKCZ" value="answer"> <span>complex would turn green and simplex would turn orange</span></label><label><input type="radio" autocomplete="off" name="radio_VRZCPROKCZ" value=""> <span>simplex would turn green and complex would turn orange</span></label><label><input type="radio" autocomplete="off" name="radio_VRZCPROKCZ" value=""> <span>No change</span></label>
 </div></li>
 <li><p>What argument could we add to <code>geom_bar()</code> to add a black border around the bars?</p>
-<div id="radio_LAKDBARIUI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value=""> <span>fill = <code>black</code></span></label><label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value=""> <span>border_color = 'black'</span></label><label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value=""> <span>linetype = 'black'</span></label><label><input type="radio" autocomplete="off" name="radio_LAKDBARIUI" value="answer"> <span>color = 'black'</span></label>
+<div id="radio_JKVOYALHFP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JKVOYALHFP" value=""> <span>fill = <code>black</code></span></label><label><input type="radio" autocomplete="off" name="radio_JKVOYALHFP" value=""> <span>border_color = 'black'</span></label><label><input type="radio" autocomplete="off" name="radio_JKVOYALHFP" value=""> <span>linetype = 'black'</span></label><label><input type="radio" autocomplete="off" name="radio_JKVOYALHFP" value="answer"> <span>color = 'black'</span></label>
 </div></li>
 </ol>
 </section>
-<section id="plot-3" class="level2">
-<h2 class="anchored" data-anchor-id="plot-3">Plot 3</h2>
+<section id="exercise-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5">Exercise 5</h3>
 <p>Consider the following plot</p>
 <div class="cell" data-layout-valign="bottom" data-cap-location="bottom">
 <div class="cell-output-display">
@@ -674,20 +676,21 @@ cat(longmcq(choices))
 </div>
 <ol type="1">
 <li><p>To generate the facets in the plot above, which of the following lines of code must be included?</p>
-<div id="radio_IVVJZYOICI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value=""> <span><code>facet_grid(Complex ~ Class)</code></span></label><label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value="answer"> <span><code>facet_grid(Class ~ Complex)</code></span></label><label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value=""> <span><code>facet_grid(.~ Complex)</code></span></label><label><input type="radio" autocomplete="off" name="radio_IVVJZYOICI" value=""> <span><code>facet_wrap(Class~Complex, ncol = 2)</code></span></label>
+<div id="radio_UQFLZTVYIU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UQFLZTVYIU" value=""> <span><code>facet_grid(Complex ~ Class)</code></span></label><label><input type="radio" autocomplete="off" name="radio_UQFLZTVYIU" value="answer"> <span><code>facet_grid(Class ~ Complex)</code></span></label><label><input type="radio" autocomplete="off" name="radio_UQFLZTVYIU" value=""> <span><code>facet_grid(.~ Complex)</code></span></label><label><input type="radio" autocomplete="off" name="radio_UQFLZTVYIU" value=""> <span><code>facet_wrap(Class~Complex, ncol = 2)</code></span></label>
 </div></li>
 <li><p>Which of the following geoms are added to the plot above?</p>
-<div id="radio_XZGXLTEGNU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_XZGXLTEGNU" value="answer"> <span>geom_point()</span></label>
+<div id="radio_PYOPIJIIHJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PYOPIJIIHJ" value=""> <span>geom_histogram()</span></label><label><input type="radio" autocomplete="off" name="radio_PYOPIJIIHJ" value=""> <span>geom_density()</span></label><label><input type="radio" autocomplete="off" name="radio_PYOPIJIIHJ" value=""> <span>geom_bar()</span></label><label><input type="radio" autocomplete="off" name="radio_PYOPIJIIHJ" value=""> <span>geom_smooth()</span></label><label><input type="radio" autocomplete="off" name="radio_PYOPIJIIHJ" value="answer"> <span>geom_point()</span></label>
 </div></li>
 <li><p>Which built-in theme is applied to the following plot?</p>
-<div id="radio_ZOYSFUPGOY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value=""> <span>theme_grey()</span></label><label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value=""> <span>theme_classic()</span></label><label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value=""> <span>theme_void()</span></label><label><input type="radio" autocomplete="off" name="radio_ZOYSFUPGOY" value="answer"> <span>theme_bw()</span></label>
+<div id="radio_WIRWLAPYNA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WIRWLAPYNA" value=""> <span>theme_grey()</span></label><label><input type="radio" autocomplete="off" name="radio_WIRWLAPYNA" value=""> <span>theme_classic()</span></label><label><input type="radio" autocomplete="off" name="radio_WIRWLAPYNA" value=""> <span>theme_void()</span></label><label><input type="radio" autocomplete="off" name="radio_WIRWLAPYNA" value="answer"> <span>theme_bw()</span></label>
 </div></li>
 </ol>
 
 
+</section>
 </section>
 </section>
 

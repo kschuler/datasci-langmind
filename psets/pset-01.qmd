@@ -32,6 +32,12 @@ matrix(x, nrow = 3, ncol = 3)
 
 ```
 
+## Problem 3
+
+## Problem 4
+
+Install and load the `babynames` package, which contains U.S. baby name data from the Social Security Administration. Once the package is installed, read the documentation for the dataset `babynames` (you can do this by typing `?babynames`). Use the dataset to find out how many babies were named Emma in 2010, and determine which year had the highest number of babies with that name. Finally, create a plot that shows the popularity of the name Emma across time, using ggplot with a minimal theme.
+
 <!-- 
 ## Problem 3
 

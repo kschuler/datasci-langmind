@@ -1,7 +1,7 @@
 ---
-title:  "Lab 1: Getting started with R"
-subtitle: "Not graded, just practice"
-date: 2024-08-29
+title:  "Lab 1"
+subtitle: "R Basics & Data Visualization"
+date: 2025-09-02
 #format: live-html
 ---
 
@@ -290,16 +290,13 @@ library(webexercises)
 
 
 
-1. Given the following output from `str(x)`, what will `as.logical(x)` return? 
+1. Given the following vector, what will `as.logical(x)` return? 
 
-    ```{r}
-    #| echo: false
-
+    ```r
     x <- c(1, 0, 1, 0)
-    str(x)
     ```
 
-<!-- ```{r}
+```{r}
 #| echo: false
 #| results: asis
 
@@ -312,7 +309,7 @@ choices <- c(
 )
 
 cat(longmcq(choices))
-``` -->
+```
 
 1. Given the following vector, what will `as.double(x)` return? 
 
@@ -472,6 +469,11 @@ cat(longmcq(choices))
 
 ## Missing Values 
 
+::: {.callout-warning title="Warning"}
+We didn't cover missing values in class, but they are an important thing for the data scientists to understand! Play around and see what you can find out about them here.
+:::
+
+
 1. Suppose we run the following code. What will `is.na(y)` return?
 
     ```r
@@ -533,10 +535,11 @@ cat(longmcq(choices))
 
 Practice your new ggplot skills with these practice exam questions! 
 
-
-## Setup
+## Setup 
 
 We will continue working with the `ratings` dataset from the visualization lecture (part of the `languageR` package). 
+
+Load the libraries: 
 
 ```{r}
 #| echo: true
@@ -544,14 +547,14 @@ library(ggplot2)
 library(languageR)
 ```
 
-It contains the following variables: 
+And inspect the structure of the `ratings` dataset: 
 
 ```{r}
 #| echo: true
 str(ratings)
 ```
 
-# ggplot basics
+## Basic ggplot
 
 1. Fill in the blanks below with one of the following words: `data`, `aesthetics`, `geom`. 
 
@@ -681,9 +684,9 @@ str(ratings)
 
 
 
-# Data viz day 2
+## Plot-to-Code Matching
 
-## Plot 1 
+### Exercise 1 
 
 Given code blocks a, b, and c; and the plot below:
 
@@ -777,7 +780,7 @@ ggplot(
     cat(longmcq(choices))
     ```
 
-## Plot 2 
+### Exercise 2
 
 Given the following plot: 
 
@@ -848,7 +851,7 @@ ggplot(
     cat(longmcq(choices))
     ```
 
-## Code block 1
+### Exercise 3
 
 Suppose we run the following code. 
 
@@ -933,7 +936,7 @@ ggplot(
     ```
 
 
-## Code block 2
+### Exercise 4
 
 Suppose we run the following code block
 
@@ -1025,7 +1028,7 @@ ggplot(
     cat(longmcq(choices))
     ```
 
-## Plot 3 
+### Exercise 5 
 
 Consider the following plot
 

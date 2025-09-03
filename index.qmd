@@ -98,7 +98,7 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | Week | Begins |  Topic | Materials | Lab (Thu/Fri) | Homework  |
 | -  | -- |  --- | ---- | --- | --- |
 | 1 | Aug 25 | R Basics  | [slides](slides/r-basics.qmd), [demo](https://colab.research.google.com/drive/1Tv0Obx3hGCX9Zi956jI7_5SuRO5T95h8?usp=drive_link) | No lab! | |
-| 2 | Sep 3 | Data visualization | [slides](slides/data-visualization.qmd), [demo](https://colab.research.google.com/drive/1eCKrIvYBn9-EoKAsh1_FWcRCVl5nLO7G?usp=sharing) | Lab 1 |  |
+| 2 | Sep 3 | Data visualization | [slides](slides/data-visualization.qmd), [demo](https://colab.research.google.com/drive/1eCKrIvYBn9-EoKAsh1_FWcRCVl5nLO7G?usp=sharing) | [Lab 1](labs/lab-01.qmd) |  |
 | 3 | Sep 8 | Data wrangling | |  Lab 2 | Pset 1 |
 | 4 | Sep 15 | Sampling distribution | |  Lab 3 | Pset 2 | 
 | 5 | Sep 22 | Hypothesis testing<br> | | Lab 4 | Pset 3 |

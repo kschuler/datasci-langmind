@@ -17,7 +17,7 @@ website:
       icon: bi-box-arrow-up-right
       href: https://canvas.upenn.edu/courses/1879865
     - text: Ed Discussion
-      icon: bi-box-arrow-up-right
+      icon: bi-chat-square-dots
       href: https://edstem.org/us/courses/85059
 format:
   html:
