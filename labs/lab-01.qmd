@@ -59,7 +59,7 @@ library(webexercises)
     #| echo: false
     #| results: asis
 
-    cat(fitb(c("4.4.1"), ignore_ws = TRUE, width = "20"))
+    cat(fitb(c("4.5.1"), ignore_ws = TRUE, width = "20"))
 
     ```
 
@@ -323,7 +323,7 @@ cat(longmcq(choices))
 
     # Define the answer choices
     choices <- c(
-        answer="an error",
+        answer="an warning message",
         "1 • 2 • 3",
         '2 • 4 • 6',
         "'one' • 'two' • 'three'"
