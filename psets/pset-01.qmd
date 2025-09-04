@@ -30,7 +30,7 @@ Suppose you tracked the number of hours you spent each day talking to an AI for 
 
 ## Problem 2
 
-Create the matrix given below and store it as `my_matrix`. Use an R function to return what type of object `my_matrix` is. Then, perform a mathematical operation on the matrix by multiplying every element by 2, and another operation by adding 10 to every element.
+Create the matrix given below and store it as `my_matrix`. Use an R function to return what type of object `my_matrix` is. Then, perform a mathematical operation on the matrix by multiplying every element by 2. Using the original matrix, perform another operation by adding 10 to every element.
 
 ```{r}
 #| echo: false
@@ -42,7 +42,7 @@ matrix(x, nrow = 3, ncol = 3)
 
 ## Problem 3
 
-Use `data.frame()` to create the dataframe shown below. Store the dataframe as `sytax`. Return the dataframe. Then use one of R's built in functions to return the structure of the data frame. 
+Use `data.frame()` to create the dataframe shown below. Store the dataframe as `syntax`. Return the dataframe. Then use one of R's built in functions to return the structure of the data frame. 
 
 ```{r}
 #| echo: false 

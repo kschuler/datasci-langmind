@@ -1206,14 +1206,14 @@
     "href": "psets/pset-01.html#problem-2",
     "title": "Problem set 1",
     "section": "Problem 2",
-    "text": "Problem 2\nCreate the matrix given below and store it as my_matrix. Use an R function to return what type of object my_matrix is. Then, perform a mathematical operation on the matrix by multiplying every element by 2, and another operation by adding 10 to every element.\n\n\n     [,1] [,2] [,3]\n[1,]   10   13   16\n[2,]   11   14   17\n[3,]   12   15   18"
+    "text": "Problem 2\nCreate the matrix given below and store it as my_matrix. Use an R function to return what type of object my_matrix is. Then, perform a mathematical operation on the matrix by multiplying every element by 2. Using the original matrix, perform another operation by adding 10 to every element.\n\n\n     [,1] [,2] [,3]\n[1,]   10   13   16\n[2,]   11   14   17\n[3,]   12   15   18"
   },
   {
     "objectID": "psets/pset-01.html#problem-3",
     "href": "psets/pset-01.html#problem-3",
     "title": "Problem set 1",
     "section": "Problem 3",
-    "text": "Problem 3\nUse data.frame() to create the dataframe shown below. Store the dataframe as sytax. Return the dataframe. Then use one of R’s built in functions to return the structure of the data frame.\n\n\n                       sentence grammatical rt_ms confidence\n1     The cat chased the mouse.        TRUE  1200          5\n2     The mouse the cat chased.       FALSE  1800          2\n3     Chased the cat the mouse.       FALSE  2000          1\n4 The cat, it chased the mouse.        TRUE  1500          4"
+    "text": "Problem 3\nUse data.frame() to create the dataframe shown below. Store the dataframe as syntax. Return the dataframe. Then use one of R’s built in functions to return the structure of the data frame.\n\n\n                       sentence grammatical rt_ms confidence\n1     The cat chased the mouse.        TRUE  1200          5\n2     The mouse the cat chased.       FALSE  1800          2\n3     Chased the cat the mouse.       FALSE  2000          1\n4 The cat, it chased the mouse.        TRUE  1500          4"
   },
   {
     "objectID": "psets/pset-01.html#problem-4",
