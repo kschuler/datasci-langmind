@@ -12,6 +12,15 @@ format:
         footer: "[Home](/index.qmd)"
 ---
 
+## Announcements
+
+- Class is full
+- Permits requested to Psych do not come to us! Please email me. 
+- Thanks for Welcoming Joan 🩷
+- New: Additional TAs for Pset support 
+- First lab today/tomorrow
+- Pset 1 released (Wednesdays)
+
 
 
 ## You are `here` {.smaller} 
