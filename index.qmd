@@ -59,7 +59,7 @@ Assignments for the Fall 2025 semester will be posted below. Last years material
 
 ### Problem sets
 
-There are 9 problem sets, due to Gradescope by noon on the following Mondays. You may request an extension of up to 3 days for any reason. After solutions are posted, late problem sets can still be submitted for half credit (50%). Your lowest score will be dropped. 
+There are 9 problem sets, released on Wednesdays and due to Gradescope by noon on the following Mondays. You may request an extension of up to 3 days for any reason. After solutions are posted, late problem sets can still be submitted for half credit (50%). Your lowest score will be dropped. 
 
 - [Pset 1 (Monday Sep 8)](psets/pset-01.qmd)
 - Pset 2 (Monday Sep 15)
