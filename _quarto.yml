@@ -2,28 +2,57 @@ project:
   type: website
   output-dir: docs
 website:
-  title: DataSci
-  announcement:
-    content: Pset 1 released!
+  page-footer: 
+    left: "Copyright 2025, Katie Schuler" 
+  title: DataScience
+  # announcement:
+  #   content: Pset 1 released!
   description: LING 0700 | PSYC 2314
+  # navbar:
+  #   #background: primary
+  #   search: true
+  #   right: 
+  #   - text: Request extension
+  #     href: index.qmd
   sidebar:
     style: docked
     logo: logo.png
-    search: true
+   # search: true
     contents:
-    - text: Syllabus
-      href: index.qmd
-    - text: Canvas
-      icon: bi-box-arrow-up-right
-      href: https://canvas.upenn.edu/courses/1879865
-    - text: Ed Discussion
-      icon: bi-chat-square-dots
-      href: https://edstem.org/us/courses/85059
+      - text: Home
+        icon: bi-house
+        href: index.qmd
+      - text: Week at a Glance 
+        icon: bi-zoom-in
+        href: help-schedule.qmd
+      - text: Syllabus
+        icon: bi-file-earmark-text
+        href: syllabus.qmd
+      - text: Staff
+        icon: people
+        href: staff.qmd
+      # - text: ⚡️R Cheatsheats
+      #   href: index.qmd
+      - text: Canvas
+        icon: bi-box-arrow-up-right
+        href: https://canvas.upenn.edu/courses/1879865
+      - text: Ed Discussion
+        icon: bi-chat-square-dots
+        href: https://edstem.org/us/courses/85059
+      - text: R Cheatsheets 
+        icon: bi-journal-code
+        href: r-cheatsheets.qmd
+      - text: <a href="https://edstem.org/us/courses/85059/discussion/6882125" class="btn btn-primary w-100 mt-3 text-white" role="button">Request an Extension</a>
+
+
 format:
   html:
     theme: cosmo
+    link-external-newwindow: true   # open external links in new tab
     css:
     - styles.css
     - include/webex.css
     toc: true
     include-after-body: include/webex.js
+    grid:
+      sidebar-width: 250px

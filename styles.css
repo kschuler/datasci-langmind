@@ -1,1 +1,25 @@
 /* css styles */
+
+.staff {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+}
+.staff img {
+  width: 120px;     /* shrink headshot */
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.8rem;
+}
+.staff div {
+  line-height: 1.35;
+}
+.staff p {
+  margin: 0.3rem 0 0;
+
+}
+
+.sidebar nav ul li {
+  margin-bottom: 100px; /* adds vertical space between items */
+}

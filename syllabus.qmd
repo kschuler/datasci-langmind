@@ -1,0 +1,87 @@
+---
+title: "Syllabus"
+format: 
+    html: default
+    pdf: default
+---
+
+## Course Information
+
+**Course description**: Data Sci for Lang & Mind is an entry-level course designed to teach basic principles of statistics and data science to students with little or no background in statistics or computer science. Students will learn to identify patterns in data using visualizations and descriptive statistics; make predictions from data using machine learning and optimization; and quantify the certainty of their predictions using statistical models. This course aims to help students build a foundation of critical thinking and computational skills that will allow them to work with data in all fields related to the study of the mind (e.g. linguistics, psychology, philosophy, cognitive science, neuroscience).
+
+**Prerequisites**: There are *no prerequisites beyond high school algebra*. No prior programming or statistics experience is necessary, though you will still enjoy this course if you already have a little. Students who have taken several computer science or statistics classes should look for a more advanced course.
+
+**Teaching Team**: Learn more about your instructors and TAs on the [Staff](staff.qmd) page! 
+
+- **Instructor**: Dr. Katie Schuler
+- **Lab Instructors**: Brittany Zykoski & Mingyang Bian
+- **Teaching Assistants**: Izabela Baran, Grace Tan, Jaey Kim
+
+**Lectures**: Tuesdays and Thursdays from 12 - 1:29pm in COHN 402.
+
+**Labs**: Hands-on practice and exam prep guided by TAs.
+
+* 402: Fri at 3:30-4:29p in WILL 316 with Brittany (and Grace)
+* 403: Thu at 1:45-2:44p in WILL 204 with Brittany (and Grace)
+* 405: Fri at 12:00-12:59p in WILL 321 with Mingyang (and Izabela)
+* 406: Thu at 5:15-6:14p in BENN 322 with Mingyang (and Izabela)
+
+**Office Hours**: You are welcome to attend any office hours that fit your schedule. The linguistics department is located on the 3rd floor of 3401-C Walnut street, between Franklin's Table and Modern Eye. 
+
+- Brittany Zykoski: Mondays 10:30-11:30am in 325C.
+- Mingyang Bian: Thursdays 10:30-11:30 in 325C. 
+
+**Snack & Share**: Join Katie at the Linguistic department's daily Snack & Share event! Free snacks and fun convos every weekday at 1:30 in the Linguistics Library. 
+
+**Grading**:
+
+- 20% Homework (equally weighted, lowest dropped)
+- 20% Lab Attendance/Participation (up to 2 absences excused without penalty)
+- 60% Exams (equally weighted, final is optional to replace lowest exam)
+
+**Collaboration**: Collaboration on problem sets and labs is highly encouraged! If you collaborate on psets, you need to write your own code/solutions, name your collaborators, and cite any outside sources you consulted (you don't need to cite the course material).
+
+**Accomodations**: We will fully support any accommodations arranged through Disability Services via the [Weingarten Center](https://weingartencenter.universitylife.upenn.edu/disability-services/). If class conflicts with a religious holiday you observe, we are happy to make alternate arrangements. Please let us know early in either case so we can plan ahead.
+
+**Extra credit**: There is no extra credit in the course. However, students can submit any missed problem set or exam by the end of the semester for half credit (50%) to boost their grade.
+
+**Regrade requests** Regrade requests should be submitted through Gradescope within one week of receiving your graded assignment. Please explain why you believe there was a grading mistake, given the posted solutions and rubric
+
+
+## Assignments 
+
+Assignments for the Fall 2025 semester will be posted below. Last years materials are avilable [here](https://kschuler.github.io/datasci/#materials)
+
+### Problem sets
+
+There are 9 problem sets, released on Wednesdays and due to Gradescope by noon on the following Mondays. You may request an extension of up to 3 days for any reason. After solutions are posted, late problem sets can still be submitted for half credit (50%). Your lowest score will be dropped. 
+
+- [Pset 1 (Monday Sep 8)](psets/pset-01.qmd)
+- Pset 2 (Monday Sep 15)
+- Pset 3 (Monday Sep 22)
+- Pset 4 (Monday Sep 29)
+- Pset 5 (Monday Oct 20)
+- Pset 6 (Monday Oct 27)
+- Pset 7 (Monday Nov 3)
+- Pset 8 (Monday Nov 17)
+
+### Exams 
+There are 2 midterm exams, taken in class on the following dates. Exams cannot be rescheduled, except in cases of genuine conflict or emergency (documentation and a Course Action Notice are required). However, you can submit any missed exam by the end of the semester for half credit (50%). You may also replace your lowest midterm exam score with the optional final exam.
+
+- Midterm 1 (Thursday, October 2)
+- Midterm 2 (Thursday November 20)
+- Optional Final Exam (TBD)
+
+### Lab exercises 
+
+Lab exercises are designed for practice and skill-building. They are not collected or graded. However, lab attendance is required and will count toward your course grade. You may miss up to 2 labs (for reasons such as illness or travel) without penalty.Notify your section TA if you must miss a lab. 
+
+- [Lab 1 R Basics & Data Visualization](labs/lab-01.qmd)
+- Lab 2 Data wrangling
+- Lab 3 Sampling
+- Lab 4 Hypothesis testing
+- Lab 5 Model specification
+- Lab 6 Model fitting
+- Lab 7 Model evaluation 
+- Lab 8 Feature engineering (topic may change)
+- Lab 9 (optional)

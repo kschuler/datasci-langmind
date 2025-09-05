@@ -1,0 +1,86 @@
+---
+title: "Staff"
+format: 
+    html: default
+---
+
+Please use Ed Discussion for all logistical and support questions! 
+
+## Instructor
+
+<div class="staff">
+<img src="katie.webp" alt="Kathryn Schuler headshot">
+<div>
+<strong>Katie Schuler</strong><br>
+Assistant Professor<br>
+<a href="mailto:kschuler@sas.upenn.edu">kschuler@sas.upenn.edu</a><br>
+<p>Hi everyone and welcome to my favorite class! :) I'm an assisant professor in the Linguistics Department and also the director of the Child Language Lab. Looking forward to a great semester!</p>
+</div>
+</div>
+
+
+
+## Lab Instructors
+
+
+<div class="staff">
+<img src="brittany2.png" alt="TA headshot">
+<div>
+<strong>Brittany Zykoski</strong><br>
+Graduate student<br>
+<a href="mailto:zykoski@sas.upenn.edu">zykoski@sas.upenn.edu</a><br>
+<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+</div>
+</div>
+
+<div class="staff">
+<img src="mingyang.jpg" alt="TA headshot">
+<div>
+<strong>Mingyang Bian</strong><br>
+Graduate student<br>
+<a href="mailto:mybian@sas.upenn.edu">mybian@sas.upenn.edu</a><br>
+<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+</div>
+</div>
+
+## Teaching Assistants 
+
+<div class="staff">
+<img src="https://bear-images.sfo2.cdn.digitaloceanspaces.com/childlanglab/izabela-labpicture.webp" alt="TA headshot">
+<div>
+<strong>Izabela Baron</strong><br>
+Undergraduate student<br>
+<a href="mailto:ibaran@sas.upenn.edu">ibaran@sas.upenn.edu</a><br>
+<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+</div>
+</div>
+
+<div class="staff">
+<img src="logo.png" alt="TA headshot">
+<div>
+<strong>Grace Tan</strong><br>
+Undergraduate student<br>
+<a href="mailto:tangarce@sas.upenn.edu">tangarce@sas.upenn.edu</a><br>
+<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+</div>
+</div>
+
+<div class="staff">
+<img src="logo.png" alt="TA headshot">
+<div>
+<strong>Jaey Kim</strong><br>
+Undergraduate student<br>
+<a href="mailto:jaeyeonk@sas.upenn.edu">jaeyeonk@sas.upenn.edu</a><br>
+<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+</div>
+</div>
+
+<div class="staff">
+<img src="logo.png" alt="TA headshot">
+<div>
+<strong>You?</strong><br>
+Undergraduate student<br>
+<a href="mailto:datasci.langmind@gmail.com">datasci.langmind@gmail.com</a><br>
+<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+</div>
+</div>

@@ -1,0 +1,10 @@
+---
+title: "R Cheat Sheets"
+page-layout: article
+---
+
+You will have access to these cheat sheets on exams! 
+
+| Preview | Link |
+|---------|------|
+| ![](assests/cheatsheets/thumbnails/base-r.png){width=320px} | [Base R Cheat Sheet](assets/cheatsheets/base-r.pdf){target="_blank"} |

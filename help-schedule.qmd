@@ -1,0 +1,9 @@
+## Week at a Glance
+
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;">
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FNew_York&showPrint=0&showTitle=0&mode=WEEK&showTabs=0&showCalendars=0&src=MDM2MzVlNzQyYzZmY2YwMTE0MDEyOGE5Y2Q3YmViMzYwNDIwZGU3OGQ3YjJmNzg1ZDVkZTMyMzAxNjY2OWRlMUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmRkZjgxY2RmZTkyZmUzMjVlMjY0MTdkNzJlZmU2NTVlMWM5Y2YwMjRkZmI0YTc5ZmEwMWQzNzdhYTBmZjZmYUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NWM4MThlMGU2NWY4MTRhMzY1YTBjMTQ5Y2Q4YjAyODVjYjFlMzRlMmMyYTBjNDA5NGFjMjljNGY1YTdiYjk4NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MDEwZjM1NjkxZTNjYjZkNWEyZmU1ZTFkOGJkMTY0MDVhNThlN2E3ZGFjZWM3YzJmZGEzZTA5ZTcwZDUzOTM1NkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23f09300&color=%23616161&color=%238e24aa&color=%230b8043" 
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+    frameborder="0"
+    scrolling="no">
+</iframe>
+</div>
