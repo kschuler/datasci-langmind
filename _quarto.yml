@@ -42,10 +42,11 @@ website:
       - text: R Cheatsheets 
         icon: bi-journal-code
         href: r-cheatsheets.qmd
-      - text: <a href="https://edstem.org/us/courses/85059/discussion/69240325" class="btn btn-warning w-100 mt-3 text-white" role="button">Ask a Question</a>
+      - text: Staff Resources
+        icon: bi-lock
+        href: https://docs.google.com/document/d/1Zj5Y26WXj5mmLtx4P4HRrNWP5Ov_TCtj6aBX_X4PCOM/edit?usp=sharing
+      - text: <a href="https://edstem.org/us/courses/85059/discussion/6924032" class="btn btn-warning w-100 mt-3 text-white" role="button">Ask a Question</a>
       - text: <a href="https://edstem.org/us/courses/85059/discussion/6882125" class="btn btn-primary w-100 mt-3 text-white" role="button">Request an Extension</a>
-
-
 format:
   html:
     theme: cosmo
