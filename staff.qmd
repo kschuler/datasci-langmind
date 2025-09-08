@@ -56,12 +56,12 @@ Undergraduate student<br>
 </div>
 
 <div class="staff">
-<img src="logo.png" alt="TA headshot">
+<img src="Grace.png" alt="TA headshot">
 <div>
 <strong>Grace Tan</strong><br>
 Undergraduate student<br>
 <a href="mailto:tangarce@sas.upenn.edu">tangarce@sas.upenn.edu</a><br>
-<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+<p>Hey, everyone! I am a senior in the College of Arts and Sciences, majoring in Neuroscience and minoring in Chemistry on the pre-med track. Fun fact: this is the first class that taught me R! :D</p>
 </div>
 </div>
 
