@@ -30,9 +30,9 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 12 | Nov 11 | Feature engineering (??) | |  Lab 8 | Pset 8 | 
 | 13 | Nov 18 | Miterm 2 review (Tue)<br>Midterm 2 (Thu) | | |   | 
 | 14 | Nov 25 |**Thanksgiving break, no class/lab**  |    |
-| 15 | Dec 2 | Careers in datasci lunch! | |   |  |
-|  |  | Dec 2 - Brittany's Labs (402/403) 12pm University Club | |   |  |
-|  |  | Dec 4 - Mingyang's Labs (405/406) 12pm University Club | |  Lab 9 |  |
+| 15 | | Careers in datasci lunch! | |   |  |
+|  | Dec 2 | Brittany's Labs (402/403) | 12pm University Club  |   |  |
+|  |  Dec 4  |Mingyang's Labs (405/406) | 12pm University Club  |  Lab 9 |  |
 | 16 | Dec 9 | **Last week of class, no class/lab** |  |  |  |
 | 17 | TBD | Final exam (optional) |
 
