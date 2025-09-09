@@ -1,0 +1,1194 @@
+---
+title: "Data wrangling"
+subtitle: "Data Science for Studying Language and the Mind"
+author: Katie Schuler
+date: 2025-09-09
+echo: true
+format: 
+    revealjs:
+        theme: dark
+        incremental: true 
+        footer: "[https://kschuler.github.io/datasci-langmind/](https://kschuler.github.io/datasci-langmind/)"
+---
+
+# Data import and tidy (Tue)
+
+Tuesday's topic
+
+## Announcements {.smaller}
+
+- Course selection period ends today! 
+- Please email me by 1pm if you require any permits or changes 
+    - Our office admin leaves at 4 and I am not able to see or issue permits myself
+- Pset 1 was due yesterday at noon 
+    - Solutions will be posted on Thursday at noon
+    - If you forgot to turn it in, please email me asap to request an extension to Thursday
+- If you are new to the class, please see me after class
+    - We will try to schedule a remediation day to help you get caught up
+
+## You are `here` {.smaller} 
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+##### Data science with R 
+::: {.nonincremental}
+- R basics
+- Data visualization
+- `Data wrangling` 
+:::
+:::
+
+::: {.column width="33%"}
+
+##### Stats & Model buidling
+::: {.nonincremental}
+- Sampling distribution
+- Hypothesis testing
+- Model specification
+- Model fitting 
+- Model evaluation
+:::
+:::
+
+::: {.column width="33%"}
+
+##### More advanced 
+::: {.nonincremental}
+
+- Feature Engineering
+- Classification
+- Mixed-effect models
+::: 
+:::
+
+::::
+
+## Data science workflow 
+
+![Data Science Workflow by R4DS](/assests/images/data-science-workflow.png)
+
+# Data importing and tidying 
+
+## Overview for today
+
+- Tidyverse
+- Tidy data 
+- `purr`  - functional programming
+- `tibble` - modern data.frame
+- `readr` - reading data
+
+# Tidyverse 
+> The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. 
+> 
+> [Tidyverse package docs](https://www.tidyverse.org/)
+
+## Tidyverse {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- `ggplot2` - for data visualization
+- `dplyr` - for data wrangling
+- `readr` - for reading data
+- `tibble` - for modern data frames
+- `stringr`: for string manipulation
+- `forcats`: for dealing with factors
+- `tidyr`: for data tidying
+- `purrr`: for functional programming
+:::
+
+::: {.column width="50%"}
+
+![Tidyverse hex logos from www.tidyverse.org](/assests/images/tidyverse-hexlogos.png){fig-align="center" width=100%}
+:::
+
+::::
+
+## Loading the tidyverse {.smaller}
+
+Already installed on Google Colab's R kernel:
+
+```{r}
+library(tidyverse)
+```
+
+Returns a message in Google Colab: 
+
+- a list of packages loaded
+- a warning of potential name conflicts 
+ 
+
+## Tidy data
+
+Tidyverse makes use of tidy data, a standard way of structuring datasets: 
+
+1. each variable forms a **column**; each column forms a variable
+2. each observation forms a **row**; each row forms an observation
+3. value is a **cell**; each cell is a single value
+
+## Tidy data {.smaller}
+
+![Visual of tidy data rules, from R for Data Science](/assests/images/tidy-data.png){fig-align="center" width=80%}
+
+Why tidy data? 
+
+- Because consistency and uniformity are very helpful when programming
+- Variables as columns works well for vectorized languages (R!)
+
+
+# `purr`
+Functional programming
+
+to illustrate the joy of `tidyverse` and tidy data
+
+## `purr`
+
+> purrr enhances R’s functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors. If you’ve never heard of FP before, the best place to start is the family of map() functions which allow you to replace many for loops with code that is both more succinct and easier to read.
+> 
+> [purrr docs](https://purrr.tidyverse.org/)
+
+## The `map_*()` functions
+
+1. Take a vector as input
+2. Apply a function to each element
+3. Return a new vector 
+
+##  The `map_*()` functions
+
+We say "functions" because there are 5, one for each type of vector: 
+
+- `map()` - list
+- `map_lgl()` - logical
+- `map_int()` - integer
+- `map_dbl()` - double
+- `map_chr()` - character
+
+## `map` use case
+
+```{r}
+
+df <- data.frame(
+    x = 1:10,
+    y = 11:20,
+    z = 21:30
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+with copy+paste
+```{r}
+mean(df$x)
+mean(df$y)
+mean(df$z)
+```
+
+:::
+
+::: {.column width="50%"}
+with `map`
+```{r}
+map(df, mean)
+```
+
+:::
+::::
+
+# `tibble`
+modern data frames
+
+## `tibble`
+
+> A tibble, or tbl_df, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less and complain more
+> 
+> [tibble docs](https://tibble.tidyverse.org/)
+
+## `tibble` {.smaller}
+
+Tibbles do less than data frames, in a good way: 
+
+- never changes type of input (never converts strings to factors!)
+- never changes the name of variables 
+- only recycles vectors of length 1
+- never creates row names 
+
+
+::: aside
+The take-away is that `data.frame` and `tibble` sometimes behave differently. The behavior of `tibble` makes more sense for modern data science, so we should us it instead!
+:::
+
+## Create a `tibble` {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Coerce an existing object:
+```{r}
+df <- data.frame(
+    x = 1:4,
+    y = c("a", "b", "c", "d")
+)
+as_tibble(df)
+```
+
+Pass a column of vectors: 
+```{r}
+tibble(
+    x = 1:4,
+    y = c("a", "b", "c", "d")
+)
+```
+
+
+:::
+::: {.column width="50%"}
+
+Define row-by-row:
+
+```{r}
+tribble(
+    ~x, ~y,
+    "a", 1,
+    "b", 2,
+    "c", 3,
+    "d", 4 
+)
+```
+
+:::
+::::
+
+## Test if `tibble`
+
+With `is_tibble(x)` and `is.data.frame(x)`
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Data frame:
+
+```{r}
+df <- data.frame(
+    x = 1:4,
+    y = c("a", "b", "c", "d")
+)
+```
+
+```{r}
+is_tibble(df)
+is.data.frame(df)
+```
+
+
+:::
+::: {.column width="50%"}
+
+Tibble:
+
+```{r}
+tib <- tribble(
+    ~x, ~y,
+    "a", 1,
+    "b", 2,
+    "c", 3,
+    "d", 4 
+)
+```
+
+```{r}
+is_tibble(tib)
+is.data.frame(tib)
+```
+
+:::
+::::
+
+## `data.frame` v `tibble` {.smaller}
+
+You will encounter 2 main differences:
+
+1. **printing** 
+    - by default, tibbles print the first 10 rows and all columns that fit on screen, making it easier to work with large datasets. 
+    - also report the type of each column (e.g. `<dbl>`, `<chr>`)
+2. **subsetting** - tibbles are more strict than data frames, which fixes two quirks we encountered when subsetting with `[[` and `$`:
+    - tibbles *never* do partial matching
+    - they *always* generate a warning if the column you are trying to extract does not exist.
+
+# `readr`
+reading data 
+
+## `readr`
+
+> The goal of readr is to provide a fast and friendly way to read rectangular data from delimited files, such as comma-separated values (CSV) and tab-separated values (TSV). It is designed to parse many types of data found in the wild, while providing an informative problem report when parsing leads to unexpected results.
+> 
+> [readr docs](https://readr.tidyverse.org/)
+
+## Rectangular data
+
+![Sample csv file from R for Data Science](/assests/images/rectangle-data.png){#fig-rectangledata fig-align="center" width=80%}
+
+## Getting a CSV file from google sheets 
+
+- Let's quickly demo how we'd do this from google sheets
+
+## `read_*()`
+
+The `read_*()` functions have two important arguments: 
+
+1. `file` - the path to the file 
+2. `col_types` - a list of how each column should be converted to a specific data type
+
+## 7 supported file types, `read_*()`
+
+- `read_csv()`: comma-separated values (CSV)
+- `read_tsv()`: tab-separated values (TSV)
+- `read_csv2()`: semicolon-separated values
+- `read_delim()`: delimited files (CSV and TSV are important special cases)
+- `read_fwf()`: fixed-width files
+- `read_table()`: whitespace-separated files
+- `read_log()`: web log files
+
+## Read `csv` files 
+
+Path only, `readr` guesses types: 
+
+```r
+read_csv(file='"https://pos.it/r4ds-students-csv"')
+
+```
+. . .
+
+Path and specify col_types:
+
+```r
+read_csv(
+    file='"https://pos.it/r4ds-students-csv"', 
+    col_types = list( x = col_string(), y = col_skip() )
+)
+```
+
+::: aside
+Guessing heuristic: character > date-time > double > logical
+:::
+
+
+## `col_types` column specification {.smaller}
+
+There are 11 column types that can be specified: 
+
+- `col_logical()` - reads as boolean TRUE FALSE values
+- `col_integer()` - reads as integer
+- `col_double()` - reads as double
+- `col_number()` - numeric parser that can ignore non-numbers
+- `col_character()` - reads as strings
+- `col_factor(levels, ordered = FALSE)` - creates factors
+- `col_datetime(format = "")` - creates date-times
+- `col_date(format = "")` - creates dates
+- `col_time(format = "")` - creates times
+- `col_skip()` - skips a column 
+- `col_guess()` - tries to guess the column
+
+## Reading more complex files {.smaller}
+
+Reading more complex file types requires functions outside the tidyverse:
+
+- **excel** with `readxl` - see [Spreadsheets](https://r4ds.hadley.nz/spreadsheets#excel) in R for Data Science
+- **google sheets**  with `googlesheets4` - see [Spreadsheets](https://r4ds.hadley.nz/spreadsheets#google-sheets) in R for Data Science
+- **databases** with `DBI` - see [Databases](https://r4ds.hadley.nz/databases) in R for Data Science
+- **json data** with `jsonlite` - see [Hierarchical data](https://r4ds.hadley.nz/rectangling) in R for Data Science
+
+## Writing to a file
+
+Write to a .csv file with
+
+```r
+write_csv(students, "students.csv")
+```
+
+::: aside
+arguments: tibble, name to give file
+:::
+
+# Common problems `readr`
+
+## Data set containing 3 common problems {.smaller}
+
+```{r}
+students <- read_csv('https://pos.it/r4ds-students-csv')
+
+students
+```
+
+1. Column contains unexpected values (`AGE`)
+2. Missing values are not `NA` (`AGE` and `favorite.food`)
+3. Column names have spaces (`Student ID` and `Full Name`)
+
+## Column contains unexpected values {.smaller}
+
+
+Your dataset has a column that you expected to be `logical` or `double`, but there is a typo somewhere, so R has coerced the column into `character`. 
+
+```{r}
+students
+```
+
+. . . 
+
+Solve by specifying the column type `col_double()` and then using the `problems()` function to see where R failed.
+
+```{r}
+students_coerced <- read_csv(
+    file = 'https://pos.it/r4ds-students-csv', 
+    col_types = list(AGE = col_double()))
+
+problems(students_coerced)
+```
+
+
+
+## Missing values are not `NA` {.smaller}
+ 
+Your dataset has missing values, but they were not coded as `NA` as R expects. 
+
+```{r}
+students
+```
+
+. . . 
+
+Solve by adding an `na` argument (e.g. `na=c("N/A")`)
+
+```{r}
+(students_nas <- read_csv(
+    file = 'https://pos.it/r4ds-students-csv', 
+    na = c("N/A", "<NA>")))
+```
+
+
+## Column names have spaces {.smaller}
+
+Your dataset has column names that include spaces, breaking R's naming rules. In these cases, R adds backticks (e.g. `` `brain size` ``); 
+
+. . . 
+
+We can use the `rename()` function to fix them. 
+
+```{r}
+students %>% 
+    rename(
+        student_id = `Student ID`,
+        full_name = `Full Name`
+    )
+```
+
+. . . 
+ d
+If we have a lot to rename and that gets annoying, see `janitor::clean_names()`.
+ 
+
+
+
+# Questions? 
+
+# Data transformation (Thu)
+
+Thursday's lecture
+
+## Announcements {.smaller}
+
+- Solutions to the pset are posted
+- Remember what's most efficient: 
+    - Come to class/lab and follow along = easy exams 
+
+## You are `here` {.smaller} 
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+##### Data science with R 
+::: {.nonincremental}
+- R basics
+- Data visualization
+- `Data wrangling`
+:::
+:::
+
+::: {.column width="33%"}
+
+##### Stats & Model buidling
+::: {.nonincremental}
+- Sampling distribution
+- Hypothesis testing
+- Model specification
+- Model fitting 
+- Model evaluation
+:::
+:::
+
+::: {.column width="33%"}
+
+##### More advanced 
+::: {.nonincremental}
+
+- Feature Engineering
+- Classification
+- Mixed-effect models
+::: 
+:::
+
+::::
+
+## Data science workflow 
+
+![Data Science Workflow by R4DS](/assests/images/data-science-workflow.png)
+
+
+## Acknowledgements
+
+R for Data Science, Ch 4
+
+## Today's data 
+
+`english` from the `languageR` package 
+
+```{r}
+#install.packages(languageR)
+library(languageR)
+```
+
+
+## Why transform 
+
+> Visualization is an important tool for generating insight, but it’s rare that you get the data in exactly the right form you need to make the graph you want. Often you’ll need to create some new variables or summaries to answer your questions with your data, or maybe you just want to rename the variables or reorder the observations to make the data a little easier to work with.
+
+--- 
+
+![Art by Allison Horst https://allisonhorst.com/](/assests/images/why-tidy-3.jpg)
+
+--- 
+
+![Art by Allison Horst https://allisonhorst.com/](/assests/images/why-tidy.jpg)
+
+--- 
+
+![Art by Allison Horst https://allisonhorst.com/](/assests/images/why-tidy-2.jpg)
+
+
+
+
+# `dplyr` 
+
+## Common structure of `dplyr` verbs 
+
+All `dplyr` functions (verbs) share a common structure:
+
+- 1st argument is always a data frame
+- Subsequent arguments typically describe which columns to operate on (via their names) 
+- Output is always a new data frame
+
+## Some `dplyr` verbs operate on {.smaller}
+
+- rows - `filter()`, `arrange()`, `distinct()`
+- columns - `mutate()`, `select()`, `rename()`
+- groups - `group_by()`, `summarise()`, `ungroup()`
+- tables - see joins and pivots (not covered)
+
+## Combine `dplyr` verbs with the pipe
+
+We can easily combine `dplyr` functions to solve complex problems:
+
+- The pipe operator, `|>` takes the output from one function and passes it as input (the first argument) to the next function.
+- There is another version of the pipe, `%>%`. See the reading on data transformation if you are curious about the difference. 
+
+# Rows
+
+## Manipualate rows with `dplyr` 
+
+| | |
+| --- | ------- | 
+| `filter()` | keep only some rows based on values of column |
+| `arrange()` | arrange rows in order you specify |
+| `distinct()` | finds unique rows | 
+
+--- 
+
+![Art by Allison Horst https://allisonhorst.com/](/assests/images/dplyr_filter.jpg)
+
+## `fliter()` {.smaller}
+
+Keep only some rows based on values of the column using logical operations
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    filter(Familiarity < 3.0)
+
+```
+
+## `fliter()` {.smaller}
+
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Common mistake is using `=` 
+
+
+```{r}
+#| echo: true
+#| error: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    filter(Word = 'zoo')
+
+```
+
+::: 
+
+::: {.column width=50%}
+
+instead of `==`
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+     filter(Word == 'zoo')
+
+```
+
+::: 
+
+::::
+
+## `arrange()` {.smaller}
+
+Arranges rows in the order you specify 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    arrange(Word)
+
+```
+
+## `arrange()` {.smaller}
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Will use ascending order
+
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    arrange(Word)
+
+```
+
+::: 
+
+::: {.column width=50%}
+
+Unless you specify descending 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    arrange(desc(Word))
+
+```
+
+::: 
+
+::::
+
+## `distinct()` {.smaller}
+
+Finds unique rows in a dataset; no arguments removes duplicates in dataset (if any exist)
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    distinct(Word)
+
+```
+
+## `distinct()` {.smaller}
+
+You can optionally specify columns to find unique combinations 
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Returns only the columns you specify
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    distinct(Word)
+
+```
+
+::: 
+
+::: {.column width=50%}
+
+Unless you add `.keep_all=TRUE` argument
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:Word) %>%
+    distinct(Word, .keep_all=TRUE)
+
+```
+
+::: 
+
+::::
+
+
+
+
+
+
+# Columns
+
+## Manipualate columns with `dplyr` 
+
+| | |
+| --- | ------- | 
+| `mutate()` | adds new columns calculated from existing columns |
+| `select()` | selects columns based on their names |
+| `rename()` | renames some columns | 
+
+
+
+
+## `select()` {.smaller}
+
+Select columns based on their names 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+english %>%  
+    select(RTlexdec, Familiarity, AgeSubject)
+
+```
+
+
+## `select()` {.smaller}
+
+Use `:` to select everything from one column to another
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+english %>%  
+    select(RTlexdec:AgeSubject)
+
+```
+
+## `select()` {.smaller}
+
+Use logical operators like `&` or `!` to identify the subset of columns you want to select
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+english %>%  
+    select(!RTlexdec:AgeSubject)
+
+```
+
+## `select()` {.smaller}
+
+You can rename columns when you select them
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+english %>%  
+    select(RTlex = RTlexdec, Familiarity, AgeSubject)
+
+```
+
+## `rename()` {.smaller}
+
+Keep all columns but rename one or more
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+english %>%  
+    rename(RTlex = RTlexdec, WordCat = WordCategory)
+
+```
+
+--- 
+
+![Art by Allison Horst https://allisonhorst.com/](/assests/images/dplyr_mutate.jpg)
+
+## `mutate()` {.smaller}
+
+Add new columns that are calculated from exising columns 
+
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec:AgeSubject) %>%
+    mutate(RTdiff = RTlexdec - RTnaming)
+
+```
+
+
+## `mutate()` {.smaller}
+
+Columns are added to the right by default, but you can specify where you'd like to add them by number or name 
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+With `.after` 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+english %>%  
+    select(RTlexdec:Familiarity) %>%
+    mutate(
+        RTdiff = RTlexdec - RTnaming,
+        .after = RTnaming
+    )
+
+```
+
+::: 
+
+::: {.column width=50%}
+
+With `.before` 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5"
+english %>%  
+    select(RTlexdec:Familiarity) %>%
+    mutate(
+        RTdiff = RTlexdec - RTnaming,
+        .before = RTlexdec
+    )
+
+```
+
+::: 
+
+::::
+
+
+# Group and summarise 
+
+## Group and summarise with `dplyr` 
+
+| | |
+| --- | ------- | 
+| `group_by()` | used to divide your dataset into groups |
+| `summarise()` | often used after `group_by()` to calculate summary statistics on grouped data |
+| `ungroup()` | used to remove the grouping | 
+
+## `group_by()` {.smaller}
+
+Divide your dataset into groups 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec, Familiarity, AgeSubject) %>%
+    group_by(AgeSubject)
+
+```
+
+## `group_by()` {.smaller}
+
+Can group by more than one variable
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    group_by(AgeSubject, Voice)
+
+```
+
+## `group_by()` {.smaller}
+
+Does not change original df, adds groups attribute
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3"
+grouped_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject) %>%
+    group_by(AgeSubject)
+
+grouped_english
+```
+
+::: 
+
+::: {.column width=50%}
+
+
+```{r}
+attr(english, "groups")
+```
+
+```{r}
+attr(grouped_english, "groups")
+```
+
+::: 
+
+::::
+
+
+. . . 
+
+
+## `summarise()` {.smaller}
+
+Often used after `group_by()` to calculate summary stats on grouped data 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject) %>%
+    group_by(AgeSubject) %>%
+    summarise(n = n())
+
+summary_english
+```
+
+## `summarise()` {.smaller}
+
+You can add any number of summary stats 
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5-6"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    group_by(AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec)
+    )
+
+summary_english
+```
+
+- Note that the returned dataframe is grouped!
+
+## `summarise()` {.smaller}
+
+Use the `.groups` argument to drop or keep grouping in returned dataframe
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Drop all groups
+
+```{r}
+#| echo: true
+#| code-line-numbers: "7"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    group_by(AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec), 
+        .groups = "drop"
+    )
+
+summary_english
+```
+
+::: 
+
+::: {.column width=50%}
+
+Keep all groups
+
+```{r}
+#| echo: true
+#| code-line-numbers: "7"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    group_by(AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec), 
+        .groups = "keep"
+    )
+
+summary_english
+```
+
+::: 
+
+::::
+
+## `summarise()`  {.smaller}
+
+Or use the new `.by` argument **instead of** group_by() to return an ungrouped dataframe
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Drop all groups
+
+```{r}
+#| echo: true
+#| code-line-numbers: "3,7"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    group_by(AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec), 
+        .groups = "drop"
+    )
+
+summary_english
+```
+
+::: 
+
+::: {.column width=50%}
+
+Or just use by!
+
+```{r}
+#| echo: true
+#| code-line-numbers: "6"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec), 
+        .by = c(AgeSubject, Voice)
+    )
+
+summary_english
+```
+
+::: 
+
+::::
+
+
+## `ungroup()`  {.smaller}
+
+Can also remove grouping after with `ungroup()`
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Drop all groups
+
+```{r}
+#| echo: true
+#| code-line-numbers: "7"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    group_by(AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec), 
+        .groups = "drop"
+    )
+
+summary_english
+```
+
+::: 
+
+::: {.column width=50%}
+
+Or ungroup after
+
+```{r}
+#| echo: true
+#| code-line-numbers: "8"
+summary_english <- english %>%  
+    select(RTlexdec, Familiarity, AgeSubject, Voice) %>%
+    summarise(
+        n = n(), 
+        mean = mean(RTlexdec), 
+        .by = c(AgeSubject, Voice)
+    ) %>% 
+    ungroup()
+
+summary_english
+```
+
+::: 
+
+::::
+
+
+
+# More advanced 
+
+## Not covered, but good to know
+
+There are a few more advanced techniques for transforming and tidying data that we won't cover now, but might be useful to you in your own research.
+
+- **joins** - sometimes you have more than one dataset that you want to join into one. `dplyr` also has functions for handling that. [Learn more about joins](https://r4ds.hadley.nz/joins)
+- **pivots** - sometimes your data doesn't arrive in the tidy data form.  The `tidyr` package can help with  `pivot_longer()` and `pivot_wider()`. [Learn more about pivots](https://r4ds.hadley.nz/data-tidy)
+
+# Questions? 
