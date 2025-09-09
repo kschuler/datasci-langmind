@@ -1,6 +1,5 @@
 ---
 title:  "Week 1: R basics"
-date:   2024-08-27
 author: 
     - Katie Schuler
 format:
@@ -9,21 +8,14 @@ format:
     pdf: default
 ---
 
-# Hello, World!
 
-## What is data science?
+# What is data science?
 
 > Data are descriptions of the world around us, collected through observation and stored on computers. Computers enable us to infer properties of the world from these descriptions. Data science is the discipline of drawing conclusions from data using computation.
 > 
 > -- *Computational and Inferential Thinking: The Foundations of Data Science*
 
-Data science is about making decisions based on incomplete information. This concept is not new -- brains (especially human brains!) love doing this. To illustrate, what do you see in the following image? 
-
-![from Kok & de Lange (2014)^[Kok, P., & de Lange, F. P. (2014). Shape perception simultaneously up-and downregulates neural activity in the primary visual cortex. Current Biology, 24(13), 1531-1535.]](/assests/images/visual-illusion.png){#fig-visualillusion fig-align="left" width=25%}
-
-Did you see a gray triangle on top of three circles? Most people do! But it turns out that your brain is filling in the gaps, inferring the presence of a triangle from the partial information available in the black circles ^[https://neurosciencenews.com/neuroimaging-visual-processing-fmri-1150/]. 
-
-While the underlying concept is not new, the computational tools we use are *relatively* new. And we have a lot more data! 
+Data science is about making decisions based on incomplete information. This concept is not new -- brains (especially human brains!) love doing this. While the underlying concept is not new, the computational tools we use are *relatively* new. And we have a lot more data! 
 
 ![from https://web-assets.domo.com/miyagi/images/product/product-feature-22-data-never-sleeps-10.png](/assests/images/data-never-sleeps.png){#fig-dataneversleeps fig-align="left" width=80%}
 
@@ -64,33 +56,14 @@ Then, we will spend the next several weeks building a **foundation in basic stat
 - Hypothesis testing
 - Model specification
 - Model fitting 
-- Model accuracy
-- Model reliability
+- Model evaluation
 
 Finally we will cover a selection of **more advanced topics** that are often applied in language and mind fields, with a focus on basic understanding: 
 
-- Classification
-- Inference for regression
+- Feature engineering
+- Classification 
 - Mixed-effect models
 
-## Syllabus, briefly
-
-Each week will include two lectures and a lab: 
-
-- **Lectures** are on Tuesdays and Thursdays at 12pm and will be a mix of conceptual overviews and R tutorials. It is a good idea to bring your laptop so you can follow along and try stuff in R!
-- **Labs** are on Thursday or Friday and will consist of (ungraded) practice problems and concept review with TAs. You may attend any lab section that works for your schedule. 
-
-There are 8 graded assessments: 
-
-- **6 Problem sets (40%)** in which you will be asked to apply your newly aquired R programming skills.
-- **2 Midterm exams (60%)** in which you will be tested on your understanding of lecture concepts. 
-
-There are a few policies to take note of: 
-
-- Missed exams cannot be made up except in cases of genuine conflict or emergency (documentation and course action notice required). You may take the optional final exam to replace a missed or low scoring exam. 
-- You may request an extension on any problem set of up to 3 days. But extensions beyond 3 days will not be granted (because delying solutions will negative impact other students). 
-- You may submit any missed quiz or problem set by the end of the semester for half-credit (50%), even after solutions are posted. 
-- We will drop your lowest pset grade, but you must turn in all 6 assignements to be eligible. 
 
 ## Why R? 
 
@@ -318,7 +291,7 @@ Missing elements and empty vectors:
 - `NULL` - used to represent an empty or absent vector of arbitrary type. `NULL` is its own special type and always has length zero and `NULL` attributes. Check for `NULL` values with `is.null()`.
 
 
-## Subsetting
+<!-- ## Subsetting
 
 > Subsetting is a natural complement to str(). While str() shows you all the pieces of any object (its structure), subsetting allows you to pull out the pieces that you’re interested in. ~ Hadley Wickham, Advanced R
 
@@ -354,7 +327,7 @@ When extracting single elements, note that:
 - `[[` is preferred for atomic vectors for clarity (though`[` also works)
 - `$` does partial matching without warning; use `options(warnPartialMatchDollar=TRUE)`
 - the behavior for invalid indexes is inconsistent:
-sometimes you'll get an error message, and sometimes it will return `NULL`
+sometimes you'll get an error message, and sometimes it will return `NULL` -->
 
 
 ## Built-in functions 
@@ -457,6 +430,6 @@ Suggested further reading:
 Other references: 
 
 - [Vectors](https://adv-r.hadley.nz/vectors-chap.html) in Advanced R by Hadley Wickham
-- [Subsetting](https://adv-r.hadley.nz/subsetting.html) in Advanced R by Hadley Wickham
+<!-- - [Subsetting](https://adv-r.hadley.nz/subsetting.html) in Advanced R by Hadley Wickham -->
 - [A field guide to base R](https://r4ds.hadley.nz/base-r) in R for Data Science by Hadley Wickham
 

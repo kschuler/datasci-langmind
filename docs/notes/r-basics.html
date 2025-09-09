@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Katie Schuler">
-<meta name="dcterms.date" content="2024-08-27">
 
 <title>Week 1: R basics – DataScience</title>
 <style>
@@ -216,12 +215,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#hello-world" id="toc-hello-world" class="nav-link active" data-scroll-target="#hello-world">Hello, World!</a>
+  <li><a href="#what-is-data-science" id="toc-what-is-data-science" class="nav-link active" data-scroll-target="#what-is-data-science">What is data science?</a>
   <ul class="collapse">
-  <li><a href="#what-is-data-science" id="toc-what-is-data-science" class="nav-link" data-scroll-target="#what-is-data-science">What is data science?</a></li>
   <li><a href="#data-science-workflow" id="toc-data-science-workflow" class="nav-link" data-scroll-target="#data-science-workflow">Data science workflow</a></li>
   <li><a href="#overview-of-the-course" id="toc-overview-of-the-course" class="nav-link" data-scroll-target="#overview-of-the-course">Overview of the course</a></li>
-  <li><a href="#syllabus-briefly" id="toc-syllabus-briefly" class="nav-link" data-scroll-target="#syllabus-briefly">Syllabus, briefly</a></li>
   <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a></li>
   </ul></li>
   <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
@@ -232,7 +229,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
   <li><a href="#operations" id="toc-operations" class="nav-link" data-scroll-target="#operations">Operations</a></li>
   <li><a href="#more-complex-structures" id="toc-more-complex-structures" class="nav-link" data-scroll-target="#more-complex-structures">More complex structures</a></li>
-  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting">Subsetting</a></li>
   <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in functions</a></li>
   <li><a href="#programming-in-r" id="toc-programming-in-r" class="nav-link" data-scroll-target="#programming-in-r">Programming in R</a></li>
   </ul></li>
@@ -259,12 +255,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 27, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -274,38 +264,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="hello-world" class="level1">
-<h1>Hello, World!</h1>
-<section id="what-is-data-science" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-data-science">What is data science?</h2>
+<section id="what-is-data-science" class="level1">
+<h1>What is data science?</h1>
 <blockquote class="blockquote">
 <p>Data are descriptions of the world around us, collected through observation and stored on computers. Computers enable us to infer properties of the world from these descriptions. Data science is the discipline of drawing conclusions from data using computation.</p>
 <p>– <em>Computational and Inferential Thinking: The Foundations of Data Science</em></p>
 </blockquote>
-<p>Data science is about making decisions based on incomplete information. This concept is not new – brains (especially human brains!) love doing this. To illustrate, what do you see in the following image?</p>
-<div id="fig-visualillusion" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-visualillusion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../assests/images/visual-illusion.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:25.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visualillusion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: from Kok &amp; de Lange (2014)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
-</figcaption>
-</figure>
-</div>
-<p>Did you see a gray triangle on top of three circles? Most people do! But it turns out that your brain is filling in the gaps, inferring the presence of a triangle from the partial information available in the black circles <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<p>While the underlying concept is not new, the computational tools we use are <em>relatively</em> new. And we have a lot more data!</p>
+<p>Data science is about making decisions based on incomplete information. This concept is not new – brains (especially human brains!) love doing this. While the underlying concept is not new, the computational tools we use are <em>relatively</em> new. And we have a lot more data!</p>
 <div id="fig-dataneversleeps" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dataneversleeps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../assests/images/data-never-sleeps.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataneversleeps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: from https://web-assets.domo.com/miyagi/images/product/product-feature-22-data-never-sleeps-10.png
+Figure&nbsp;1: from https://web-assets.domo.com/miyagi/images/product/product-feature-22-data-never-sleeps-10.png
 </figcaption>
 </figure>
 </div>
-</section>
 <section id="data-science-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="data-science-workflow">Data science workflow</h2>
 <p>The folks who wrote <a href="https://r4ds.hadley.nz/">R for Data Science</a> proposed the following data science workflow:</p>
@@ -315,7 +290,7 @@ Figure&nbsp;2: from https://web-assets.domo.com/miyagi/images/product/product-fe
 <img src="../assests/images/data-science-workflow.png" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-datascience-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: from R for Data Science
+Figure&nbsp;2: from R for Data Science
 </figcaption>
 </figure>
 </div>
@@ -344,34 +319,13 @@ Figure&nbsp;3: from R for Data Science
 <li>Hypothesis testing</li>
 <li>Model specification</li>
 <li>Model fitting</li>
-<li>Model accuracy</li>
-<li>Model reliability</li>
+<li>Model evaluation</li>
 </ul>
 <p>Finally we will cover a selection of <strong>more advanced topics</strong> that are often applied in language and mind fields, with a focus on basic understanding:</p>
 <ul>
+<li>Feature engineering</li>
 <li>Classification</li>
-<li>Inference for regression</li>
 <li>Mixed-effect models</li>
-</ul>
-</section>
-<section id="syllabus-briefly" class="level2">
-<h2 class="anchored" data-anchor-id="syllabus-briefly">Syllabus, briefly</h2>
-<p>Each week will include two lectures and a lab:</p>
-<ul>
-<li><strong>Lectures</strong> are on Tuesdays and Thursdays at 12pm and will be a mix of conceptual overviews and R tutorials. It is a good idea to bring your laptop so you can follow along and try stuff in R!</li>
-<li><strong>Labs</strong> are on Thursday or Friday and will consist of (ungraded) practice problems and concept review with TAs. You may attend any lab section that works for your schedule.</li>
-</ul>
-<p>There are 8 graded assessments:</p>
-<ul>
-<li><strong>6 Problem sets (40%)</strong> in which you will be asked to apply your newly aquired R programming skills.</li>
-<li><strong>2 Midterm exams (60%)</strong> in which you will be tested on your understanding of lecture concepts.</li>
-</ul>
-<p>There are a few policies to take note of:</p>
-<ul>
-<li>Missed exams cannot be made up except in cases of genuine conflict or emergency (documentation and course action notice required). You may take the optional final exam to replace a missed or low scoring exam.</li>
-<li>You may request an extension on any problem set of up to 3 days. But extensions beyond 3 days will not be granted (because delying solutions will negative impact other students).</li>
-<li>You may submit any missed quiz or problem set by the end of the semester for half-credit (50%), even after solutions are posted.</li>
-<li>We will drop your lowest pset grade, but you must turn in all 6 assignements to be eligible.</li>
 </ul>
 </section>
 <section id="why-r" class="level2">
@@ -608,45 +562,43 @@ Figure&nbsp;3: from R for Data Science
 <li><code>NA</code>- used to represent missing or unknown elements in vectors. Note that <code>NA</code> is contageous: expressions including <code>NA</code> usually return <code>NA</code>. Check for <code>NA</code> values with <code>is.na()</code>.</li>
 <li><code>NULL</code> - used to represent an empty or absent vector of arbitrary type. <code>NULL</code> is its own special type and always has length zero and <code>NULL</code> attributes. Check for <code>NULL</code> values with <code>is.null()</code>.</li>
 </ul>
-</section>
-<section id="subsetting" class="level2">
-<h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
-<blockquote class="blockquote">
-<p>Subsetting is a natural complement to str(). While str() shows you all the pieces of any object (its structure), subsetting allows you to pull out the pieces that you’re interested in. ~ Hadley Wickham, Advanced R</p>
-</blockquote>
-<p>There are three operators for subsetting objects:</p>
-<ul>
-<li><code>[</code> - <em>subsets</em> (one or more) elements</li>
-<li><code>[[</code> and <code>$</code> - <em>extracts</em> a single element</li>
-</ul>
-<p>There are six ways to <strong>subset multiple elements</strong> from vectors with <code>[</code>:</p>
-<ul>
-<li><code>x[c(1,2)]</code> - positive integers select elements at specified indexes</li>
-<li><code>x[-c(1,2)]</code> - negative integers select all but elements at specified indexes</li>
-<li><code>x[c("name", "name2")]</code> select elements by name, if elements are named</li>
-<li><code>x[]</code> - nothing returns the original object</li>
-<li><code>x[0]</code> - zero returns a zero-length vector</li>
-<li><code>x[c(TRUE, TRUE)]</code> - select elements where corresponding logical value is <code>TRUE</code></li>
-</ul>
-<p>These also apply when selecting multiple elements from <strong>higher dimensional objects</strong> (matrix, array, data frame), but note that:</p>
-<ul>
-<li>indexes for different dimensions are separated by commas <code>[rows, columns, ...]</code></li>
-<li>omitted dimensions return all values along that dimension</li>
-<li>the result is simplified to the lowest possible dimensions by default</li>
-<li>data frames can also be indexed like a vector (selects columns)</li>
-</ul>
-<p>There are 3 ways to <strong>extract a single element</strong> from any data structure:</p>
-<ul>
-<li><code>[[2]]</code> - a single positive integer (index)</li>
-<li><code>[['name']]</code> - a single string</li>
-<li><code>x$name</code> - the <code>$</code> operator is a useful shorthand for <code>[['name']]</code></li>
-</ul>
-<p>When extracting single elements, note that:</p>
-<ul>
-<li><code>[[</code> is preferred for atomic vectors for clarity (though<code>[</code> also works)</li>
-<li><code>$</code> does partial matching without warning; use <code>options(warnPartialMatchDollar=TRUE)</code></li>
-<li>the behavior for invalid indexes is inconsistent: sometimes you’ll get an error message, and sometimes it will return <code>NULL</code></li>
-</ul>
+<!-- ## Subsetting
+
+> Subsetting is a natural complement to str(). While str() shows you all the pieces of any object (its structure), subsetting allows you to pull out the pieces that you’re interested in. ~ Hadley Wickham, Advanced R
+
+There are three operators for subsetting objects: 
+
+- `[` - *subsets* (one or more) elements
+- `[[` and `$` - *extracts* a single element  
+
+There are six ways to **subset multiple elements** from vectors with `[`:
+
+- `x[c(1,2)]` - positive integers select elements at specified indexes
+- `x[-c(1,2)]` - negative integers select all but elements at specified indexes
+- `x[c("name", "name2")]` select elements by name, if elements are named
+- `x[]` - nothing returns the original object
+- `x[0]` - zero returns a zero-length vector
+- `x[c(TRUE, TRUE)]` - select elements where corresponding logical value is `TRUE`
+
+These also apply when selecting multiple elements from **higher dimensional objects** (matrix, array, data frame), but note that:
+
+- indexes for different dimensions are separated by commas `[rows, columns, ...]`
+- omitted dimensions return all values along that dimension
+- the result is simplified to the lowest possible dimensions by default
+- data frames can also be indexed like a vector (selects columns)
+
+There are 3 ways to **extract a single element** from any data structure: 
+
+- `[[2]]` - a single positive integer (index)
+- `[['name']]` - a single string 
+- `x$name` - the `$` operator is a useful shorthand for `[['name']]`
+
+When extracting single elements, note that: 
+
+- `[[` is preferred for atomic vectors for clarity (though`[` also works)
+- `$` does partial matching without warning; use `options(warnPartialMatchDollar=TRUE)`
+- the behavior for invalid indexes is inconsistent:
+sometimes you'll get an error message, and sometimes it will return `NULL` -->
 </section>
 <section id="built-in-functions" class="level2">
 <h2 class="anchored" data-anchor-id="built-in-functions">Built-in functions</h2>
@@ -745,22 +697,14 @@ Figure&nbsp;3: from R for Data Science
 </ul>
 <p>Other references:</p>
 <ul>
-<li><a href="https://adv-r.hadley.nz/vectors-chap.html">Vectors</a> in Advanced R by Hadley Wickham</li>
-<li><a href="https://adv-r.hadley.nz/subsetting.html">Subsetting</a> in Advanced R by Hadley Wickham</li>
+<li><a href="https://adv-r.hadley.nz/vectors-chap.html">Vectors</a> in Advanced R by Hadley Wickham <!-- - [Subsetting](https://adv-r.hadley.nz/subsetting.html) in Advanced R by Hadley Wickham --></li>
 <li><a href="https://r4ds.hadley.nz/base-r">A field guide to base R</a> in R for Data Science by Hadley Wickham</li>
 </ul>
 
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Kok, P., &amp; de Lange, F. P. (2014). Shape perception simultaneously up-and downregulates neural activity in the primary visual cortex. Current Biology, 24(13), 1531-1535.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://neurosciencenews.com/neuroimaging-visual-processing-fmri-1150/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script>
 
 /* update total correct if #webex-total_correct exists */
