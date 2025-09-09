@@ -462,8 +462,8 @@ The questions below refer to this dataset borrowed from R4DS and available at th
     # Define the answer choices
     choices <- c(
         0, 
-        2, 
-        answer = 4, 
+        answer = 2, 
+        4, 
         81
     )
 
