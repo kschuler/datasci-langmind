@@ -20,6 +20,7 @@ format:
 - New: Additional TAs for Pset support 
 - First lab today/tomorrow
 - Pset 1 released (Wednesdays)
+- LUNCH :) 
 
 
 
