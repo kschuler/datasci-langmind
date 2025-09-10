@@ -39,7 +39,7 @@ Graduate student<br>
 <strong>Mingyang Bian</strong><br>
 Graduate student<br>
 <a href="mailto:mybian@sas.upenn.edu">mybian@sas.upenn.edu</a><br>
-<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+<p>Hi everyone, I look forward to learning data science with you in this class! I'm a 3rd year Ph.D. student in linguistics, and I work on semantics and pragmatics. Fun fact: I practice Daoist philosophy.</p>
 </div>
 </div>
 
@@ -75,7 +75,7 @@ Undergraduate student<br>
 </div>
 </div>
 
-<!-- <div class="staff">
+<div class="staff">
 <img src="logo.png" alt="TA headshot">
 <div>
 <strong>Guru Bazawada</strong><br>
@@ -83,4 +83,4 @@ Undergraduate student<br>
 <a href="mailto:gurub@sas.upenn.edu">datasci.langmind@gmail.com</a><br>
 <p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
 </div>
-</div> -->
+</div>
