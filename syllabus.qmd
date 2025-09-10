@@ -57,7 +57,7 @@ Assignments for the Fall 2025 semester will be posted below. Last years material
 There are 9 problem sets, released on Wednesdays and due to Gradescope by noon on the following Mondays. You may request an extension of up to 3 days for any reason. After solutions are posted, late problem sets can still be submitted for half credit (50%). Your lowest score will be dropped. 
 
 - [Pset 1 (Monday Sep 8)](psets/pset-01.qmd)
-- Pset 2 (Monday Sep 15)
+- [Pset 2 (Monday Sep 15)](psets/pset-02.qmd)
 - Pset 3 (Monday Sep 22)
 - Pset 4 (Monday Sep 29)
 - Pset 5 (Monday Oct 20)
@@ -77,7 +77,7 @@ There are 2 midterm exams, taken in class on the following dates. Exams cannot b
 Lab exercises are designed for practice and skill-building. They are not collected or graded. However, lab attendance is required and will count toward your course grade. You may miss up to 2 labs (for reasons such as illness or travel) without penalty.Notify your section TA if you must miss a lab. 
 
 - [Lab 1 R Basics & Data Visualization](labs/lab-01.qmd)
-- Lab 2 Data wrangling
+- [Lab 2 Data wrangling](labs/lab-02.qmd)
 - Lab 3 Sampling
 - Lab 4 Hypothesis testing
 - Lab 5 Model specification

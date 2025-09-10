@@ -1,0 +1,113 @@
+---
+title:  "Problem set 2"
+subtitle: "due Monday, September 16, 2025 at 11:59am (noon!)"
+# author: 
+#     name: Katie Schuler
+#     affiliation: University of Pennsylvania
+number-sections: false
+format: 
+  html: 
+    number-sections: false
+  pdf: default
+
+---
+
+Instructions
+: Upload your `.ipynb` notebook to gradescope by 11:59am on the due date. Please include your name, Problem set number, and any collaborators you worked with in a text cell at the top of your notebook. Please also number your problems in some way and include comments in your code to indicate what part of a problem you are working on.  
+
+Get help! 
+: If you need support working on your pset, see our [week at a glance](../help-schedule.qmd) schedule for office hours and pset support times!
+
+::: callout-warning
+# Warning: Avoid redundant loading 
+You will need the `tidyverse` library. Recall that Colab comes with this library already installed, and `tidyverse` includes `tibble`, `readr`, and `ggplot`. Avoid redundant loading. 
+:::
+
+
+```{r}
+#| warning: false
+#| echo: false
+library(tidyverse, verbose = FALSE)
+library(knitr)
+library(googlesheets4)
+gs4_deauth()
+
+```
+
+
+## Problem 1
+
+Create the following tibble with the `tribble()` function (not `tibble()`). Use the `map()` function from the `purr` package to calculate the `median` of each column, and store it as `col_means`. Use the pipe operator (`%>%` or `|>`) to pipe that list into `tibble()`, so the output is formatted as tibble. Finally, use `rename()` to rename the columns of your new tibble to `mean_height`, `mean_weight`, and `mean_age`. Return or print the resulting tibble. 
+
+```{r}
+#| echo: false
+tribble(
+  ~height, ~weight, ~age,
+      150,      45,   18,
+      160,      54,   21,
+      165,      60,   25,
+      170,      68,   30,
+      175,      72,   34,
+      180,      79,   40,
+      185,      85,   50,
+      190,      90,   60
+)
+
+```
+## Problem 2
+
+Create a spreadsheet in Google sheets with data from the following table. Download your spreadsheet as a CSV file and upload it into Colab. Then, use the appropriate function from the `readr` package to import your CSV file into R. Return or print your imported data to confirm it was read in correctly. 
+
+```{r}
+#| echo: false
+#| message: false
+tibble(
+trial_id = 1:10,
+target_word = c("apple", "violin", "doctor", "cactus", "butter",
+                "galaxy", "window", "anchor", "garden", "banana"),
+sentence_congruency = c("congruent", "incongruent", "congruent", "incongruent",
+                        "congruent", "incongruent", "congruent", "incongruent",
+                        "congruent", "incongruent"),
+word_frequency = c("high", "low", "high", "low", "low",
+                    "high", "high", "low", "low", "high"),
+N400_uV = c(-2.1, -7.3, -2.4, -6.8, -3.6,
+            -5.1, -2.7, -7.0, -3.4, -5.4),
+RT_ms = c(520, 760, 535, 740, 590,
+            690, 545, 755, 600, 700)
+) %>% kable() 
+
+```
+
+## Problem 3 
+
+Sometimes the best way to learn a new package or function is to explore the documentation. The  `googlesheets4` package allows you to work with Google Sheets directly from R. Read the [documentation](https://googlesheets4.tidyverse.org/) for this package and figure out how to connect to a sheet, read its contents, and bring the data into R. Use `googlesheets4` to import the `Europe` tab of the gapminder sheet, available [here](https://docs.google.com/spreadsheets/d/1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY/edit?gid=780868077#gid=780868077). Return or print the imported sheet to confirm it was read in correctly. You should see the following output.
+
+```{r}
+#| echo: false 
+
+europe <- read_sheet("https://docs.google.com/spreadsheets/d/1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY/edit#gid=780868077", sheet = "Europe")
+
+europe %>% print()
+
+```
+
+## Problem 4
+
+With `ggplot2` and the `europe` data you imported in problem 3, recreate (as faithfully as possible), the following histogram of life expectancy for countries in Europe. Make sure the bars of the histogram are light blue, the border around the bars are black, and you edit the x-axis label to match. Also make sure you have approximately the same number of bins in your histogram. 
+
+```{r}
+#| echo: false
+
+europe %>%
+    ggplot(aes(x = lifeExp)) +
+    geom_histogram(bins = 10, fill = 'lightblue', color = 'black') +
+    facet_wrap(~country) +
+    labs(x = 'Life Expectancy')
+```
+
+
+
+::: callout-tip
+# More coming soon!
+Problems pertaining to Thursdays lecture will be added soon. 
+:::
