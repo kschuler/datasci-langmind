@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Problem set 2</h1>
-<p class="subtitle lead">due Monday, September 16, 2025 at 11:59am (noon!)</p>
+<p class="subtitle lead">due Monday, September 15, 2025 at 11:59am (noon!)</p>
 </div>
 
 
@@ -253,113 +253,26 @@ Warning: Avoid redundant loading
 </section>
 <section id="problem-2" class="level2">
 <h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>Create a spreadsheet in Google sheets with data from the following table. Download your spreadsheet as a CSV file and upload it into Colab. Then, use the appropriate function from the <code>readr</code> package to import your CSV file into R. Return or print your imported data to confirm it was read in correctly.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 17%">
-<col style="width: 28%">
-<col style="width: 21%">
-<col style="width: 11%">
-<col style="width: 8%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">trial_id</th>
-<th style="text-align: left;">target_word</th>
-<th style="text-align: left;">sentence_congruency</th>
-<th style="text-align: left;">word_frequency</th>
-<th style="text-align: right;">N400_uV</th>
-<th style="text-align: right;">RT_ms</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">apple</td>
-<td style="text-align: left;">congruent</td>
-<td style="text-align: left;">high</td>
-<td style="text-align: right;">-2.1</td>
-<td style="text-align: right;">520</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">violin</td>
-<td style="text-align: left;">incongruent</td>
-<td style="text-align: left;">low</td>
-<td style="text-align: right;">-7.3</td>
-<td style="text-align: right;">760</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">doctor</td>
-<td style="text-align: left;">congruent</td>
-<td style="text-align: left;">high</td>
-<td style="text-align: right;">-2.4</td>
-<td style="text-align: right;">535</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">cactus</td>
-<td style="text-align: left;">incongruent</td>
-<td style="text-align: left;">low</td>
-<td style="text-align: right;">-6.8</td>
-<td style="text-align: right;">740</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">butter</td>
-<td style="text-align: left;">congruent</td>
-<td style="text-align: left;">low</td>
-<td style="text-align: right;">-3.6</td>
-<td style="text-align: right;">590</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">galaxy</td>
-<td style="text-align: left;">incongruent</td>
-<td style="text-align: left;">high</td>
-<td style="text-align: right;">-5.1</td>
-<td style="text-align: right;">690</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">window</td>
-<td style="text-align: left;">congruent</td>
-<td style="text-align: left;">high</td>
-<td style="text-align: right;">-2.7</td>
-<td style="text-align: right;">545</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">anchor</td>
-<td style="text-align: left;">incongruent</td>
-<td style="text-align: left;">low</td>
-<td style="text-align: right;">-7.0</td>
-<td style="text-align: right;">755</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">garden</td>
-<td style="text-align: left;">congruent</td>
-<td style="text-align: left;">low</td>
-<td style="text-align: right;">-3.4</td>
-<td style="text-align: right;">600</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">banana</td>
-<td style="text-align: left;">incongruent</td>
-<td style="text-align: left;">high</td>
-<td style="text-align: right;">-5.4</td>
-<td style="text-align: right;">700</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p>Download this <a href="https://docs.google.com/spreadsheets/d/1jGKbMEc6ovgcpSPt2OobWBPPPMryFBBx1YZMPwmUc64/edit?usp=sharing">google sheet</a> as a CSV file and upload it into Colab. Then, use the appropriate function from the <code>readr</code> package to import your CSV file into R. Use the <code>na</code> argument to the function to make sure R can recognize the <code>NA</code> values in the <code>RT_ms</code> column. Also include the <code>col_types()</code> argument to the function to ensure the <code>is_frequent</code> column is logical and <code>RT_ms</code> is a double. Use <code>problems()</code> to return the problematic rows in the data. Repair the problems, then use the <code>rename()</code> function to ensure consistent naming in your columns (use <code>_</code> not spaces).</p>
+<!-- ```{r}
+#| echo: false
+#| message: false
+tibble(
+trial_id = 1:10,
+target_word = c("apple", "violin", "doctor", "cactus", "butter",
+                "galaxy", "window", "anchor", "garden", "banana"),
+sentence_congruency = c("congruent", "incongruent", "congruent", "incongruent",
+                        "congruent", "incongruent", "congruent", "incongruent",
+                        "congruent", "incongruent"),
+word_frequency = c("high", "low", "high", "low", "low",
+                    "high", "high", "low", "low", "high"),
+N400_uV = c(-2.1, -7.3, -2.4, -6.8, -3.6,
+            -5.1, -2.7, -7.0, -3.4, -5.4),
+RT_ms = c(520, 760, 535, 740, 590,
+            690, 545, 755, 600, 700)
+) %>% kable() 
+
+``` -->
 </section>
 <section id="problem-3" class="level2">
 <h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
@@ -396,7 +309,7 @@ Warning: Avoid redundant loading
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pset-02_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="pset-02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

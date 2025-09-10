@@ -1,6 +1,6 @@
 ---
 title:  "Problem set 2"
-subtitle: "due Monday, September 16, 2025 at 11:59am (noon!)"
+subtitle: "due Monday, September 15, 2025 at 11:59am (noon!)"
 # author: 
 #     name: Katie Schuler
 #     affiliation: University of Pennsylvania
@@ -56,9 +56,9 @@ tribble(
 ```
 ## Problem 2
 
-Create a spreadsheet in Google sheets with data from the following table. Download your spreadsheet as a CSV file and upload it into Colab. Then, use the appropriate function from the `readr` package to import your CSV file into R. Return or print your imported data to confirm it was read in correctly. 
+Download this [google sheet](https://docs.google.com/spreadsheets/d/1jGKbMEc6ovgcpSPt2OobWBPPPMryFBBx1YZMPwmUc64/edit?usp=sharing) as a CSV file and upload it into Colab. Then, use the appropriate function from the `readr` package to import your CSV file into R. Use the `na` argument to the function to make sure R can recognize the `NA` values in the `RT_ms` column. Also include the `col_types()` argument to the function to ensure the `is_frequent` column is logical and `RT_ms` is a double. Use `problems()` to return the problematic rows in the data. Repair the problems, then use the `rename()` function to ensure consistent naming in your columns (use `_` not spaces). 
 
-```{r}
+<!-- ```{r}
 #| echo: false
 #| message: false
 tibble(
@@ -76,7 +76,7 @@ RT_ms = c(520, 760, 535, 740, 590,
             690, 545, 755, 600, 700)
 ) %>% kable() 
 
-```
+``` -->
 
 ## Problem 3 
 
