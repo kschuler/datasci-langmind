@@ -80,7 +80,7 @@ Undergraduate student<br>
 <div>
 <strong>Guru Bazawada</strong><br>
 Undergraduate student<br>
-<a href="mailto:gurub@sas.upenn.edu">datasci.langmind@gmail.com</a><br>
-<p>Coming soon: 1–2 sentence bio welcoming students, short and friendly.</p>
+<a href="mailto:gurub@sas.upenn.edu">gurub@sas.upenn.edu</a><br>
+<p>Hi, everyone! I am a senior in CAS, majoring in Logic and Philosophy. I took this class sophomore fall and I thought it was really fun! Fun fact: I transferred to Penn and this was the first class I ever took here.</p>
 </div>
 </div>
