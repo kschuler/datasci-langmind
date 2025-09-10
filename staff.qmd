@@ -76,7 +76,7 @@ Undergraduate student<br>
 </div>
 
 <div class="staff">
-<img src="logo.png" alt="TA headshot">
+<img src="guru.png" alt="TA headshot">
 <div>
 <strong>Guru Bazawada</strong><br>
 Undergraduate student<br>
