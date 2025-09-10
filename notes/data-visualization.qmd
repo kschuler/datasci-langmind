@@ -1,7 +1,10 @@
 ---
 title: "Week 2: Data visualization"
 author: Katie Schuler
-
+format:
+    html: 
+        toc-depth: 3
+    pdf: default
 ---
 
 

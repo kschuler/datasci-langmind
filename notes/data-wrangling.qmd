@@ -2,7 +2,10 @@
 title: "Data wrangling"
 author: 
     - Katie Schuler
-
+format:
+    html: 
+        toc-depth: 3
+    pdf: default
 ---
 
 ::: {.callout-note title="Acknowledgement"}
