@@ -234,7 +234,7 @@ Warning: Avoid redundant loading
 </div>
 <section id="problem-1" class="level2">
 <h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p>Create the following tibble with the <code>tribble()</code> function (not <code>tibble()</code>). Use the <code>map()</code> function from the <code>purr</code> package to calculate the <code>median</code> of each column, and store it as <code>col_means</code>. Use the pipe operator (<code>%&gt;%</code> or <code>|&gt;</code>) to pipe that list into <code>tibble()</code>, so the output is formatted as tibble. Finally, use <code>rename()</code> to rename the columns of your new tibble to <code>mean_height</code>, <code>mean_weight</code>, and <code>mean_age</code>. Return or print the resulting tibble.</p>
+<p>Create the following tibble with the <code>tribble()</code> function (not <code>tibble()</code>). Use the <code>map()</code> function from the <code>purr</code> package to calculate the <code>median</code> of each column, and store it as <code>col_means</code>. Use the pipe operator (<code>%&gt;%</code> or <code>|&gt;</code>) to pipe that list into <code>as_tibble()</code>, so the output is formatted as tibble. Finally, use <code>rename()</code> to rename the columns of your new tibble to <code>mean_height</code>, <code>mean_weight</code>, and <code>mean_age</code>. Return or print the resulting tibble.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3

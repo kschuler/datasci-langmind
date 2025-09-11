@@ -37,7 +37,7 @@ gs4_deauth()
 
 ## Problem 1
 
-Create the following tibble with the `tribble()` function (not `tibble()`). Use the `map()` function from the `purr` package to calculate the `median` of each column, and store it as `col_means`. Use the pipe operator (`%>%` or `|>`) to pipe that list into `tibble()`, so the output is formatted as tibble. Finally, use `rename()` to rename the columns of your new tibble to `mean_height`, `mean_weight`, and `mean_age`. Return or print the resulting tibble. 
+Create the following tibble with the `tribble()` function (not `tibble()`). Use the `map()` function from the `purr` package to calculate the `median` of each column, and store it as `col_means`. Use the pipe operator (`%>%` or `|>`) to pipe that list into `as_tibble()`, so the output is formatted as tibble. Finally, use `rename()` to rename the columns of your new tibble to `mean_height`, `mean_weight`, and `mean_age`. Return or print the resulting tibble. 
 
 ```{r}
 #| echo: false
