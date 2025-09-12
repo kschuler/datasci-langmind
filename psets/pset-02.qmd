@@ -105,9 +105,47 @@ europe %>%
     labs(x = 'Life Expectancy')
 ```
 
+5. Using the `english` dataset in the `languageR` library, recreate the following table. Convert the dataest to a tibble with `as_tibble()`, then chain together `dplyr` verbs with the `%>%` operator to create the columns in the order shown. Explore the `%in%`operator and use it with filter in order to filter to the specific words shown. Sort them in alphabetical order, as shown. Use mutate to create two new columns not in the original data: `RTnaming_mean` (mean of the RTnaming vector) and `RTnaming_diffmean` (subtract `RTnaming_mean` from `RTnaming`)
+
+```{r}
+#| echo: false
+
+library(languageR)
+
+small_english <- english %>%
+    as_tibble() %>% 
+    select(Word, WordCategory, 
+    AgeSubject, LengthInLetters, RTnaming) %>%
+    filter(Word %in% c('moose', 'queen', 'owl', 'pup', 'breeze' )) %>%
+    arrange(Word) %>%
+    mutate(
+        RTnaming_mean = mean(RTnaming), 
+        RTnaming_meandiff = RTnaming - RTnaming_mean
+        ) 
+        
+small_english %>% kable
 
 
-::: callout-tip
-# More coming soon!
-Problems pertaining to Thursdays lecture will be added soon. 
-:::
+```
+
+6. Take the resulting tibble from question 5, group the data by `AgeSubject` with `group_by()` and `summarise()` by computing the mean and standard deviation of`RTnaming_mean`. Return the summarized tibble or print it (as shown). Then use the summarized data to recreate the figure. Figure out how to remove the legend entirely!
+
+```{r}
+#| echo: false
+
+group_english <- small_english %>%
+    group_by(AgeSubject) %>%
+    summarise( mean = mean(RTnaming_meandiff), sd = sd(RTnaming_meandiff)) 
+    
+group_english %>% kable
+
+group_english %>%
+    ggplot(aes(x = AgeSubject, y = mean, fill = AgeSubject)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    theme_classic(base_size = 15) +
+    labs(fill = "") +
+    theme(legend.position = "none")
+
+
+```
+

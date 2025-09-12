@@ -314,17 +314,160 @@ RT_ms = c(520, 760, 535, 740, 590,
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<ol start="5" type="1">
+<li>Using the <code>english</code> dataset in the <code>languageR</code> library, recreate the following table. Convert the dataest to a tibble with <code>as_tibble()</code>, then chain together <code>dplyr</code> verbs with the <code>%&gt;%</code> operator to create the columns in the order shown. Explore the <code>%in%</code>operator and use it with filter in order to filter to the specific words shown. Sort them in alphabetical order, as shown. Use mutate to create two new columns not in the original data: <code>RTnaming_mean</code> (mean of the RTnaming vector) and <code>RTnaming_diffmean</code> (subtract <code>RTnaming_mean</code> from <code>RTnaming</code>)</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Word</th>
+<th style="text-align: left;">WordCategory</th>
+<th style="text-align: left;">AgeSubject</th>
+<th style="text-align: right;">LengthInLetters</th>
+<th style="text-align: right;">RTnaming</th>
+<th style="text-align: right;">RTnaming_mean</th>
+<th style="text-align: right;">RTnaming_meandiff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">breeze</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">young</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6.119858</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">-0.2006769</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">breeze</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">old</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6.472964</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">0.1524297</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">moose</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">young</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6.123370</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">-0.1971650</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">moose</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">old</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6.542760</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">0.2222255</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">owl</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">young</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6.153158</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">-0.1673765</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">owl</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">old</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6.459905</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">0.1393698</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pup</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">young</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6.135998</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">-0.1845369</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pup</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">old</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6.485551</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">0.1650162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">queen</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">young</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6.181051</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">-0.1394833</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">queen</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">old</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6.530732</td>
+<td style="text-align: right;">6.320535</td>
+<td style="text-align: right;">0.2101972</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-title-container flex-fill">
-More coming soon!
 </div>
+<ol start="6" type="1">
+<li>Take the resulting tibble from question 5, group the data by <code>AgeSubject</code> with <code>group_by()</code> and <code>summarise()</code> by computing the mean and standard deviation of<code>RTnaming_mean</code>. Return the summarized tibble or print it (as shown). Then use the summarized data to recreate the figure. Figure out how to remove the legend entirely!</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">AgeSubject</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">old</td>
+<td style="text-align: right;">0.1778477</td>
+<td style="text-align: right;">0.0364251</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">young</td>
+<td style="text-align: right;">-0.1778477</td>
+<td style="text-align: right;">0.0251025</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="callout-body-container callout-body">
-<p>Problems pertaining to Thursdays lecture will be added soon.</p>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pset-02_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
