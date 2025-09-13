@@ -10,7 +10,7 @@ format:
 ## Announcements
 
 - Lab 2 posted 
-- Pset 2 posted (partially, so you can get started!)
+- Pset 2 posted
 :::
 
 All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). Homeworks are now shown the week they are *released* (due the following Monday). 
