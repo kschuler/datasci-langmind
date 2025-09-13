@@ -128,7 +128,7 @@ small_english %>% kable
 
 ```
 
-6. Take the resulting tibble from question 5, group the data by `AgeSubject` with `group_by()` and `summarise()` by computing the mean and standard deviation of`RTnaming_meandiff`. Return the summarized tibble or print it (as shown). Then use the summarized data to recreate the figure. Figure out how to remove the legend entirely!
+6. Take the resulting tibble from question 5, group the data by `AgeSubject` with `group_by()` and `summarise()` by computing the mean and standard deviation of`RTnaming_diffmean`. Return the summarized tibble or print it (as shown). Then use the summarized data to recreate the figure. Figure out how to remove the legend entirely!
 
 ```{r}
 #| echo: false
