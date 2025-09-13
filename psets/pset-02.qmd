@@ -105,7 +105,7 @@ europe %>%
     labs(x = 'Life Expectancy')
 ```
 
-5. Using the `english` dataset in the `languageR` library, recreate the following table. Convert the dataest to a tibble with `as_tibble()`, then chain together `dplyr` verbs with the `%>%` operator to create the columns in the order shown. Explore the `%in%`operator and use it with filter in order to filter to the specific words shown. Sort them in alphabetical order, as shown. Use mutate to create two new columns not in the original data: `RTnaming_mean` (mean of the RTnaming vector) and `RTnaming_diffmean` (subtract `RTnaming_mean` from `RTnaming`)
+5. Using the `english` dataset in the `languageR` library, recreate the following table. Convert the dataset to a tibble with `as_tibble()`, then chain together `dplyr` verbs with the `%>%` operator to create the columns in the order shown. Explore the `%in%`operator and use it with filter in order to filter to the specific words shown. Sort them in alphabetical order, as shown. Use mutate to create two new columns not in the original data: `RTnaming_mean` (mean of the RTnaming vector) and `RTnaming_diffmean` (subtract `RTnaming_mean` from `RTnaming`)
 
 ```{r}
 #| echo: false
@@ -128,7 +128,7 @@ small_english %>% kable
 
 ```
 
-6. Take the resulting tibble from question 5, group the data by `AgeSubject` with `group_by()` and `summarise()` by computing the mean and standard deviation of`RTnaming_mean`. Return the summarized tibble or print it (as shown). Then use the summarized data to recreate the figure. Figure out how to remove the legend entirely!
+6. Take the resulting tibble from question 5, group the data by `AgeSubject` with `group_by()` and `summarise()` by computing the mean and standard deviation of`RTnaming_meandiff`. Return the summarized tibble or print it (as shown). Then use the summarized data to recreate the figure. Figure out how to remove the legend entirely!
 
 ```{r}
 #| echo: false
