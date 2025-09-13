@@ -20,7 +20,7 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 1 | Aug 26 | R Basics  | [slides](slides/r-basics.qmd), [demo](https://colab.research.google.com/drive/1Tv0Obx3hGCX9Zi956jI7_5SuRO5T95h8?usp=drive_link), [notes](notes/r-basics.qmd) | No lab! | |
 | 2 | Sep 4 | Data visualization | [slides](slides/data-visualization.qmd), [demo](https://colab.research.google.com/drive/1eCKrIvYBn9-EoKAsh1_FWcRCVl5nLO7G?usp=sharing), [notes](notes/data-visualization.qmd) | [Lab 1](labs/lab-01.qmd) | [Pset 1](psets/pset-01.qmd) |
 | 3 | Sep 9 | Data wrangling | [slides](slides/data-wrangling.qmd), [demo](https://colab.research.google.com/drive/11ncVhDIuxtrc_JXlLsEYO2G8mjEBGSQr?usp=sharing), [notes](notes/data-wrangling.qmd) |  [Lab 2](labs/lab-02.qmd) | [Pset 2](psets/pset-02.qmd) |
-| 4 | Sep 16 | Sampling distribution | |  Lab 3 | Pset 3 | 
+| 4 | Sep 16 | Sampling distribution |  |  Lab 3 | Pset 3 | 
 | 5 | Sep 23 | Hypothesis testing<br> | | Lab 4 | Pset 4 |
 | 6 | Sep 30 | Midterm 1 review (Tue)<br>Midterm 1 (Thu) |  | |  |
 | 7 | Oct 7 | Make-up date Midterm 1<br>**Fall break, no class/lab**| | | 
