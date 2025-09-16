@@ -58,7 +58,7 @@ There are 9 problem sets, released on Wednesdays and due to Gradescope by noon o
 
 - [Pset 1 (Monday Sep 8)](psets/pset-01.qmd)
 - [Pset 2 (Monday Sep 15)](psets/pset-02.qmd)
-- Pset 3 (Monday Sep 22)
+- [Pset 3 (Monday Sep 22)](psets/pset-03.qmd)
 - Pset 4 (Monday Sep 29)
 - Pset 5 (Monday Oct 20)
 - Pset 6 (Monday Oct 27)
@@ -78,7 +78,7 @@ Lab exercises are designed for practice and skill-building. They are not collect
 
 - [Lab 1 R Basics & Data Visualization](labs/lab-01.qmd)
 - [Lab 2 Data wrangling](labs/lab-02.qmd)
-- Lab 3 Sampling
+- [Lab 3 Sampling](labs/lab-03.qmd)
 - Lab 4 Hypothesis testing
 - Lab 5 Model specification
 - Lab 6 Model fitting
