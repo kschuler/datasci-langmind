@@ -1,6 +1,10 @@
 ---
 title: "Sampling distribution"
 author: "Katie Schuler"
+format:
+    html: 
+        toc-depth: 3
+    pdf: default
 # date: 2024-09-17
 ---
 

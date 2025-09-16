@@ -3,6 +3,10 @@ title: "Hypothesis testing"
 # date: 2024-09-24
 author: 
     - Katie Schuler
+format:
+    html: 
+        toc-depth: 3
+    pdf: default
 ---
 
 
