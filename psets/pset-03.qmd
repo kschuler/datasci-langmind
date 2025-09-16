@@ -24,7 +24,7 @@ You will need the `tidyverse` library. Recall that Colab comes with this library
 :::
 
 ## Problem 1 
-Using the provided dataset of 1,000 babies (simulated-first-words.csv), import the CSV file with the `readr` package and make sure missing values in the First Word column are treated as NA. Use a `dplyr` verb to remove spaces in the column names, then use `mutate()` to add a new column called `Age_First_Word` by sampling from a Gaussian distribution with a mean of 15 months and a standard deviation of 1 months. Use one of R’s built-in probability distribution functions to determine by what age 5% of babies will have spoken their first word. Finally, use `filter()` to display all of the babies who spoke their first word by that point.
+Using the provided dataset of 1,000 babies: [simulated-first-words.csv](../assests/csv/simulated-first-words.csv), import the CSV file with the `readr` package and make sure missing values in the First Word column are treated as NA. Use a `dplyr` verb to remove spaces in the column names, then use `mutate()` to add a new column called `Age_First_Word` by sampling from a Gaussian distribution with a mean of 15 months and a standard deviation of 1 months. Use one of R’s built-in probability distribution functions to determine by what age 5% of babies will have spoken their first word. Finally, use `filter()` to display all of the babies who spoke their first word by that point.
 
 ## Problem 2 
 
