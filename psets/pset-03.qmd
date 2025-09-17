@@ -36,7 +36,7 @@ Using the `infer` package, construct a bootstrap sampling distribution for the `
 
 ## Problem 4 
 
-Suppose we are only interested in studying the “early talkers,” defined as babies who spoke their first word before 11 months. Using `dplyr`, select only the columns `ID`, `Gender`, and `Age_First_Word`. Then, filter the data to include only the babies who spoke their first word before 11 months. Generate a plot of your choice to visualize the data.
+Suppose we are only interested in studying the “early talkers,” defined as the 20 babies who spoke their first word the earliest. Using `dplyr`, select only the columns `ID`, `Gender`, and `Age_First_Word`. Then, filter the data to include only those 20 babies. Generate a plot of your choice to visualize the data.
 
 ## Problem 5 
 
