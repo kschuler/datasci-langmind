@@ -11,6 +11,7 @@ format:
 
 - Lab 3 posted 
 - Pset 3 posted
+- **Date change: Mideterm 1 now Oct 7**
 :::
 
 All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). Homeworks are now shown the week they are *released* (due the following Monday). 
@@ -22,8 +23,8 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 3 | Sep 9 | Data wrangling | [slides](slides/data-wrangling.qmd), [demo](https://colab.research.google.com/drive/11ncVhDIuxtrc_JXlLsEYO2G8mjEBGSQr?usp=sharing), [notes](notes/data-wrangling.qmd) |  [Lab 2](labs/lab-02.qmd) | [Pset 2](psets/pset-02.qmd) |
 | 4 | Sep 16 | Sampling distribution | [slides](slides/sampling-distribution.qmd), [demo](https://colab.research.google.com/drive/11tKK1W1403-6Q2ug6-nmrfCGdo-25Rvr?usp=drive_link), [notes](notes/sampling-distribution.qmd) |  [Lab 3](labs/lab-03.qmd) | [Pset 3](psets/pset-03.qmd) | 
 | 5 | Sep 23 | Hypothesis testing<br> | | Lab 4 | Pset 4 |
-| 6 | Sep 30 | Midterm 1 review (Tue)<br>Midterm 1 (Thu) |  | |  |
-| 7 | Oct 7 | Make-up date Midterm 1<br>**Fall break, no class/lab**| | | 
+| 6 | Sep 30 | Midterm 1 review (Tue)<br>**No class/lab, Yom Kippur** |  | |  |
+| 7 | Oct 7 | Midterm 1 (Tue) <br>**Fall break, no class/lab** | | | 
 | 8 | Oct 14 | Model specification | | Lab 5 | Pset 5 | 
 | 9 | Oct 21 | Model fitting | | Lab 6 | Pset 6  | 
 | 10 | Oct 28 | Model evaluation | | Lab 7 | Pset 7 |
