@@ -22,7 +22,7 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 2 | Sep 4 | Data visualization | [slides](slides/data-visualization.qmd), [demo](https://colab.research.google.com/drive/1eCKrIvYBn9-EoKAsh1_FWcRCVl5nLO7G?usp=sharing), [notes](notes/data-visualization.qmd) | [Lab 1](labs/lab-01.qmd) | [Pset 1](psets/pset-01.qmd) |
 | 3 | Sep 9 | Data wrangling | [slides](slides/data-wrangling.qmd), [demo](https://colab.research.google.com/drive/11ncVhDIuxtrc_JXlLsEYO2G8mjEBGSQr?usp=sharing), [notes](notes/data-wrangling.qmd) |  [Lab 2](labs/lab-02.qmd) | [Pset 2](psets/pset-02.qmd) |
 | 4 | Sep 16 | Sampling distribution | [slides](slides/sampling-distribution.qmd), [demo](https://colab.research.google.com/drive/11tKK1W1403-6Q2ug6-nmrfCGdo-25Rvr?usp=drive_link), [notes](notes/sampling-distribution.qmd) |  [Lab 3](labs/lab-03.qmd) | [Pset 3](psets/pset-03.qmd) | 
-| 5 | Sep 23 | Hypothesis testing<br> | | Lab 4 | Pset 4 |
+| 5 | Sep 23 | Hypothesis testing<br> | [slides](slides/hypothesis-testing.qmd), [demo](https://colab.research.google.com/drive/1VXypUt5Pc7Ti3x_hhqSYwyEV9CeqGsH-?usp=drive_link), [notes](notes/hypothesis-testing.qmd) | [Lab 4](labs/lab-04.qmd) | [Pset 4](psets/pset-04.qmd) |
 | 6 | Sep 30 | Midterm 1 review (Tue)<br>**No class/lab, Yom Kippur** |  | |  |
 | 7 | Oct 7 | Midterm 1 (Tue) <br>**Fall break, no class/lab** | | | 
 | 8 | Oct 14 | Model specification | | Lab 5 | Pset 5 | 
