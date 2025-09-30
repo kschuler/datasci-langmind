@@ -11,7 +11,7 @@ format:
 **Additional study materials**
 
 - [Practice exams and solutions](https://drive.google.com/drive/folders/1FaF8Gn4dkvWEJxXSCwaXeO2Wk6mtmlOd?usp=sharing)
-- [Provided reference sheets](/assests/cheatsheets/R-and-tidyverse-referencesheet.pdf) (you will have a copy of this on the exam)
+- 👷‍♀️ **Fixed!** [Provided reference sheets](/assests/cheatsheets/R-and-tidyverse-referencesheet.pdf) (you will have a copy of this on the exam)
 
 The first exam will test the following learning objectives, divided into the following topic areas. For each topic area, you should be able to do the list that follows. You can think of this as a studying checklist!
 
