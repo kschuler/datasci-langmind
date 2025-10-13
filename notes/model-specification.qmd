@@ -88,9 +88,7 @@ Choosing which explanatory variables to include requires a bit more careful cons
 
 ### Functional form
 
-Last lecture we introduced the types of models that we could select when specifying a model. We also mentioned that we will focus on linear models in this class (which are a type of regression model, which are themselves types of supervised learning models!)
-
-When specifying the functional form of a model, we're literally specifying the mathematical formula we're going to use to represent the relationship between our response and explanatory variables. **Linear models** are models in which the response variable (output) is a weighted sum of the explanatory variables (inputs). In other words, there is a linear relationship between the response variable and the explanatory variables. The **linear model equation** can be expressed in many ways (which can be confusing!). Here are four different ways of representing the formula for the linear model, to emphasize that *they are all the same thing*.
+When specifying the functional form of a model, we're literally specifying the mathematical formula we're going to use to represent the relationship between our response and explanatory variables. **Linear models** -- our focus in this class -- are models in which the response variable (output) is a weighted sum of the explanatory variables (inputs). In other words, there is a linear relationship between the response variable and the explanatory variables. The **linear model equation** can be expressed in many ways (which can be confusing!). Here are four different ways of representing the formula for the linear model (the functional form), to emphasize that *they are all the same thing*.
 
 1. In **high school algebra**, the linear model equation is represented as the equation of a straight line. $y$ is the response variable, $x$ is the explanatory variable, $a$ is the slope of the line (the relationship between $x$ and $y$) and $b$ is the y-intercept (the value of $y$ when $x$ is zero). You have (hopefully!) already encountered this equation.
   - $y=ax+b$.  
