@@ -1,0 +1,473 @@
+---
+title:  "Lab 7: Model evaluation"
+subtitle: "Not graded, just practice"
+author: Katie Schuler
+number-sections: true
+---
+
+```{r}
+#| echo: false
+#| message: false
+
+library(webexercises)
+library(tidyverse)
+library(optimg)
+library(tidymodels)
+theme_set(theme_gray(base_size = 16))
+set.seed(60)
+
+data <- tibble(
+    y = rnorm(1000, 5, 1), 
+    noise = rnorm(1000, 10, 4), 
+    x = y + 10 + noise
+)
+```
+
+## Model accuracy 
+
+Question 13 refers to the following figure: 
+
+```{r}
+#| echo: false
+
+set.seed(1337)
+beta0 = 2
+beta1 = 0.5
+data <- tibble(x = runif(200, min = 0, max = 10),
+               y = beta0+ (beta1*x) + rnorm(200, sd = 0.5))
+
+
+```
+
+```{r}
+#| echo: false
+
+model <- lm(y ~ 1 + x, data = data)
+model_int <- lm(y ~ 1, data = data)
+
+data <- data %>%
+    mutate(mod_pred = predict(model)) %>%
+    mutate(mod_int = predict(model_int))
+
+ggplot(
+    data, aes(x = x, y = y) 
+) +
+    geom_point() +
+    geom_segment(aes(xend = x, yend = mod_pred), color = "red") +
+    geom_smooth(method="lm", se = FALSE, formula = "y ~ x") 
+
+```
+
+
+13. In the figure above, which of the following corresponds to the residuals? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "blue line",
+    answer ="red lines",
+    "black dots", 
+    "none of the above"
+)
+
+cat(longmcq(choices))
+
+```
+
+
+14. Suppose the $R^2$ value on the model in the figure above is about 0.88. Given this value, which of the following best describes the accuracy of the model? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer = "fairly high accuracy ",
+    "fairly low accuracy",
+    "not enough information"
+)
+
+cat(longmcq(choices))
+
+```
+
+15. Suppose 0.88 reflects the $R^2$ for our fitted model on our sample. Which of the following is true about the $R^2$ for our fitted model on the population? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "tends to be higher",
+    answer = "tends to be lower",
+    "the same"
+)
+
+cat(longmcq(choices))
+
+```
+
+16. Which of the following best describes an overfit model? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "performs well predicting new values, but poorly on the sample",
+    answer = "performs well on the sample, but poorly predicting new values",
+    "performs poorly both on the sample and predicting new values",
+    "performs well both on the sample and predicting new values"
+)
+
+cat(longmcq(choices))
+
+```
+
+
+17. How can we estimate $R^2$ on the population? Choose all that apply.
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer="cross validation",
+    answer = "bootstrapping",
+    "set.seed", 
+    "none of the above"
+)
+
+cat(longmcq(choices))
+
+```
+
+18. Fill in the blanks below to best describe cross validation:
+    - Leave some out
+    - Fit a model on the data `r mcq(c("left out", answer =  "kept in"))`
+    - Evaluate the mdoel on the data `r mcq(c(answer ="left out","kept in"))` 
+
+## Model accuracy in R 
+
+
+Questions 19-20 refer to the following code and output:
+
+```{r}
+model <- lm(y ~ 1 + x, data)
+summary(model)
+```
+
+19. What is the $R^2$ value for the model fit above? 
+
+`r fitb(0.8822, width=10)`
+
+20. Does the value you entered in 19 reflect $R^2$ on the population or on the sample? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "population",
+    answer = "sample"
+)
+
+cat(longmcq(choices))
+
+```
+
+
+Questions 21-23 refer to the following code and output: 
+
+```{r}
+# we divide the data into v folds for cross-validation
+set.seed(2) 
+splits <- vfold_cv(data)
+
+# model secification 
+model_spec <- 
+  linear_reg() %>%  
+  set_engine(engine = "lm")  
+
+# add a workflow
+our_workflow <- 
+  workflow() %>%
+  add_model(model_spec) %>%  
+  add_formula(y ~ x) 
+
+# fit models to our folds 
+fitted_models <- 
+  fit_resamples(
+    object = our_workflow, 
+    resamples = splits
+    ) 
+
+fitted_models %>%
+    collect_metrics()
+
+```
+
+21. In the cross-validation performed above, how many folds were the data split into? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "2",
+   "5",
+    answer = "10"
+)
+
+cat(longmcq(choices))
+
+```
+
+22. What $R^2$ do we estimate for the population? 
+
+`r fitb(0.890, width = 10)`
+
+23. What model has been fit? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer = "`y ~ x`",
+    "`y ~ x^2`",
+   "`x ~ y`",
+    "`vfold_cv`"
+)
+
+cat(longmcq(choices))
+
+```
+
+
+Questions 24-26 refer to the following code and output: 
+
+```{r}
+# we bootstrap the data for cross-validation
+set.seed(2) 
+bootstrap <- bootstraps(data) 
+
+# fit models to our folds 
+fitted_models_boot <- 
+  fit_resamples(
+    object = our_workflow, 
+    resamples = bootstrap
+    ) 
+
+fitted_models_boot %>%
+    collect_metrics()
+
+```
+
+24. How many bootstrap samples did we generate? 
+
+`r fitb(25, width = 10)`
+
+25. True or false, we fit the same model to the bootstrap data as we did in the cross-validation code. 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer = "TRUE",
+    "FALSE"
+)
+
+cat(longmcq(choices))
+
+```
+
+26. True or false, the $R^2$ estimated by bootstrapping is equal to the $R^2$ estimated by cross-validation.
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "TRUE",
+    answer="FALSE"
+)
+
+cat(longmcq(choices))
+
+```
+
+
+
+```{r}
+#| echo: false
+#| message: false
+
+library(webexercises)
+library(tidyverse)
+library(optimg)
+library(tidymodels)
+theme_set(theme_gray(base_size = 16))
+set.seed(60)
+
+data_n10 <- read_csv("http://kschuler.github.io/datasets/model-reliability-sample10.csv") 
+data_n200 <- read_csv("http://kschuler.github.io/datasets/model-reliability-sample200.csv") 
+```
+
+
+## Model reliability 
+
+a. As we collect more data, our parameter estimates
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer = "become more reliable",
+    "become less reliable", 
+    "stay the same"
+)
+
+cat(longmcq(choices))
+```
+
+b. Each figure below plots 100 bootstrapped models with data drawn from the same population. In one figure, the model is fit to 10 data points. In the other, each model is fit to 200 data points. Which figure shows the model fit to 200 data points? 
+
+```{r}
+#| echo: false
+#| layout-ncol: 2
+
+bootstrapped_fits <- data_n10 %>%
+  specify(y ~ x) %>%
+  generate(reps = 100, type = "bootstrap") %>%
+  fit()
+
+bootstrapped_fits_wide <- bootstrapped_fits %>%
+  spread(term, estimate)
+
+ggplot(
+  data = data_n10,
+  mapping = aes(x = x, y = y)
+) +
+  geom_point(alpha = 0) +
+  geom_abline(data = bootstrapped_fits_wide,
+     aes(slope =  x, intercept = intercept, group = replicate), alpha = 0.05)  +
+  labs(tag = "A")
+
+
+bootstrapped_fits <- data_n200 %>%
+  specify(y ~ x) %>%
+  generate(reps = 100, type = "bootstrap") %>%
+  fit()
+
+bootstrapped_fits_wide <- bootstrapped_fits %>%
+  spread(term, estimate)
+
+ggplot(
+  data = data_n200,
+  mapping = aes(x = x, y = y)
+) +
+  geom_point(alpha = 0) +
+  geom_abline(data = bootstrapped_fits_wide,
+     aes(slope =  x, intercept = intercept, group = replicate), alpha = 0.05)  +
+  #geom_smooth(method = "lm", formula = "y ~ x", se = FALSE, linewidth = 2) +
+  labs(tag = "B")
+
+```
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "Figure A",
+    answer = "Figure B", 
+    "Both figures have the same number of data points"
+)
+
+cat(longmcq(choices))
+```
+
+c. As we collect more data, what happens to the confidence interval around our parameter estimates? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "It gets bigger (wider)",
+    "It stays the same", 
+    answer = "It gets smaller (narrower)"
+)
+
+cat(longmcq(choices))
+```
+
+d. True or false, we can obtain confidence intervals around parameter estimates for models in the same we we did for point estimates like the mean. 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(answer = "True", "False")
+
+cat(longmcq(choices))
+
+```
+
+e. Model reliability asks how certain we can be about our parameter estimates. Why is there uncertainty around our parameter estimates? 
+
+```{r}
+#| code-fold: true
+#| code-summary: "answer"
+#| eval: false
+"Because we are interested in the model parameters that 
+best describe the population from which the sample was
+ drawn. Due to sampling error, we can expect some 
+ variability in the model parameters."
+
+```
+
+f. The figure below shows the model fit for a sample of 10 participants. Suppose we repeated our experiment with 10 new participants. True or false, fitting the same model to these new data would yield approximately the same parameter estimates. 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c("True", answer = "False")
+
+cat(longmcq(choices))
+
+```
+
+g. True or false, a model with high accuracy must also have high reliability.
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c("True", answer="False")
+
+cat(longmcq(choices))
+
+```

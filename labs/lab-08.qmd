@@ -1,0 +1,204 @@
+---
+title:  "Lab 8: Classification"
+subtitle: "Not graded, just practice"
+author: Katie Schuler
+number-sections: false
+---
+
+## Classification 
+
+a. Which of the following aspects of model building apply to classification models? (Choose all that apply)
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer="specify",
+    answer="fit",
+    answer="accuracy", 
+    answer="reliability"
+)
+
+cat(longmcq(choices))
+```
+
+b. What is the difference between regression and classification? 
+
+```{r}
+#| code-fold: true
+#| code-summary: "answer"
+#| eval: false
+"Regression predicts a continuous response varaible, 
+classification predicts a discrete response variable"
+
+```
+
+c. Which accuracy metric is best applied to classification models? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "R squared",
+    "RMSE",
+    answer ="Pecent correct",
+    "All of the above"
+)
+
+cat(longmcq(choices))
+```
+
+d. In the figure below, which aspect shows the response variable? 
+
+![](/assests/images/pquiz4-3d.png)
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "x-axis",
+    "y-axis",
+    answer ="color of points",
+    "blue line"
+)
+
+cat(longmcq(choices))
+```
+
+e. Which figure below could show a plotted classification model? Choose all that apply.
+
+![](/assests/images/pquiz4-3e.png)
+
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer = "Figure A",
+    answer = "Figure B",
+    answer = "Figure C"
+)
+
+cat(longmcq(choices))
+```
+
+
+f. Name two kinds of linear classifiers
+
+```{r}
+#| code-fold: true
+#| code-summary: "answer"
+#| eval: false
+"Any 2 of those mentioned in class: 
+Logistic regression
+Linear discriminant analysis (LDA)
+Linear support vector machines (SVM)
+Nearest-prototype classifiers
+Naive Bayes classifiers
+"
+
+```
+
+
+## 4 Classification in R 
+
+a. We can impliment classification via `r mcq(c("linear regression", "cubic polynomials", answer =  "logistic regression", "nearest-neighbor regression", "all of the above"))`
+
+b. True or false, in R, we can perform logistic regression with a generalized linear model. 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(answer="True", "False")
+
+cat(longmcq(choices))
+
+```
+
+c. What 3 elements do all GLMs have? 
+
+```{r}
+#| code-fold: true
+#| code-summary: "answer"
+#| eval: false
+"1. A particular distribution for modeling the response variable
+2. A linear model 
+3. A link function
+"
+
+```
+
+d. What is the link function for logistic regression? 
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    answer = "logistic function", 
+    "polynomial expansion",
+    "log transformation",
+    "inverse transformation"
+)
+
+cat(longmcq(choices))
+
+```
+
+f. Which of the following fits a logistic regression model in R? Choose one.
+
+
+```r
+# code A
+glm(y ~ x, data = data, family = "binomial")
+
+# code B
+data %>%
+    specify(y ~ x) %>%
+    fit() 
+
+# code C 
+logistic_reg %>%
+    set_engine("glm") %>%
+    fit(y ~ x, data = data)
+```
+
+```{r}
+#| echo: false
+#| results: asis
+
+# Define the answer choices
+choices <- c(
+    "code A", 
+    "code B",
+    "code C",
+    "code A and B only",
+    answer = "all of the above"
+)
+
+cat(longmcq(choices))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
