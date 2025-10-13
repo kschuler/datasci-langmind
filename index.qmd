@@ -24,7 +24,7 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 5 | Sep 23 | Hypothesis testing<br> | [slides](slides/hypothesis-testing.qmd), [demo](https://colab.research.google.com/drive/1VXypUt5Pc7Ti3x_hhqSYwyEV9CeqGsH-?usp=drive_link), [notes](notes/hypothesis-testing.qmd) | [Lab 4](labs/lab-04.qmd) | [Pset 4](psets/pset-04.qmd) |
 | 6 | Sep 30 | Midterm 1 review (Tue)<br>**No class/lab, Yom Kippur** | [study guide](notes/exam-1-studyguide.qmd), [practice exams](https://drive.google.com/drive/folders/1FaF8Gn4dkvWEJxXSCwaXeO2Wk6mtmlOd?usp=drive_link) | No lab! |  |
 | 7 | Oct 7 | [Midterm 1 (Tue)](exams/exam-01.qmd) <br>**Fall break, no class/lab** | No lab! | | 
-| 8 | Oct 14 | Model specification | | Lab 5 | Pset 5 | 
+| 8 | Oct 14 | Model specification | | [Lab 5](labs/lab-05.qmd) | Pset 5 | 
 | 9 | Oct 21 | Model fitting | | Lab 6 | Pset 6  | 
 | 10 | Oct 28 | Model evaluation | | Lab 7 | Pset 7 |
 | 11 | Nov 4 | **Katie conference, no class/lab** | | |  |
