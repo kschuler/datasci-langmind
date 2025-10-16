@@ -2,6 +2,8 @@
 title:  "Lab 5: Model specification"
 subtitle: "Not graded, just practice"
 author: Katie Schuler
+number-sections: true
+
 ---
 
 Practice your new *modeling* skills with these practice exam questions! Best to open a fresh Google Colab notebook and test things out! Refer to the study guide to find answers as well. 
@@ -688,7 +690,7 @@ data <- data %>%
 
 then you could have written:
 
-$\log(brain\_weight\_g) = w_1  1 + w_2  \log(group\_size)$
+$log\_brain\_weight\_g = w_1  1 + w_2  log\_group\_size$
 
 :::
 
