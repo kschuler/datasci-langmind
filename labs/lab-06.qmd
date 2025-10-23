@@ -1,5 +1,5 @@
 ---
-title:  "Lab 9: Model fitting"
+title:  "Lab 6: Model fitting"
 subtitle: "Not graded, just practice"
 author: Katie Schuler
 number-sections: true
