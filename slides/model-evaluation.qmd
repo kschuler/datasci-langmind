@@ -37,6 +37,13 @@ data2 <- tibble(
 
 ```
 
+## Install tidymodels! 
+
+It takes 9 minutes!
+
+```r 
+install.packages('tidymodels')
+```
 
 ## You are not alone
 
@@ -96,6 +103,16 @@ data2 <- tibble(
 library(languageR)
 glimpse(english)
 ```
+
+## Model accuracy {.smaller}
+
+- Accuracy tells us how well our model captures the patterns in the data 
+- Model specification is what we *believe* explains our outcome (y); accuracy tests whether that belief holds up.
+
+::: {.callout-tip}
+
+A model is *accurate* if it explains the data better than chance, generalizes well to new data, and captures the main structure of the phenomenon it was designed to represent.
+:::
 
 ## Quantifying model accuracy {.smaller}
 
@@ -172,9 +189,9 @@ sse_ref <- SSE(data = young_nouns_sample, par = c(6.447, 0))
 sse_model <- SSE(data = young_nouns_sample, par = c(6.59064, -0.02874))
 ggplot(young_nouns_sample, aes(y = RTlexdec, x = WrittenFrequency)) +
     geom_point() +
-    geom_smooth(method = "lm", formula = "y ~ x", se = FALSE) + 
-        geom_segment(aes(xend = WrittenFrequency, yend = model)) +
-    labs(title = "Unexplained variance (SSE model)", caption = sse_model)
+    geom_smooth(method = "lm", formula = "y ~ 1", se = FALSE) +
+    geom_segment(aes(xend = WrittenFrequency, yend = ref_model)) +
+    labs(title = "Total variance (SSE reference)", caption = sse_ref)
 ```
 
 - How much error (variation) is left over in the simplest possible model, `RTlexdec ~ 1`? This is our **reference model** and represents the **total variance**. 
@@ -186,13 +203,13 @@ ggplot(young_nouns_sample, aes(y = RTlexdec, x = WrittenFrequency)) +
 ```{r}
 #| echo: false 
 
-
-
 ggplot(young_nouns_sample, aes(y = RTlexdec, x = WrittenFrequency)) +
     geom_point() +
-    geom_smooth(method = "lm", formula = "y ~ 1", se = FALSE) +
-    geom_segment(aes(xend = WrittenFrequency, yend = ref_model)) +
-    labs(title = "Total variance (SSE reference)", caption = sse_ref)
+    geom_smooth(method = "lm", formula = "y ~ x", se = FALSE) + 
+        geom_segment(aes(xend = WrittenFrequency, yend = model)) +
+    labs(title = "Unexplained variance (SSE model)", caption = sse_model)
+
+
 
 
 

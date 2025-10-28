@@ -205,6 +205,11 @@ Katie Schuler
 </div>
 
 </section>
+<section id="install-tidymodels" class="slide level2">
+<h2>Install tidymodels!</h2>
+<p>It takes 9 minutes!</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">'tidymodels'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="you-are-not-alone" class="slide level2">
 <h2>You are not alone</h2>
 
@@ -251,8 +256,8 @@ Katie Schuler
 <section id="dataset" class="slide level2 smaller">
 <h2>Dataset</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(languageR)</span>
-<span id="cb1-2"><a></a><span class="fu">glimpse</span>(english)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(languageR)</span>
+<span id="cb2-2"><a></a><span class="fu">glimpse</span>(english)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 4,568
 Columns: 36
@@ -292,6 +297,26 @@ $ Voice                           &lt;fct&gt; voiced, voiceless, voiceless, voic
 $ FrequencyInitialDiphoneWord     &lt;dbl&gt; 10.129308, 9.054388, 12.422026, 10.048…
 $ FrequencyInitialDiphoneSyllable &lt;dbl&gt; 10.409763, 9.148252, 13.127395, 11.003…
 $ CorrectLexdec                   &lt;int&gt; 27, 30, 30, 30, 26, 28, 30, 28, 25, 29…</code></pre>
+</div>
+</div>
+</section>
+<section id="model-accuracy" class="slide level2 smaller">
+<h2>Model accuracy</h2>
+<ul>
+<li class="fragment">Accuracy tells us how well our model captures the patterns in the data</li>
+<li class="fragment">Model specification is what we <em>believe</em> explains our outcome (y); accuracy tests whether that belief holds up.</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>A model is <em>accurate</em> if it explains the data better than chance, generalizes well to new data, and captures the main structure of the phenomenon it was designed to represent.</p>
+</div>
 </div>
 </div>
 </section>
@@ -395,8 +420,8 @@ $ CorrectLexdec                   &lt;int&gt; 27, 30, 30, 30, 26, 28, 30, 28, 25
 <p><span class="math inline">\(R^2=100\times(1-\frac{SSE_{model}}{SSE_{reference}})\)</span></p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># compute R2 from SSEs</span></span>
-<span id="cb3-2"><a></a><span class="dv">1</span> <span class="sc">-</span> (sse_model<span class="sc">/</span>sse_ref)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># compute R2 from SSEs</span></span>
+<span id="cb4-2"><a></a><span class="dv">1</span> <span class="sc">-</span> (sse_model<span class="sc">/</span>sse_ref)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4081037</code></pre>
 </div>
@@ -404,8 +429,8 @@ $ CorrectLexdec                   &lt;int&gt; 27, 30, 30, 30, 26, 28, 30, 28, 25
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># compute R2 from lm</span></span>
-<span id="cb5-2"><a></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># compute R2 from lm</span></span>
+<span id="cb6-2"><a></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -766,12 +791,12 @@ F-statistic: 12.41 on 1 and 18 DF,  p-value: 0.00243</code></pre>
 <h2>F-test demo</h2>
 <p>In R, we can perform this model comparison via and F-test via a call to <code>anova()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>model_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> <span class="dv">1</span>, english)</span>
-<span id="cb7-2"><a></a>model_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> WrittenFrequency, english)</span>
-<span id="cb7-3"><a></a>model_freqage <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> WrittenFrequency <span class="sc">+</span> AgeSubject, english)</span>
-<span id="cb7-4"><a></a>model_freqagelength <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> WrittenFrequency <span class="sc">+</span> AgeSubject <span class="sc">+</span> LengthInLetters, english)</span>
-<span id="cb7-5"><a></a></span>
-<span id="cb7-6"><a></a><span class="fu">anova</span>(model_int, model_freq, model_freqage, model_freqagelength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>model_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> <span class="dv">1</span>, english)</span>
+<span id="cb8-2"><a></a>model_freq <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> WrittenFrequency, english)</span>
+<span id="cb8-3"><a></a>model_freqage <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> WrittenFrequency <span class="sc">+</span> AgeSubject, english)</span>
+<span id="cb8-4"><a></a>model_freqagelength <span class="ot">&lt;-</span> <span class="fu">lm</span>(RTlexdec <span class="sc">~</span> WrittenFrequency <span class="sc">+</span> AgeSubject <span class="sc">+</span> LengthInLetters, english)</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="fu">anova</span>(model_int, model_freq, model_freqage, model_freqagelength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -852,8 +877,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="dataset-1" class="title-slide slide level1 center">
 <h1>Dataset</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>data_n10 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://kschuler.github.io/datasets/model-reliability-sample10.csv"</span>) </span>
-<span id="cb9-2"><a></a>data_n200 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://kschuler.github.io/datasets/model-reliability-sample200.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>data_n10 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://kschuler.github.io/datasets/model-reliability-sample10.csv"</span>) </span>
+<span id="cb10-2"><a></a>data_n200 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://kschuler.github.io/datasets/model-reliability-sample200.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section" class="slide level2 smaller">
@@ -893,9 +918,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div><div class="column" style="width:50%;">
 <h5 id="specify-and-fit-with-infer">Specify and fit with <code>infer</code></h5>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>data_n10 <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>data_n10 <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a></a>  <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   term      estimate
@@ -911,11 +936,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>How certain can we be about the parameter estimates we obtained?</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>observed_fit <span class="ot">&lt;-</span> data_n10 <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">fit</span>()</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a>observed_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>observed_fit <span class="ot">&lt;-</span> data_n10 <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">fit</span>()</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a>observed_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
@@ -1088,15 +1113,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="column" style="width:33%;">
 <p>Fit bootstraps</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>boot_fits <span class="ot">&lt;-</span> data_n200 <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">generate</span>(</span>
-<span id="cb14-4"><a></a>    <span class="at">reps =</span> <span class="dv">1000</span>, </span>
-<span id="cb14-5"><a></a>    <span class="at">type =</span> <span class="st">"bootstrap"</span></span>
-<span id="cb14-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a></a>  <span class="fu">fit</span>()</span>
-<span id="cb14-8"><a></a></span>
-<span id="cb14-9"><a></a><span class="fu">head</span>(boot_fits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>boot_fits <span class="ot">&lt;-</span> data_n200 <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a></a>  <span class="fu">generate</span>(</span>
+<span id="cb15-4"><a></a>    <span class="at">reps =</span> <span class="dv">1000</span>, </span>
+<span id="cb15-5"><a></a>    <span class="at">type =</span> <span class="st">"bootstrap"</span></span>
+<span id="cb15-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a></a>  <span class="fu">fit</span>()</span>
+<span id="cb15-8"><a></a></span>
+<span id="cb15-9"><a></a><span class="fu">head</span>(boot_fits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   replicate [3]
@@ -1113,13 +1138,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div><div class="column" style="width:33%;">
 <p>Get confidence interval</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>ci <span class="ot">&lt;-</span> boot_fits <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a></a>  <span class="fu">get_confidence_interval</span>(</span>
-<span id="cb16-3"><a></a>    <span class="at">point_estimate =</span> observed_fit_200, </span>
-<span id="cb16-4"><a></a>    <span class="at">level =</span> <span class="fl">0.95</span></span>
-<span id="cb16-5"><a></a>  )</span>
-<span id="cb16-6"><a></a></span>
-<span id="cb16-7"><a></a>ci </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>ci <span class="ot">&lt;-</span> boot_fits <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">get_confidence_interval</span>(</span>
+<span id="cb17-3"><a></a>    <span class="at">point_estimate =</span> observed_fit_200, </span>
+<span id="cb17-4"><a></a>    <span class="at">level =</span> <span class="fl">0.95</span></span>
+<span id="cb17-5"><a></a>  )</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a>ci </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   term      lower_ci upper_ci
@@ -1131,9 +1156,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div><div class="column" style="width:33%;">
 <p>Visualize distribution &amp; ci</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>bootstrapped_fits <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">visualize</span>() <span class="sc">+</span></span>
-<span id="cb18-3"><a></a>  <span class="fu">shade_ci</span>(<span class="at">endpoints =</span> ci) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>bootstrapped_fits <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a></a>  <span class="fu">visualize</span>() <span class="sc">+</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">shade_ci</span>(<span class="at">endpoints =</span> ci) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
