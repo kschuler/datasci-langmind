@@ -26,7 +26,7 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 7 | Oct 7 | [Midterm 1 (Tue)](exams/exam-01.qmd) <br>**Fall break, no class/lab** | No lab! | | 
 | 8 | Oct 14 | Model specification | [slides](slides/model-specification.qmd), [demo](https://colab.research.google.com/drive/1pr69_Je9gNviDs3cC5aF672TVTMowzWR?usp=drive_link), [notes](notes/model-specification.qmd) | [Lab 5](labs/lab-05.qmd) | [Pset 5](psets/pset-05.qmd) | 
 | 9 | Oct 21 | Model fitting | [slides](slides/model-fitting.qmd), [demo](https://colab.research.google.com/drive/16cIfMYPAuKJzaruSXdTlvFwlNKQllbBy?usp=drive_link), [notes](notes/model-fitting.qmd) | [Lab 6](labs/lab-06.qmd) | [Pset 6](psets/pset-06.qmd)  | 
-| 10 | Oct 28 | Model evaluation | [slides](slides/model-evaluation.qmd), [demo](https://colab.research.google.com/drive/1hOUqh3jhoBO6mGQWwlEPPup7MOvzw2Ld?usp=drive_link), [notes](notes/model-evaluation.qmd) | Lab 7 | Pset 7 |
+| 10 | Oct 28 | Model evaluation | [slides](slides/model-evaluation.qmd), [demo](https://colab.research.google.com/drive/1hOUqh3jhoBO6mGQWwlEPPup7MOvzw2Ld?usp=drive_link), [notes](notes/model-evaluation.qmd) | [Lab 7](labs/lab-07.qmd) | [Pset 7](psets/pset-07.qmd) |
 | 11 | Nov 4 | **Katie conference, no class/lab** | | |  |
 | 12 | Nov 11 | Classification | |  Lab 8 | Pset 8 | 
 | 13 | Nov 18 | Miterm 2 review (Tue)<br>Midterm 2 (Thu) | | |   | 
