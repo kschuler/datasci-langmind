@@ -744,48 +744,41 @@ F-statistic: 12.41 on 1 and 18 DF,  p-value: 0.00243</code></pre>
 <li class="fragment">In general AIC considers how well the model fits the data, the number of parameters, and the sample size (there is a penalty for more complex models); BIC is similar but has a stronger penalty for complex models (so will inherently favor simpler models).</li>
 </ul>
 </section>
-<section id="what-well-demo" class="slide level2">
-<h2>What we’ll demo:</h2>
+<section id="cross-validation-v.-f-test" class="slide level2">
+<h2>Cross validation v. F-test:</h2>
 <ul>
-<li class="fragment"><strong>We’ll focus on cross-validation</strong> in this class, because it makes fewer assumptions than metrics like AIC/BIC and is simpler to understand conceptually. But we’ll also show you the <strong>F-test</strong> approach, since it’s widely used in the sciences.</li>
+<li class="fragment"><p><strong>Cross validation</strong>: a predictive performance approach. How well does our model generalize to unseen data?</p></li>
+<li class="fragment"><p><strong>F-test</strong> a statistical test comparing two or more nested models. Is <span class="math inline">\(R^2\)</span> significantly higher?</p></li>
 </ul>
 </section>
 <section id="f-test-via-anova" class="slide level2">
 <h2>F-test (via <code>anova()</code>)</h2>
 <p>The F-test is closely related to <span class="math inline">\(R^2\)</span>. When comparing a simpler model to a more complex one, the <strong>change in <span class="math inline">\(R^2\)</span></strong> (often expressed as <span class="math inline">\(\Delta R^2\)</span>) can be evalutated using an F-test to see if adding predictors significantly improves model fit.</p>
-</section>
-<section id="f-test-and-r2" class="slide level2 smaller">
-<h2>F-test and R^2</h2>
-<ul>
-<li class="fragment">For <span class="math inline">\(R^2\)</span>, when we compared <span class="math inline">\(SSE_{model}\)</span> (the sum of squared error of our model) to <span class="math inline">\(SSE_{reference}\)</span> (the sum of squared error of the intercept-only model), we noted that <span class="math inline">\(SSE_{reference}\)</span> is always going to be greater than <span class="math inline">\(SSE_{model}\)</span>.</li>
-<li class="fragment">But what we actually want to know is whether it is <em>significantly</em> greater.</li>
-</ul>
-</section>
-<section id="equation-for-f-in-terms-of-r2" class="slide level2 smaller">
-<h2>Equation for F (in terms of <span class="math inline">\(R^2\)</span>)</h2>
-<p>Let <span class="math inline">\(R^2_{simple}\)</span> be the <span class="math inline">\(R^2\)</span> of the simpler model and <span class="math inline">\(R^2_{complex}\)</span> be the <span class="math inline">\(R^2\)</span> of the more complex model. The change in <span class="math inline">\(R^2\)</span> (also called <span class="math inline">\(\Delta R^2\)</span>) is:</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\Delta R^2 = R^2_{complex} - R^2_{simple}\)</span></li>
-</ul>
-<p>We can then compute the F-statistic to determine if <span class="math inline">\(\Delta R^2\)</span> is significant.</p>
-<ul>
-<li class="fragment"><span class="math inline">\(F = \frac{\Delta R^2 / p }{(1-R^2_{complex}/(n-k-1))}\)</span></li>
-</ul>
-<p>Where:</p>
-<ul>
-<li class="fragment"><span class="math inline">\(p\)</span> is the number of additional predictors in the complex model</li>
-<li class="fragment"><span class="math inline">\(n\)</span> is the total sample size</li>
-<li class="fragment"><span class="math inline">\(k\)</span> is the number of predictors in the complex model</li>
-</ul>
-</section>
-<section id="understanding-the-f-equation" class="slide level2 smaller">
-<h2>Understanding the F equation</h2>
-<p><span class="math inline">\(F = \frac{\Delta R^2 / p }{(1-R^2_{complex}/(n-k-1))}\)</span></p>
-<p>We can understand the numerator and denominator of this equation in the following way:</p>
-<ul>
-<li class="fragment">The numerator represents the increase in <em>explained variance</em> per additional predictor.</li>
-<li class="fragment">The denominator represents the remaining <em>unexplained variance</em>, adjusted for sample size and the complexity of the model.</li>
-</ul>
+<!-- ## Equation for F (in terms of $R^2$) {.smaller}
+
+Let $R^2_{simple}$ be the $R^2$ of the simpler model and $R^2_{complex}$ be the $R^2$ of the more complex model. The change in $R^2$ (also called $\Delta R^2$) is: 
+
+- $\Delta R^2 = R^2_{complex} - R^2_{simple}$
+
+We can then compute the F-statistic to determine if $\Delta R^2$ is significant. 
+
+- $F = \frac{\Delta R^2 / p }{(1-R^2_{complex}/(n-k-1))}$
+
+Where: 
+
+- $p$ is the number of additional predictors in the complex model 
+- $n$ is the total sample size 
+- $k$ is the number of predictors in the complex model 
+
+## Understanding the F equation {.smaller}
+
+$F = \frac{\Delta R^2 / p }{(1-R^2_{complex}/(n-k-1))}$
+
+
+We can understand the numerator and denominator of this equation in the following way: 
+
+- The numerator represents the increase in *explained variance* per additional predictor. 
+- The denominator represents the remaining *unexplained variance*, adjusted for sample size and the complexity of the model.  -->
 </section>
 <section id="f-test-demo" class="slide level2 smaller">
 <h2>F-test demo</h2>
