@@ -8,9 +8,7 @@ format:
 
 ::: {.callout-tip collapse="false"}
 ## Announcements
-
-- **Date change: Mideterm 1 now Oct 7**
-- Midterm study guide posted!
+[Please RSVP for a lunch!](https://canvas.upenn.edu/courses/1879865/quizzes/3601407)
 :::
 
 All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). Homeworks are now shown the week they are *released* (due the following Monday). 
@@ -28,8 +26,8 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 | 9 | Oct 21 | Model fitting | [slides](slides/model-fitting.qmd), [demo](https://colab.research.google.com/drive/16cIfMYPAuKJzaruSXdTlvFwlNKQllbBy?usp=drive_link), [notes](notes/model-fitting.qmd) | [Lab 6](labs/lab-06.qmd) | [Pset 6](psets/pset-06.qmd)  | 
 | 10 | Oct 28 | Model evaluation | [slides](slides/model-evaluation.qmd), [demo](https://colab.research.google.com/drive/1hOUqh3jhoBO6mGQWwlEPPup7MOvzw2Ld?usp=drive_link), [notes](notes/model-evaluation.qmd) | [Lab 7](labs/lab-07.qmd) | [Pset 7](psets/pset-07.qmd) |
 | 11 | Nov 4 | **Katie conference, no class/lab** | | |  |
-| 12 | Nov 11 | Classification | |  Lab 8 | Pset 8 | 
-| 13 | Nov 18 | Miterm 2 review (Tue)<br>Midterm 2 (Thu) | | |   | 
+| 12 | Nov 11 | Classification | [slides](https://docs.google.com/presentation/d/1cmZmlWgloOGYaVuR7FPPNhJhm7nzeq1clan9v4ARCnw/edit?usp=sharing), [demo](https://colab.research.google.com/drive/1vM2ECEWlN10ZBomUv1FzSIDdD1pSwmFh?usp=drive_link) |  [Lab 8](labs/lab-08.qmd) | [Pset 8](psets/pset-08.qmd) | 
+| 13 | Nov 18 | Midterm 2 review (Tue)<br>Midterm 2 (Thu) | [study guide](notes/exam-2-studyguide.qmd), [practice exams](https://drive.google.com/drive/folders/1FaF8Gn4dkvWEJxXSCwaXeO2Wk6mtmlOd?usp=drive_link) | |   | 
 | 14 | Nov 25 |**Thanksgiving break, no class/lab**  |    |
 | 15 | | Careers in datasci lunch! | |   |  |
 |  | Dec 2 | Brittany's Labs (402/403) | 12pm University Club  |   |  |
