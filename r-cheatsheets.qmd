@@ -3,6 +3,12 @@ title: "R Cheat Sheets"
 page-layout: article
 ---
 
+# Study guides 
+
+# Past exams 
+
+
+# R Cheatsheets 
 You will have access to these cheat sheets on exams! 
 
 | Preview | Link |

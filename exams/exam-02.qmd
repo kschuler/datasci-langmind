@@ -1,0 +1,814 @@
+---
+title:  "Exam 2"
+subtitle: "Data Science for Studying Language & the Mind"
+# author: 
+#     name: Katie Schuler
+#     affiliation: University of Pennsylvania
+number-sections: false
+format: 
+  pdf: 
+    fontsize: 18pt
+
+---
+
+**Instructions**
+
+The exam is worth **111 points**. You have **1 hour and 30 minutes** to complete the exam. 
+
+- The exam is closed book/note/computer/phone except for the provided reference sheets
+- If you need to use the restroom, leave your exam and phone with the TAs
+- If you finish early, you may turn in your exam and leave early
+
+
+```{r}
+#| echo: false
+#| message: false
+library(tidyverse)
+library(infer)
+library(optimg)
+library(tidymodels)
+theme_set(theme_bw(base_size = 15))
+```
+
+\newcommand\answerbox{%%
+    \framebox(400,50){}}
+
+\newcommand\shorteranswerbox{%%
+    \framebox(400,20){}}
+
+\newcommand\biggeranswerbox{%%
+    \framebox(400,100){}}
+
+
+
+**(5 points) Preliminary questions**
+
+Please complete these questions *before* the exam begins. 
+
+(a) **(1 point)** What is your full name? 
+
+    \shorteranswerbox
+
+(b) **(1 point)** What is your penn ID number? 
+
+    \shorteranswerbox
+
+(c) **(1 point)** What is your lab section TA's name? 
+
+    \shorteranswerbox
+
+(d) **(1 point)** Who is sitting to your left? 
+
+    \shorteranswerbox
+
+(e) **(1 point)** Who is sitting to your right? 
+
+    \shorteranswerbox
+
+**Please do not turn the page until the exam begins**
+
+
+\clearpage
+
+
+### 1. (22 points) True or false {.unnumbered}
+
+(a) **(2 points)** Regression is a type of nonlinear classifier. 
+
+    - [ ] True
+    - [ ] False
+
+(b) **(2 points)** Model specification involves defining the functional form of the model. 
+
+    - [ ] True
+    - [ ] False
+
+(c) **(2 points)** The equation $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2$ expresses $y$ as a weighted sum of inputs. 
+
+    - [ ] True
+    - [ ] False
+
+(d) **(2 points)** Regression and classification are both supervised learning models. 
+
+    - [ ] True
+    - [ ] False  
+
+(e) **(2 points)** In gradient descent, we search through all possible parameters in the parameter space. 
+
+    - [ ] True
+    - [ ] False
+
+(f) **(2 points)** Gradient descent is an example of an iterative optimization algorithm. 
+
+    - [ ] True
+    - [ ] False
+
+(g) **(2 points)** The largest possible $R^2$ value is 1 (or 100% if expressed as a percentage).
+
+    - [ ] True
+    - [ ] False
+
+(h) **(2 points)** An overfit model performs poorly on the sample, but well on predicting new data. 
+
+    - [ ] True
+    - [ ] False
+
+\clearpage
+
+(i) **(2 points)** Model reliability and model accuracy are the same thing by a different name. 
+
+    - [ ] True
+    - [ ] False
+
+(j) **(2 points)** Our parameter estimates become more stable as we increase our sample size. 
+
+    - [ ] True
+    - [ ] False
+
+(k) **(2 points)** Generalized linear models can be used for classification problems.
+
+    - [ ] True
+    - [ ] False
+
+(l) **(2 points)** In matrix notation, $\mathbf{X}$ is the matrix of explanatory variables. 
+
+    - [ ] True
+    - [ ] False
+
+
+(m) **(2 points)** `optimg` and `lm` return identical parameter estimates. 
+
+    - [ ] True
+    - [ ] False
+
+(n) **(2 points)** `infer` and `lm` return identical parameter estimates. 
+
+    - [ ] True
+    - [ ] False
+
+
+\clearpage 
+
+### 2. (14 points) Model specification
+
+Suppose you are working with a fictional dataset called `narr_prod`, which contains language measures from children who completed a narrative retelling task. Each child viewed the wordless picture book *Good Dog, Carl* and was asked to tell the story in their own words. Researchers transcribed each narrative and coded several features reflecting the child’s language. The dataset includes:
+
+- `age_years`: the child’s age in years (4–12).
+- `group`: the child’s language background ("Monolingual" or "Bilingual").
+- `num_clauses`: total number of clauses in the child’s narrative.
+- `vocab_diversity`: a type–token ratio capturing how varied the child’s vocabulary was.
+- `coherence_rating`: a 1–5 rating of how coherent, organized, and story-like the retelling was.
+
+The first 6 rows of these data and an exploratory plot are printed below for your reference. 
+
+```{r}
+#| echo: false
+#| message: false
+
+narr_prod <- read_csv('../assests/csv/NarrativeProduction.csv') %>% select(!num_complex_sentences)
+
+head(narr_prod)
+
+``` 
+
+```{r}
+#| echo: false
+#| message: false
+
+ggplot(narr_prod, aes(x = age_years, y = vocab_diversity, shape = group)) + 
+     geom_jitter(alpha = 0.5) +
+    theme(legend.position = "top")
+
+```
+
+
+Suppose we specify the following model with `lm`: 
+
+```{r}
+model <- lm(vocab_diversity ~ age_years, data = narr_prod)
+
+```
+
+
+
+(a) **(3 points)** Which of the following is the model's specification as a mathematical expression: 
+
+    - [ ] $vocab\_diversity = w_0 + w_1 age\_years$
+    - [ ] $vocab\_diversity = w_1 age\_years$
+    - [ ] $age\_years = w_0 + w_1 vocab\_diversity$
+    - [ ] $age\_years = w_1 vocab\_diversity$
+
+(b) **(3 points)** For each of the following, circle the option that best describes the type of model we fit. 
+
+    (i) **(1 point)** Supervised or unsupervised 
+    (ii) **(1 point)** Regression or classification 
+    (iii) **(1 point)** Linear or linearlizable nonlinear 
+
+\clearpage
+
+(c) **(3 points)** Each of the figures below show a model's predictions for these data plotted with black lines. Circle the figure that is most likely to be the plot of the model spcified to `lm`? Choose one.
+
+```{r}
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+#| layout-nrow: 2
+
+foil1 <- lm(vocab_diversity ~ 1, data = narr_prod)
+foil2 <-lm(vocab_diversity ~ age_years + group , data = narr_prod)
+foil3 <- lm(vocab_diversity ~  group, data = narr_prod)
+
+narr_prod <- narr_prod %>%
+    mutate(a = predict(model, narr_prod)) %>%
+    mutate(b = predict(foil1, narr_prod)) %>%
+    mutate(c = predict(foil2, narr_prod)) %>%
+    mutate(d = predict(foil3, narr_prod))
+
+
+ggplot(narr_prod, aes(x = age_years, y = vocab_diversity, shape = group)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = a)) +
+    labs(tag = "A") +
+    theme(legend.position = "top")
+
+
+ggplot(narr_prod, aes(x = age_years, y = vocab_diversity, shape = group)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = b)) +
+    labs(tag = "B")+
+    theme(legend.position = "top")
+
+
+ggplot(narr_prod, aes(x = age_years, y = vocab_diversity, shape = group)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = c)) +
+    labs(tag = "B")+
+    theme(legend.position = "top")
+
+ggplot(narr_prod, aes(x = age_years, y = vocab_diversity, shape = group)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = d)) +
+    labs(tag = "D")+
+    theme(legend.position = "top")
+
+```
+
+\clearpage 
+
+(d) **(3 points)** Suppose we also fit the model with `infer`, which returns the parameter estimates below. Which of the following could be the predicted `vocab_diversity` for a 5 year old child?
+
+    ```{r}
+    #| echo: false
+    narr_prod %>%
+        specify(vocab_diversity ~ age_years) %>%
+        fit()
+
+    ```
+
+    - [ ] 0.15
+    - [ ] 0.0299
+    - [ ] 0.40
+    - [ ] 0.249
+    - [ ] Not enough information to determine this
+
+    You may show your work here, if you wish:
+
+    \biggeranswerbox 
+
+(e) **(2 points)** True or false, the model's prediction depends on whether the child is bilingual or monolingual. 
+
+    - [ ] True 
+    - [ ] False
+
+\clearpage
+
+
+### 3. (12 points) Applied model specification
+
+Suppose we encounter the following dataset, glimpsed, plotted and fit here.
+
+
+```{r}
+#| echo: false
+
+# Load necessary libraries
+library(tibble)
+library(ggplot2)
+
+# Set coefficients for the cubic polynomial
+a <- 1
+b <- -2
+c <- 3
+d <- -5
+
+# Generate x values
+set.seed(123) # For reproducibility
+x <- seq(-10, 10, length.out = 100)
+
+# Compute y values with more noise
+noise <- rnorm(length(x), mean = 0, sd = 100) # Increased standard deviation for more noise
+y <- b * x^2 + c * x + d + noise
+
+# Create a tibble
+data <- tibble(x = x, y = y)
+
+glimpse(data)
+
+# Plot the data
+ggplot(data, aes(x = x, y = y)) +
+  geom_point(alpha = 0.6)  +
+  stat_function(fun = function(x)  b * x^2 + c * x + d) 
+ 
+
+
+
+```
+
+```{r}
+#| echo: false
+lm(y ~ poly(x, 2) , data = data)
+
+```
+
+\clearpage 
+
+(a) **(2 points)** What type of polynomial is included in the model specification? 
+
+- [ ] Constant
+- [ ] Linear 
+- [ ] Quadratic 
+- [ ] Cubic 
+- [ ] Quartic 
+
+
+(b) **(3 points)** Which of the following is the parameter estimate on the quadratic term? 
+
+    - [ ] -63.97 
+    - [ ] 247.43 
+    - [ ] -514.32 
+    - [ ] Not enough information to determine this
+
+(c) **(2 points)** In class we learned about two ways to linearlize a nonlinear model. Which option best describes what we have done here? 
+
+    - [ ] Expanding the input space by adding new terms
+    - [ ] Transforming an existing term
+
+(d) **(2 points)** Given the plot of the fitted model, what does the model predict for the value of $y$ when $x=0$? 
+
+    - [ ] Nearly 0
+    - [ ] Less than -200
+    - [ ] Greater than 5 
+    - [ ] Between 1 and 2
+
+\clearpage
+
+(e) **(3 points)** Below are four fitted polynomial models of these data. Which model uses the highest-degree polynomial? 
+
+```{r}
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+#| layout-nrow: 2
+
+true_m <- lm(y ~ poly(x, 2) , data = data)
+foil1 <- lm(y ~ poly(x, 10), data = data)
+foil2 <-lm(y ~ poly(x, 20), data = data)
+foil3 <- lm(y ~ poly(x, 4), data = data)
+
+data <- data %>%
+    mutate(a = predict(true_m, data)) %>%
+    mutate(b = predict(foil1, data)) %>%
+    mutate(c = predict(foil2, data)) %>%
+    mutate(d = predict(foil3, data))
+
+
+ggplot(data, aes(x = x, y = y)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = a)) +
+    labs(tag = "A") +
+    theme(legend.position = "top")
+
+
+ggplot(data, aes(x = x, y = y)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = b)) +
+    labs(tag = "B")+
+    theme(legend.position = "top")
+
+
+ggplot(data, aes(x = x, y = y)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = c)) +
+    labs(tag = "B")+
+    theme(legend.position = "top")
+
+ggplot(data, aes(x = x, y = y)) + 
+    geom_jitter(alpha = 0.5)  +
+    geom_line(aes(y = d)) +
+    labs(tag = "D")+
+    theme(legend.position = "top")
+
+```
+
+\clearpage
+
+### 4. (16 points) Model fitting
+
+Section 4 refers to the `narr_prod` tibble from section 2. We have returned the first 6 rows of the tibble here for your reference. 
+
+```{r}
+#| echo: false
+narr_prod  %>%
+    select(child_id:coherence_rating) %>% head
+
+SSE <- function(data, par) {
+  data %>%
+    mutate(prediction = par[1] + par[2]* age_years) %>%
+    mutate(error = prediction - vocab_diversity) %>%
+    mutate(squared_error = error^2) %>%
+    with(sum(squared_error))
+}
+
+```
+
+Suppose we estimate the free parameters with `optimg` and `lm`, which return the following results: 
+
+```{r}
+
+optimg(data = narr_prod, par = c(0,0), fn=SSE, method = "STGD")
+```
+
+
+```{r}
+lm(vocab_diversity ~ 1 +age_years, data = narr_prod)
+```
+
+
+(a) **(2 points)** Which set of values did we use to initialize the search in `optimg`? Choose one. 
+
+    - [ ] ${0,0}$
+    - [ ] ${0.24926974, 0.02994827}$
+    - [ ] ${6, 0}$
+    - [ ] $0.1962883$
+    - [ ] A random set of values
+
+(b) **(2 points)** What is the cost function used by `optimg`? Choose one.
+
+    - [ ] SSE 
+    - [ ] STGD 
+    - [ ] Gradient descent 
+    - [ ] $R^2$
+    - [ ] Not enough information to determine this
+
+(c) **(2 points)** How many steps did our iterative optimization algorithm take? Choose one.
+
+    - [ ] 0 
+    - [ ] 6 
+    - [ ] 10
+    - [ ] 100
+    - [ ] Not enough information to determine this.
+
+(d) **(2 points)** What was the sum of squared error of the optimal parameters according to `optimg`? Choose one.
+
+    - [ ] $0$
+    - [ ] $6$ 
+    - [ ] $0.1962883$ 
+    - [ ] $0.24926974$ and $0.2994827$
+    - [ ] Not enough information to determine this.
+
+(e) **(2 points)** Which approach does `lm` use to estimate the free parameters? Choose one.
+
+    - [ ] Ordinary least-squares solution 
+    - [ ] Iterative optimization
+    - [ ] Cross validation
+    - [ ] Classification 
+
+\clearpage
+
+(f)  **(6 points)** Given the model specified in the code to `lm`, fill in the missing values for the first 6 rows of the input matrix $\mathbf{X}$ and the output vector $y$. The first six rows of the dataframe are returned to assist you.
+
+```{r}
+#| echo: false
+narr_prod  %>%
+    select(child_id, age_years, vocab_diversity, num_clauses) %>% head
+```
+
+
+$$
+\begin{aligned}
+    \begin{bmatrix}
+    \rule{1.5cm}{0.3mm}   \\
+    \rule{1.5cm}{0.3mm}  \\
+    \rule{1.5cm}{0.3mm}   \\
+    \rule{1.5cm}{0.3mm}   \\
+    \rule{1.5cm}{0.3mm}  \\
+    \rule{1.5cm}{0.3mm}   \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    \rule{1.5cm}{0.3mm}  & 10 \\
+    \rule{1.5cm}{0.3mm}  & 7   \\
+    \rule{1.5cm}{0.3mm}  & 11   \\
+    \rule{1.5cm}{0.3mm}  & 8  \\
+    \rule{1.5cm}{0.3mm}  & 10 \\
+    \rule{1.5cm}{0.3mm}  & 6 
+    \end{bmatrix}
+    \begin{bmatrix}
+    w_1 \\
+    w_2
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        \epsilon_1 \\
+        \epsilon_2 \\
+        \epsilon_3 \\
+        \epsilon_4 \\
+        \epsilon_5 \\
+    \end{bmatrix}
+\end{aligned}
+$$
+
+\clearpage 
+
+### 5. (11 points) Model accuracy 
+
+Suppose we want to determine how accurate our model is for the `narr_prod` dataset. Section 5 refers to the following code and output.
+
+First we specify and fit our model with `lm` and return the model summary. 
+
+```{r}
+#| echo: false
+model <- lm(vocab_diversity ~ age_years, data = narr_prod)
+summary(model)
+```
+
+\clearpage 
+
+Then we perform cross-validation and return the validation metrics with `collect_metrics()`
+
+```{r}
+set.seed(2) 
+splits <- vfold_cv(narr_prod, v = 15)
+
+model_spec <- 
+  linear_reg() %>%  
+  set_engine(engine = "lm")  
+
+our_workflow <- 
+  workflow() %>%
+  add_model(model_spec) %>%  
+  add_formula(vocab_diversity ~ 1 + age_years) 
+
+fitted_models <- 
+  fit_resamples(
+    object = our_workflow, 
+    resamples = splits
+    ) 
+
+fitted_models %>%
+    collect_metrics()
+```
+
+
+
+(a) **(2 points)** What is the $R^2$ estimate for the population? Choose one.  
+
+    - [ ] 0 
+    - [ ] 0.0312
+    - [ ] 0.854
+    - [ ] 0.8632
+    - [ ] Not enough information to determine this 
+
+(c) **(2 points)** What kind of cross-validation did we perform? Choose one.
+
+    - [ ] k-fold 
+    - [ ] boostrapping 
+    - [ ] leave-one out
+    - [ ] Not enough information to determine this
+
+(d) **(2 points)** How many splits of our data does our code generate? 
+
+    - [ ] 1000
+    - [ ] 100 
+    - [ ] 10 
+    - [ ] 15
+    - [ ] Not enough information to determine this
+
+(e) **(3 points)** Which of the following is the equation for $R^2$? 
+
+    - [ ] $f(a) = \frac{1}{1 + e^{-a}}$
+    - [ ] $\sum_{i=i}^{n} (d_{i} - m_{i})^2$ 
+    - [ ] $\sum_{i=1}^{n}w_ix_i$
+    - [ ] $100\times(1-\frac{SSE_{model}}{SSE_{reference}})$
+
+(f) **(2 points)** Suppose we change `add_formula(vocab_diversity ~ 1 + age_years)` to `add_formula(vocab_diversity ~ age_years)`. What will happen to our $R^2$ value? 
+
+    - [ ] increases
+    - [ ] decreases 
+    - [ ] stays the same 
+    - [ ] becomes undefined 
+
+\clearpage
+
+### 6. (12 points) Model reliability 
+
+Suppose we replicated our `narr_prod` narrative retelling study a year later with 10 additional children. We will call this `narr_prod_2`. The new and original datasets are visualized below, along with the model summarise. 
+
+```{r}
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+
+narr_prod_2 <- narr_prod %>%
+    slice_sample(n = 10)
+
+ggplot(narr_prod, aes(x = age_years, y = vocab_diversity)) + 
+     geom_jitter(alpha = 0.5, aes(shape = group)) +
+     geom_smooth(method = "lm") +
+    theme(legend.position = "top") + 
+    labs(tag = "A")
+
+ggplot(narr_prod_2, aes(x = age_years, y = vocab_diversity)) + 
+     geom_jitter(alpha = 0.5, aes(shape = group)) +
+          geom_smooth(method = "lm") +
+    theme(legend.position = "top") + 
+    labs(tag = "B")
+
+```
+
+```{r} 
+#| echo: false
+m1 <- lm(vocab_diversity ~ age_years, data = narr_prod)
+m2 <- lm(vocab_diversity ~ age_years, data = narr_prod_2)
+
+summary(m1)
+
+
+```
+
+\clearpage
+
+```{r}
+#| echo: false
+summary(m2)
+```
+
+(a) **(2 points)** Which model is more accurate? Choose one.
+
+    - [ ] The model fitted to the original data (A)
+    - [ ] The model fitted to the new data (B)
+    - [ ] Both models are equally accurate
+    - [ ] Not enough information to determine this
+
+(b) **(2 points)** Which model is more reliable? Choose one. 
+
+    - [ ] The model fitted to the original data (A)
+    - [ ] The model fitted to the new data (B)
+    - [ ] Both models are equally accurate
+    - [ ] Not enough information to determine this
+
+(c) **(2 points)** What is the reliability on the `age_years` parameter estimate for the original data (A)? 
+
+    - [ ] 0.0299484
+    - [ ] 0.0008473 
+    - [ ] 35.35
+    - [ ] 0.8632 
+    - [ ] 0.8625
+
+    
+(d) **(3 points)** Suppose we bootstrap a 68% confidence interval for our parameter estimates for the new dataset (B). What would happen if we changed the level of the confidence interval to 95%? Choose one.
+
+    - [ ] It would get smaller (narrower)
+    - [ ] It would get bigger (wider) 
+    - [ ] It would stay the same
+        
+\clearpage 
+
+(e) **(3 points)** What does 'model reliability' refer to? 
+
+    - [ ] How well the model fits the training data
+    - [ ] How consistent the model’s predictions or estimates are across different samples
+    - [ ] How large the R² value is
+    - [ ] How quickly the model runs
+
+\clearpage
+
+### 7. (13 points) Classification 
+
+Suppose we want to predict whether a kid in our dataset is bilingual or monolingual by their `vocab_diversity` in our dataset. Here is an expoloratory plot and the fitted model. 
+
+```{r}
+#| echo: false
+
+ggplot(narr_prod, aes(x = vocab_diversity, y = num_clauses, fill = group)) + 
+geom_jitter(alpha = 0.8, shape = 21) + 
+  scale_fill_grey(start = 0.2, end = 0.9) 
+
+
+narr_prod <- narr_prod %>%
+    mutate(bilingual = ifelse(group == 'Bilingual', 1, 0)) 
+
+```
+
+```{r}
+#| echo: false
+glm(bilingual ~ vocab_diversity + num_clauses, family = "binomial", data = narr_prod)
+```
+
+\clearpage 
+
+
+(a) **(3 points)** For each of the following, circle the option that best describes the type of model we fit. 
+
+    (i) **(1 point)** Supervised or unsupervised 
+    (ii) **(1 point)** Regression or classification 
+    (iii) **(1 point)** Linear or linearlizable nonlinear 
+
+(b) **(2 points)** How many free parameters is this model estimating? 
+
+    - [ ] 1
+    - [ ] 2
+    - [ ] 3
+    - [ ] 4
+    - [ ] Not enough information to determine this 
+
+(c) **(2 points)** Which of the following parsnip specifications could specify and fit this same model? 
+
+    - [ ] `linear_reg() %>% set_engine("lm")`
+    - [ ] `logistic_reg() %>% set_engine("glm")`
+    - [ ] Both work 
+
+(d) **(2 points)** Which of the following expresses the link function for the `glm` we fit? 
+
+    - [ ] $f(a) = \frac{1}{1 + e^{-a}}$
+    - [ ] $\sum_{i=i}^{n} (d_{i} - m_{i})^2$ 
+    - [ ] $y=\sum_{i=1}^{n}w_ix_i$
+    - [ ] $R^2=100\times(1-\frac{SSE_{model}}{SSE_{reference}})$
+
+(e) **(2 points)** What do we call the type of classification we performed via our `glm`? 
+
+    - [ ] linear regression
+    - [ ] logistic regression
+    - [ ] nearest-prototype regression
+    - [ ] support vector machine
+
+\clearpage 
+
+Suppose we run cross validation on a few of our models and return the following outputs. 
+
+```{r}
+#| echo: false
+set.seed(2) 
+splits <- vfold_cv(narr_prod, v = 15)
+
+model_spec <- 
+  logistic_reg() %>%  
+  set_engine(engine = "glm")  
+
+our_workflow <- 
+  workflow() %>%
+  add_model(model_spec) %>%  
+  add_formula(as.factor(bilingual) ~ vocab_diversity + num_clauses) 
+
+fitted_models <- 
+  fit_resamples(
+    object = our_workflow, 
+    resamples = splits
+    ) 
+
+fitted_models %>%
+    collect_metrics()
+
+
+set.seed(2) 
+splits <- vfold_cv(narr_prod, v = 15)
+
+model_spec <- 
+  linear_reg() %>%  
+  set_engine(engine = "lm")  
+
+our_workflow <- 
+  workflow() %>%
+  add_model(model_spec) %>%  
+  add_formula(vocab_diversity ~ 1 + age_years) 
+
+fitted_models <- 
+  fit_resamples(
+    object = our_workflow, 
+    resamples = splits
+    ) 
+
+fitted_models %>%
+    collect_metrics()
+```
+
+(f) **(2 points)** What could be the estimate of model accuracy for our classificaiton model? Choose one.
+
+    - [ ] $0.499$ 
+    - [ ] $0.254$
+    - [ ] $0.526$ 
+    - [ ] $0.0312$
+    - [ ] $0.854$ 
+    - [ ] All of the above
+
+    

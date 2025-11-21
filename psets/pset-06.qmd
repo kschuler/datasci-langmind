@@ -1,6 +1,6 @@
 ---
 title:  "Problem set 6"
-subtitle: "due Monday, Oct 27, 2024 at 11:59am (noon!)"
+subtitle: "due Monday, Oct 27, 2025 at 11:59am (noon!)"
 # author: 
 #     name: Katie Schuler
 #     affiliation: University of Pennsylvania
