@@ -9,6 +9,10 @@ format:
 ::: {.callout-tip collapse="false"}
 ## Announcements
 Data Science lunch now optional! [please re-RSVP here](https://docs.google.com/forms/d/e/1FAIpQLSd4wldYkwFkT6kjCwLtbCG7ycRvKY9t1akygPZ8X8cjiCSKHg/viewform?usp=preview)
+
+Final exam: Friday, December 12, 2025: 3:00pm to 5:00pm in NBS AUD
+
+
 :::
 
 All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j6yEcL7rk6c6IUhKZOnRtO8lnsJx3O?usp=sharing). Homeworks are now shown the week they are *released* (due the following Monday). 
@@ -33,5 +37,5 @@ All coding demos can be found [here](https://drive.google.com/drive/folders/1l9j
 |  | Dec 2 | Data Science lunch (optional) | 12pm University Club  |   |  |
 |  |  Dec 4  | Final exam review |   |  No lab! |  |
 | 16 | | **Last week of class, no class/lab** |  |  |  |
-| 17 | TBD | Final exam (optional) |
+| 17 | Dec 12 | Final exam (optional) 3-5pm NBS AUD |
 
